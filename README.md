@@ -1,2 +1,1 @@
-# QuacquarelliRicchiutiSala
-SafeStreets (Mandatory project of Software Engineering 2)
+# SafeStreets (Mandatory project of Software Engineering 2)
