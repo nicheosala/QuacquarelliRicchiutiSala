@@ -93,9 +93,15 @@
         If a report is judged consistent (so its state has been updated) SafeStreet knows that a traffic tickets has been generated from it, otherwise the report is cancelled.\\
         Furthermore, SafeStreet can analyze issued tickets (consistent reports) and it can create statistics for example about the most egregious offenders, or the effectiveness of the SafeStreets initiative by looking for rends in the issuing of tickets.
         
-   
     
         \subsection{User characteristics}
+        The actors of the application are the following:
+        \begin{itemize}
+            \item User: a person that is using SafeStreet's app. He is a "guest" because he is not logged in, so no specific information about him are given. He can actively use the first two basic functions so he can make a violation reporting or data-mining.
+            \item Authority: special kind of user. It is allowed to use the user's functions but also including additional privileges on them such as to visualize more detailed informations about reports. In particular, it is a registered identity that is responsible to manage its competent reports. Authority can send to SafeStreet informations about accidents of its area of competence and can use SafeStreet's statistics to identify the most egregious offenders.
+            A kind of authority is the Police, that can use reports to make traffic tickets validating them.
+        \end{itemize}
+        
         \subsection{Assumptions, dependencies and constraints}
         
         
