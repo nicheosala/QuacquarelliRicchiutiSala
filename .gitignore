@@ -1,5 +1,11 @@
+*.aux
+*.lof
+*.log
+*.lot
+*.out
+*.synctex.gz
+*.toc
+*.gz
+*.bak*
 
-RASD/main.synctex.gz
-RASD/main.toc
-RASD/main.log
-RASD/main.aux
+RASD/*.pdf
