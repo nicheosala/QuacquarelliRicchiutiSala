@@ -96,6 +96,15 @@
 	Authorities could eventually have some information about accidents in their operative zone and can decide to share them with SafeStreets.\\
 	SafeStreets collect these data and try to cross them with reports about traffic violations: if for an area there are frequent violations or accidents, SafeStreets suggests possible interventions.
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics {diagrams/statechart_trafficTicket.png}
+		\caption[Statechart Diagram3]{Statechart Diagram about SafeStreets' system for traffic tickets generation.}
+		\label{fig:statechart_trafficTickets}
+	\end{figure}
+	
+	Finally, Figure \ref{fig:statechart_trafficTickets} represent SafeStreets system that allows an authority to show all violations reported in its operative area. Analysing a report, an authority can establish if it is actually valid in order to generate a traffic ticket for the offender. Otherwise, if report is not valid, the authority can delete it.
+	
 	\clearpage	   
 	
 	\subsection{Product functions}
