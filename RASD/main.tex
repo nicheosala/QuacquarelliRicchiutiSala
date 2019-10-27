@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[super,negative]{nth}
+\usepackage{fancyhdr}
+
+\begin{document}
+    \begin{titlepage}
+    
+        \centering
+		\vspace*{0.7 cm}
+		\includegraphics[scale = 0.7]{images/PolimiLogo.png}\\[1 cm]
+		\textsc{\large Dipartimento di Elettronica, Informazione e Bioingegneria}\\[2 cm]
+		
+		\rule{\linewidth}{0.2 mm} \\[0.5 cm]
+		{\huge \bfseries Requirement Analysis and Specification Document (RASD)}\\
+		\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+		
+		\textsc{\Large SafeStreets}\\[0.5 cm]
+		\textsc{\large - v1.0 -}\\[1 cm]
+
+		\begin{minipage}{\textwidth}
+            \begin{flushleft} \large
+    				\emph{Authors:}\\
+    				\textbf{Quacquarelli}, Sebastiano \hfill 945071 \\
+    				\textbf{Ricchiuti}, Simone \hfill 945613  \\
+    				\textbf{Sala}, Nicolò \hfill matricola3 \\[2 cm]
+    		\end{flushleft}
+		\end{minipage}\\[2 cm]
+		
+        {\large November \nth{10} , 2019}\\[2 cm]
+        
+    \end{titlepage}
+    
+    \pagenumbering{roman}
+    \tableofcontents
+    
+    \newpage
+    \pagenumbering{arabic}
+    
+    \section{Introduction}
+        \subsection{Purpose}
+
+            SafeStreets is an application that allows its users to notify possible traffic violations to authorities, which can evaluate them and eventually generate traffic tickets.\\
+            SafeStreets can also collect information about incidents from authorities and combine them with information about violations to let users do data-mining and to show them statistics.\\
+            Finally, SafeStreets can combine the retrieved information to suggest to authorities some possible solutions for particularly unsafe areas.\\
+            
+        \subsection{Scope}
+            A user can report a violation using SafeStreets application
+            
+        \subsection{Definitions, Acronyms, Abbreviations}
+        \subsection{Revision history}
+        \subsection{Reference Documents}
+        \subsection{Document Structure}
+        
+        \newpage
+        \section{Overall description}
+            \subsection{Product perspective}
+            In Figure 2.1 is given a visual representation about shared phenomena and domain model. 
+    		\begin{figure}[H]
+                \centering
+                \includegraphics[width=1\textwidth {diagrams/domain_model.png}
+                \caption[Domain Model]{Domain Model}
+                \label{fig:domain_model}
+    	\end{figure}
+    	
+    	The users can interact with SafeStreets system through a mobile application and reporting some traffic violations.
+    	SafeStreets does not collect any data about users, so they are represented as a black box. The interaction between user and SafeStreets is established only through 
+    	a report, which will be published in SafeStreets system.\\
+    	An authority registered on SafeStreets can be noticed about traffic violations reported in its own operative area and eventually evaluate if report is correct or not.
+        
+        \subsection{Product functions}
+        In the following section all the main product functions are defined. Basically the reporting and mining functions are considered the basic ones, then the other functions are advanced ones offered by SafeStreets thanks to the collaboration with authorities.
+        \subsubsection{Violation reporting}
+        This is the core function of SafeStreets. The aim of this function is to give to the user the possibility to report a traffic violation. The system allows the user to use this function without a previous login. The user is asked to complete his reporting action defining the following fields:\\
+        - Picture representing the violation;\\
+        - Type of violation.\\
+        In particular, to take the requested picture, the user is allowed only to use the in-app dedicated camera tool. The picture is approved by the app if and only if the license plate is correctly recognized, otherwise, the app will ask to the user to make it again. If, after some attempts, SafeStreets' app warns that is still not possible to recognize the license plate, the user is asked to insert it manually. \\The type of violation is selectable only by the ones offered by SafeStreets.\\ The user is asked also to complete these two requests in a defined interval of time in order to guarantee the consistency of the report offered to SafeStreets.\\
+        When a violation is correctly filled in, it is sent to the system which will publish it and will make it visible to users.\\
+         Each violation is automatically sent to a competent authority, if available, and then will be managed by it.
+       
+        \subsubsection{Data-mining}
+        This function allows the user to analyze SafeStreets' data in order to mine some information, for example, by highlighting the streets (or the areas) with the highest frequency of violations, or the vehicles that commit the most violations. The kind of information requested can be filtered by user in order to restrict the research area. \\
+        
+        \subsubsection{Interactive suggestions}
+        This functions is 
+    
+        \subsection{User characteristics}
+        \subsection{Assumptions, dependencies and constraints}
+        
+        
+    \section{Specific requirements}
+        \subsection{External Interfaces Requirements}
+            \subsubsection{User Interfaces}
+            \subsubsection{Hardware Interfaces}
+            \subsubsection{Software Interfaces}
+            \subsubsection{Communication Interfaces}
+        \subsection{Functional Requirements}
+        \subsection{Performance Requirements}
+        \subsection{Design Constraints}
+            \subsubsection{Standards compliance}
+            \subsubsection{Hardware limitations}
+            \subsubsection{Any other constraint}
+        \subsection{Software System Attributes}
+                \subsubsection{Reliability}
+                \subsubsection{Availability}
+                \subsubsection{Security}
+                \subsubsection{Maintainability}
+                \subsubsection{Portability}
+                
+    \section{Formal analysis using Alloy}
+    
+    \section{Effort spent}
+    
+    \section{References}
+
+
+\end{document}

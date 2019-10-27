@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[super,negative]{nth}
+\usepackage{fancyhdr}
+
+\begin{document}
+    \begin{titlepage}
+    
+        \centering
+		\vspace*{0.7 cm}
+		\includegraphics[scale = 0.7]{images/PolimiLogo.png}\\[1 cm]
+		\textsc{\large Dipartimento di Elettronica, Informazione e Bioingegneria}\\[2 cm]
+		
+		\rule{\linewidth}{0.2 mm} \\[0.5 cm]
+		{\huge \bfseries Requirement Analysis and Specification Document (RASD)}\\
+		\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+		
+		\textsc{\Large SafeStreets}\\[0.5 cm]
+		\textsc{\large - v1.0 -}\\[1 cm]
+
+		\begin{minipage}{\textwidth}
+            \begin{flushleft} \large
+    				\emph{Authors:}\\
+    				\textbf{Quacquarelli}, Sebastiano \hfill 945071 \\
+    				\textbf{Ricchiuti}, Simone \hfill matricola2 \\
+    				\textbf{Sala}, Nicolò \hfill matricola3 \\[2 cm]
+    		\end{flushleft}
+		\end{minipage}\\[2 cm]
+		
+        {\large November \nth{10} , 2019}\\[2 cm]
+        
+    \end{titlepage}
+    
+    \pagenumbering{roman}
+    \tableofcontents
+    
+    \newpage
+    \pagenumbering{arabic}
+    
+    \section{Introduction}
+        \subsection{Purpose}
+            Inviare segnalazioni di violazione\\
+            Far valutare all'autorità segnalazioni di violazione\\
+            Far aggiungere all'autorità informazioni relativi ad incidenti\\
+            Fare data-mining di informazioni relativi a violazioni e incidenti, con livelli di visibilità diversi\\
+            Mostrare statistiche\\
+            Suggerire alle autorità soluzioni per contrastare violazioni ed incidenti\\
+
+        \subsection{Scope}
+            Una persona tramite l'applicazione di SafeStreets può segnalare un veicolo che ritiene stia violando il codice della strada, scattando una fotografia, ritraendo la targa del veicolo interessato e segnalando il tipo di infrazione riconosciuta. \\
+            La raccolta di queste segnalazioni costituisce una base di dati, dalla quale gli utenti possono estrarre informazioni.
+            
+            oltre a inoltrarla ad un'autorità registrata per valutarne la validità.\\\\
+            
+            Tramite il software installato nella sede di un'autorità, la stessa può valutare le segnalazioni ricevute, inserire dati relativi ad incidenti
+            e fare ricerche
+            
+            
+        \subsection{Definitions, Acronyms, Abbreviations}
+            Definizione di 
+            VIOLAZIONE
+            ...
+        \subsection{Revision history}
+        \subsection{Reference Documents}
+        \subsection{Document Structure}
+    
+    \section{Overall description}
+        \subsection{Product perspective}
+        \subsection{Product functions}
+        \subsection{User characteristics}
+        \subsection{Assumptions, dependencies and constraints}
+        
+    \section{Specific requirements}
+        \subsection{External Interfaces Requirements}
+            \subsubsection{User Interfaces}
+            \subsubsection{Hardware Interfaces}
+            \subsubsection{Software Interfaces}
+            \subsubsection{Communication Interfaces}
+        \subsection{Functional Requirements}
+        \subsection{Performance Requirements}
+        \subsection{Design Constraints}
+            \subsubsection{Standards compliance}
+            \subsubsection{Hardware limitations}
+            \subsubsection{Any other constraint}
+        \subsection{Software System Attributes}
+                \subsubsection{Reliability}
+                \subsubsection{Availability}
+                \subsubsection{Security}
+                \subsubsection{Maintainability}
+                \subsubsection{Portability}
+                
+    \section{Formal analysis using Alloy}
+    
+    \section{Effort spent}
+    
+    \section{References}
+
+
+\end{document}

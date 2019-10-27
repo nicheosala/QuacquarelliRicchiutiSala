@@ -1,0 +1,179 @@
+TIPI DI VIOLAZIONE
+Ogni utente può inviare una segnalazione riferita solo a una tra le violazioni elencate.
+Se la violazione non è elencata, è ritenuta inesistente, ovvero non è in alcun modo possibile segnalarla su SafeStreets.
+I tipi di violazione sono:
+- TODO
+
+INFORMAZIONE RIGUARDANTI LA VIOLAZIONE
+Ogni segnalazione di violazione è associata a una e una sola immagine.
+L'immagine può essere acquisita solo attraverso l'app di SafeStreets.
+L'app non consente modifiche dell'immagine.
+La segnalazione di violazione deve essere pubblicata su SafeStreets entro la scadenza di un 
+timeout (DA DEFINIRE), il quale si avvia nel momento in cui si conferma l'acquisizione dell'immagine
+usata per la violazione.
+Chiunque può effettuare una segnalazione su SafeStreets.
+Ogni segnalazione è riferita a una e una sola targa.
+
+Requisiti:
+- L'ora e la data della segnalazione coincidono con la data e l'ora di acquisizione dell'immagine scattata per la segnalazione stessa.
+- Al momento di invio della segnalazione di violazione, l'app SafeStreets ha accesso a internet.
+- l'app di SafeStreets è autorizzata ad accedere alla posizione del dispositivo. Se l'app non dispone dell'autorizzazione oppure
+     non è in grado di raccogliere la posizione, non è possibile inviare alcuna segnalazione.
+
+Assunzione:
+- L'ora e la data di acquisizione dell'immagine sono ottenuti da SafeStreets tramite orologio mondiale.
+- HARDWARE Il dispositivo su cui è installata l'app ha accesso a internet.
+- ?? Il server di SafeStreets non rifiuta segnalazioni in base alla data e ora delle stesse (la gestione temporale delle segnalazioni
+è completamente affidata all'app di SafeStreets)
+- HARDWARE il dispositivo è dotato di tecnologia GPS, con una precisione di X metri.
+- HARDWARE il dispositivo è dotato di fotocamera
+- la posizione rilevata dall'app coincide con la reale posizione del dispositivo con il quale si invia la segnalazione.
+
+
+Segnalazione {
+    data            // stabilita dall'app
+    ora             // stabilita dall'app
+    Posizione       // syabiloita dall'app
+    immagine        // scattata dall'utente attraverso l'app
+    tipoDiViolazione // scelta dall'utente da un elenco predefinito
+    targa
+    status --> non confirmed by authority or confirmed by authority
+}
+
+Ogni segnalazione è riconosciuta univocamente tramite gli attributi: data, ora, posizione, tipoDiViolazione, targa.
+
+Posizione {
+    Stato
+    Provincia
+    Paese
+    Via
+    Numero civico
+    Codice postale
+}
+
+SafeStreets raccoglie segnalazioni di violazione da qualsiasi utente. Ogni segnalazione di violazione inviata al server di 
+SafeStreets è resa pubblica. Se esiste una autorità iscritta a SafeStreets la quale può valutare la segnalazione, la stessa è inviata a quella autorità.
+Se l'autorità conferma la validità della segnalazione, la segnalazione è segnata come "confermata dall'autorità", altrimenti è rimossa da SafeSTreets.
+
+
+
+TARGA
+Dopo aver scattato la foto, il client di SafeSTreets avvia l'algoritmo di riconoscimento della targa e:
+    1. Se l'algoritmo non riconosce alcuna targa, l'utente deve riscattare la foto
+    2. se l'algoritmo riconosce la targa e:
+        a. tale targa coincide con quella voluta dall'utente --> TARGA VALIDA
+        b. tale targa NON coincide con quella voluta dall'utente --> riscattare la foto (?)
+
+Requisito: algoritmo per riconoscimento targa (OCR)
+
+
+
+LIVELLO DI VISIBILITA' DELLE INFORMAZIONI SULLE violazioni
+Quando una segnalazione è inoltrata alle autorità, esse ricevono tutti gli attributi associati alla segnalazione.
+Quando una segnalazione è pubblicata, a prescindere dal suo stato (confirmed o unconfirmed), sono visibili tutti e soli questi attributi:
+- data
+- ora
+- posizione
+- tipoDiViolazione
+- statoDellaViolazione
+
+AUTENTICAZIONE DELLE AUTORITA'
+****TODO****
+
+
+MINING DELLE INFORMAZIONI
+
+Un utente generico nell'app ha a disposizione due - e solo queste due - possibilità:
+1. inviare una nuova segnalazione di violazione
+2. fare mining di INFORMAZIONI
+
+Se sceglie di inviare una nuova segnalazione, abbiamo già discusso sinteticamente quali dati deve inserire.
+Se decide di fare mining di informazioni, si presenta una interfaccia la quale presenta gli attributi pubblici delle segnalazioni, ovvero:
+- data
+- ora
+- posizione
+- tipo di violazione 
+- stato di conferma
+Inizialmente, il valore associato a ciascun attributo è un campo vuoto. L'utente può scegliere di specificare un valore (valido) per
+uno o più di questi campi al fine di specificare una ricerca. Bisogna specificare un sacco di cose del tipo: "Se inserisco 'Taranto' nel campo 
+'posizione', allora devono essere restituite all'utente tutte e sole le segnalazioni di violazione relative a Taranto.
+
+
+FUNZIONI DI SAFE SafeSTreets
+1. Dare la possibilità di segnalare una violazione
+2. consultare dati relativi alle segnalazioni di violazioni
+3. consultare dati relativi a incidenti stradali (dati che sono forniti dalla municipalità)
+
+DEFINIZIONE DEI DATI RIGUARDANTI GLI INCIDENTI (forniti a SafeStreets dalla municipalità)
+Incidente {
+    data
+    ora
+    posizione
+    targheVeicoliCoinvolti
+    tipoDiIncidente
+}
+
+Ogni incidente è univocamente riconosciuto tramite tutti i suoi attributi.
+
+Gli sviluppatori di SafeStreets definiscono un insieme di possibili tipiDiInfrazione, un insieme di possibili tipiDiIncidente e un insieme di
+possibili azioni da intraprendere qualora si verifichino particolari combinazioni incidente + violazione in precisi luoghi e/o tempi.
+SafeStreets non accetta tipi di violazioni e incidenti che non siano tra quelli formalizzati, né può proporre soluzioni al di fuori di quelle
+formalizzate.
+
+L'utente può fare le cose suddette.
+Un'autorità, che è anche un utente, in più può ricevere le segnalazioni ricevute da SafeStreets, valutarle e fornire a SafeStreets
+tale valutazione. Inoltre, può fare ricerche che riguardino anche i veicoli, ad esempio cercare quali veicoli fanno più violazioni.
+Una autorità e quindi anche un utente, può inoltre inviare a SafeStreets dati relativi a incidenti,
+secondo le formalità sopra descritte per quanto riguarda i dati da inviare su ciascun incidente.
+
+
+TODO
+- specificare tipi di violazione
+- definire l'interfaccia tra autorità e app, in generale definire cos'è una autorità
+
+
+AUTORITA'
+
+ASSUMPTION:
+Una autorità può ricevere segnalazioni da SafeStreets solo attrverso un software sviluppato da SafeStreets, il quale può essere installato
+solo nella centrale operativa di tale autorità.
+Ipotizziamo che tale software possa essere installato solo in centrali di autorità riconosciute come tali e che solo le autorità che qui risiedono
+possono usare tale software (questo impedisce che un comune utente possa giudicare le segnalazioni ricevute da SafeStreets).
+
+Autorità {
+    Nome UNIQUE
+    Competenza = {municipale, provinciale, statale}
+    ZonaDiCompetenza == set di codici postali non vuoto
+}
+
+Ogni Autorità è univocamente identificata da un nome.
+Ogni Autorità è associata a una zona di competenza, la quale può solo essere: municipale, provinciale, statale.
+Per ogni codice postale, esiste al più una autorità di Competenza x (ad esempio di competenza municipale) che ha competenza su tale codice postale.
+
+Quando SafeStreets riceve una segnalazione, cerca una Autorità  con Competenza == municipale la cui zona di competenza copre il copdice postale della segnalazione.
+Se non trova nessuna municipale, ripete il procedimento con COmpetenza == Privinciale.
+Se non trova nessuna provinciale, prova con COmpetenza == Statale.
+Se non trova nessuna corrispondenza, la segnalazione non è inoltrata a nessuna autorità.
+Se trova una corrispondenza, essa è unica, poiché ASSUMPTION assumiamo che ogni codice postale sia sotto la competenza di una e una sola autorità avente una certa Competenza.
+
+Quando SafeStreets inoltra una segnalazione, essa è mostrata dal software all'autorità. In particolare,
+l'autorità può visionare tutti i campi della segnalazione e può solo scegliere se confermare la validità della segnalazione o rifiutare
+tale segnalazione. La scelta è inoltrata al server di SafeStreets, il quale:
+- se la segnalazione è stata rifiutta, cancella tale segnalazione dal database delle segnalazioni.
+- se la segnalazione pè stata giudicata valida, il campo "stato di conferma" di tale segnalazione è cambiato da "NON CONFERMATA" a "CONFERMATA".
+L'Autorità può modificare solo lo stato della segnalazione, e nessun altro attributo (ad esempio, non può modificare l'immagine).
+
+
+Assumption:
+1. Le autorità che accedono a SafeStreets sono solo le autorità di polizia.
+
+
+TODO:
+- dovremmo in qualche modo rendere possibile l'ampliamento dell'insieme delle possibili infrazioni?
+
+INTERFACCE:
+- interfaccia utente per inviare una segnalazione
+- interfaccia utente per fare data-mining
+- interfaccia autorità per valutare le segnalazioni
+- interfaccia autorità per fare data-mining (la quale è una sorta di versione potenziata dell'interfaccia utente,
+    poiché contrariamente alla prima, consente di fare ricerche anche rigurdanti le targhe dei veicoli). 
