@@ -70,12 +70,13 @@
     	An authority registered on SafeStreets can be noticed about traffic violations reported in its own operative area and eventually evaluate if report is correct or not.
         
         \subsection{Product functions}
-        In the following section all the main product functions are defined. Basically the reporting and mining functions are considered the basic ones, then the other functions are advanced ones offered by SafeStreets thanks to the collaboration with authorities.
+        In the following section all the main product functions are defined. Basically the reporting and data-mining functions are considered the basic ones, then the other functions are advanced ones offered by SafeStreets thanks to the collaboration with authorities. Thus, if authorities, in a defined area, are not sharing information with SafeStreet, these advanced functions are not available in that area.
         \subsubsection{Violation reporting}
         This is the core function of SafeStreets. The aim of this function is to give to the user the possibility to report a traffic violation. The system allows the user to use this function without a previous login. The user is asked to complete his reporting action defining the following fields:\\
         - Picture representing the violation;\\
         - Type of violation.\\
-        In particular, to take the requested picture, the user is allowed only to use the in-app dedicated camera tool. The picture is approved by the app if and only if the license plate is correctly recognized, otherwise, the app will ask to the user to make it again. If, after some attempts, SafeStreets' app warns that is still not possible to recognize the license plate, the user is asked to insert it manually. \\The type of violation is selectable only by the ones offered by SafeStreets.\\ The user is asked also to complete these two requests in a defined interval of time in order to guarantee the consistency of the report offered to SafeStreets.\\
+        Other important informations such as position, date and time of the violation are taken by GPS and metadata associated to the report.\\
+        In particular, to take the requested picture, the user is allowed only to use the in-app dedicated camera tool in order to prevent users from reporting past violation uploading old pictures.\\ The picture is approved by the app if and only if the license plate is correctly recognized by the dedicated algorithm, otherwise, the app will ask to the user to make it again. If, after some attempts, SafeStreets' app warns that is still not possible to recognize the license plate, the user is asked to insert it manually. \\The type of violation is selectable only by the ones offered by SafeStreets.\\ The user is asked also to complete these two requests in a defined interval of time in order to guarantee the consistency of the report offered to SafeStreets.\\
         When a violation is correctly filled in, it is sent to the system which will publish it and will make it visible to users.\\
          Each violation is automatically sent to a competent authority, if available, and then will be managed by it.
        
@@ -83,7 +84,16 @@
         This function allows the user to analyze SafeStreets' data in order to mine some information, for example, by highlighting the streets (or the areas) with the highest frequency of violations, or the vehicles that commit the most violations. The kind of information requested can be filtered by user in order to restrict the research area. \\
         
         \subsubsection{Interactive suggestions}
-        This functions is 
+        This function is strictly related to the collaboration between SafeStreet's data, offered by users' reports, and authorities, which can enrich the database including informations about the accidents that occur. \\SafeStreet can cross all these informations and it can also identify potentially unsafe areas suggesting possible interventions to authorities. \\
+        In a more detailed way, this function, analyzing data and making a comparison between them and some defined limit parameters, can automatically detect possible standard-defined improvements, create suggestions useful to reduce violations and accidents.
+        
+        \subsubsection{Traffic tickets}
+        This function is specially addressed to authorities. SafeStreet ensuring the integrity of its data allows authorities to use them to generate traffic tickets. \\
+        The authority can define the final judgement about a report received, modifying its status.\\
+        If a report is judged consistent (so its state has been updated) SafeStreet knows that a traffic tickets has been generated from it, otherwise the report is cancelled.\\
+        Furthermore, SafeStreet can analyze issued tickets (consistent reports) and it can create statistics for example about the most egregious offenders, or the effectiveness of the SafeStreets initiative by looking for rends in the issuing of tickets.
+        
+   
     
         \subsection{User characteristics}
         \subsection{Assumptions, dependencies and constraints}
