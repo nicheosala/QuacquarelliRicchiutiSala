@@ -141,7 +141,17 @@
 	\end{itemize}
 	
 	\subsection{Assumptions, dependencies and constraints}
-	
+		This section specifies the assumptions made in the rest of the document, that is those facts that have been considered true a priori and that are not manageable by SafeStreets.
+		\begin{itemize}
+			\item The device on which the app is installed has internet access.
+			\item The device on which the app is installed has geolocation features.
+			\item The device on which the app is installed has an external camera.
+			\item The device on which the app is installed is able to detect its position with a maximum error of five meters.
+			\item The position detected by the app coincides with the actual position detected by the geolocalizer.
+			\item The algorithm used by SafeStreets for reading a license plate from an image reads the correct number plate, if it is present in the image.
+			\item The SafeStreets software installed in the offices of the authorities registered with the service can only be used by the authorities themselves: it is not possible for an unauthorized user to gain access to such software.
+			\item Each position on earth can be associated with a unique postal code.
+		\end{itemize}
 	
 	\section{Specific requirements}
 	\subsection{External Interfaces Requirements}
