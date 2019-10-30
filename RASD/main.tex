@@ -4,6 +4,7 @@
 \usepackage[super,negative]{nth}
 \usepackage{fancyhdr}
 \usepackage{float}
+\usepackage{color, soulutf8}
 
 \renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
 \newcommand\goal[1]{\item[{[G#1]}] }
@@ -89,10 +90,11 @@
 			\subsubsection{Definitions}
 				\begin{itemize}
 					\item \textbf{Operative area}: the geographic area in which an authority retains  control and actually works.
-					\item \textbf{Reporting image}: it is the image acquired through the SafeStreets app. It is obligatorily associated with a valid report.
-					\item \textbf{Reporting timeout}: it is the timeout started when Safestreets' app acquires the reporting image. If the user doesn't complete the completion of the report by the deadline of this timeout, the report is considered invalid.
+					\item \textbf{Registered authority}: an authority that decided to participate in SafeStreets initiative and that installed in its head office a particular version of the application that provides some features not available to common users (for example, the possibility to rate the traffic violation reports collected by SafeStreets).
+					\item \textbf{Report image}: it is the image acquired through the SafeStreets app. It is obligatorily associated with a valid report.
+					\item \textbf{Report timeout}: it is the timeout started when Safestreets' app acquires the report image. If the user doesn't complete the completion of the report by the deadline of this timeout, the report is considered invalid.
 					\item \textbf{SafeStreets}: it is the crowdfunding app subject of this document.
-					\item \textbf{Violation reporting}: it is the message that SafeStreets collects through its app from users who want to report an alleged violation. It is often abbreviated as "reporting".
+					\item \textbf{Traffic violation report}: it is the message that SafeStreets collects through its app from users who want to report an alleged violation. It is often abbreviated as "report".
 				\end{itemize}
 			\subsubsection{Acronyms}
 			 \textbf{TODO}
@@ -146,7 +148,7 @@
 
 	\section{Overall description}
 		\subsection{Product perspective}
-			In Figure 2.1 is given a visual representation about shared phenomena and domain model. 
+			Figure \ref{fig:domain_model} gives a visual representation of shared phenomena and domain model. 
 			\begin{figure}[ht]
 				\centering
 				\includegraphics {diagrams/domain_model.png}
@@ -154,22 +156,21 @@
 				\label{fig:domain_model}
 			\end{figure}
 			
-			The users can interact with SafeStreets system through a mobile application and reporting some traffic violations.
-			SafeStreets does not collect any data about users, so they are represented as a black box. The interaction between user and SafeStreets is established only through 
-			a report, which will be published in SafeStreets system.\\\\
-			An authority registered on SafeStreets can be noticed about traffic violations reported in its own operative area and eventually evaluate if report is correct or not. Moreover, an authority can report to SafeStreets any information about accidents in order to identify unsafe areas and suggest possible interventions.\\\\
+			The users can report traffic violations through the SafeStreets application.
+			SafeStreets does not collect any data about users, so they are represented as a black box. The interaction between users and SafeStreets is established only through a report, which is published in the SafeStreets system.\\\\
+			A registered authority can be noticed about traffic violations reported in its own operative area and eventually evaluate if that traffic violation report is valid or not. Moreover, an authority can report to SafeStreets any information about accidents in order to identify unsafe areas and suggest possible interventions.\\\\
 			To understand the main events in SafeStreets system, some statechart diagrams are represented in figures below. \\\\
 			\clearpage
-			Figure \ref{fig:statechart_userReporting} explains how SafeStreets works when a user try to report traffic violation.
+			Figure \ref{fig:statechart_userReporting} explains how SafeStreets works when a user try to report a traffic violation.
 			
 			\begin{figure}[H]
 				\centering
 				\includegraphics[width=0.5\textwidth]{diagrams/statechart_UserSS.png}
-				\caption[Statechart Diagram1]{Statechart Diagram about user reporting.}
+				\caption[Statechart Diagram1]{Statechart Diagram about user report.}
 				\label{fig:statechart_userReporting}
 			\end{figure}
 			
-			The core of application is based on users' reports: the more reports there are, the more the system can provide information about areas in a municipality. Before publishing, SafeStreets does an input valuation: it doesn't have means to check if a report could actually be a traffic violations, but uses them to show areas from which reports are from.
+			The core of the application is based on user reports: \hl{the more reports there are, the more the system can provide information about areas in a municipality. Before publishing, SafeStreets does an input valuation: it doesn't have means to check if a report could actually be a traffic violations, but uses them to show areas from which reports are from.}
 			
 			\begin{figure}[H]
 				\centering
