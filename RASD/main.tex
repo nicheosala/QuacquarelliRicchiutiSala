@@ -52,7 +52,7 @@
 		Nowadays road traffic has quickly increased. Consequently, it is more and more common to face traffic violations.\\
 		SafeStreets is a system that wants to give a solution to this critical problem: it allows its users to notify possible traffic violations to authorities, which can evaluate them and eventually generate traffic tickets.\\
 		Users are encouraged to report a violation because there is not a direct connection between the reporter and authorities: every report is anonymous.\\
-		The only thing a user needs is an electronic device with an internet connection and the SafeStreets' app installed. He will only be asked to take a picture and select the kind of violation he wants to notify.\\
+		The only thing a user needs is an electronic device with an internet connection and the SafeStreets app installed. He will only be asked to take a picture and select the kind of violation he wants to notify.\\
 		When these two simple operations are correctly done, SafeStreets handles the report, forwarding it to authorities if they are available to collaborate in the reported area.\\
 		SafeStreets also provides a feature that allows to see statistics about violations. In this way, for example, it is possible to know the most dangerous area in a city.\\
 		SafeStreets can also collect information about incidents from authorities and combine them with the ones about violations to let users do data-mining and to show them more accurate statistics. This advanced feature is only available in areas in which authorities collaborate with SafeStreets.\\
@@ -81,7 +81,7 @@
 					\goal{2}An individual can mine information about violations.					
 					\goal{3}An authority can share its information about accidents occurred on its operative area with SafeStreets
 					\goal{4}An authority can retrieve suggestions of possible interventions from SafeStreets.
-					\goal{5}An authority can generate traffic tickets through SafeStreets' reports.
+					\goal{5}An authority can generate traffic tickets through SafeStreets reports.
 				\end{itemize}
 				
 				
@@ -89,12 +89,13 @@
 			\subsubsection{Definitions}
 				\begin{itemize}
 					\item \textbf{Operative area}: geographic area in which an authority retains  control and actually works.
-					\item \textbf{Reporting image}: it is the image acquired through the SafeStreets' app. It is obligatorily associated with a valid report.
+					\item \textbf{Reporting image}: it is the image acquired through the SafeStreets app. It is obligatorily associated with a valid report.
 					\item \textbf{Reporting timeout}: it is the timeout started when Safestreets' app acquires the reporting image. If the user doesn't complete the completion of the report by the deadline of this timeout, the report is considered invalid.
 					\item \textbf{SafeStreets}: it is the crowdfunding app subject of this document.
 					\item \textbf{Violation reporting}: it is the message that SafeStreets collects through its app from users who want to report an alleged violation. It is often abbreviated as "reporting".
 				\end{itemize}
 			\subsubsection{Acronyms}
+			 \textbf{TODO}
 			\subsubsection{Abbreviations}
 				\begin{itemize}
 					\item {[Gn]}: n\textsuperscript{th} goal.
@@ -116,12 +117,13 @@
 				\label{fig:Revision history}
 			\end{table}
 		\subsection{Reference Documents}
+			\textbf{TODO}
 		\subsection{Document Structure}
 			In this part is shown how this document has been divided. For each chapter, is given a short description:
 			\begin{itemize}
-				\item Chapter 1 introduces the problem and describe an analysis of the world and of the shared phenomena. Here, are included the purpose of SafeStreets application, its goals and some premises are formalized to provide a better understanding of following chapters.
-				\item Chapter 2 includes further details on the shared phenomena and domain model, specifying which are the most important requirements and who will be the user of the system. Moreover, a formalization of assumptions and constraints is given.
-				\item Chapter 3 analyzes more deeply all aspects in Chapter 2, providing more details for the development team: in this part, requirements are the main focus.
+				\item Chapter 1 introduces the problem and describes an analysis of the world and of the shared phenomena. Here are included the purpose of SafeStreets application, its goals and some premises are formalized to provide a better understanding of following chapters.
+				\item Chapter 2 includes further details on the shared phenomena and domain model, specifying which are the most important requirements and who will be a user of the system. Moreover, a formalization of assumptions and constraints is given.
+				\item Chapter 3 analyzes more deeply all aspects of Chapter 2, providing more details for the development team: in this part, the focus is on requirements.
 				\item Chapter 4 presents a formal analysis of the problem, using Alloy. Some worlds are generated from the model and assertions are checked.
 				\item Chapter 5 shows the effort spent by each group member for this project.
 				\item Chapter 6 simply includes the reference documents.
@@ -168,7 +170,7 @@
 			\begin{figure}[H]
 				\centering
 				\includegraphics {diagrams/statechart_AuthoritySS.png}
-				\caption[Statechart Diagram2]{Statechart Diagram about SafeStreets' suggestions for an authority.}
+				\caption[Statechart Diagram2]{Statechart Diagram about SafeStreets suggestions for an authority.}
 				\label{fig:statechart_SuggestionsForAuthority}
 			\end{figure}
 			
@@ -179,7 +181,7 @@
 			\begin{figure}[H]
 				\centering
 				\includegraphics {diagrams/statechart_trafficTicket.png}
-				\caption[Statechart Diagram3]{Statechart Diagram about SafeStreets' system for traffic tickets generation.}
+				\caption[Statechart Diagram3]{Statechart Diagram about SafeStreets system for traffic tickets generation.}
 				\label{fig:statechart_trafficTickets}
 			\end{figure}
 			
@@ -194,15 +196,15 @@
 				- Picture representing the violation;\\
 				- Type of violation.\\
 				Other important information such as position, date and time of the violation are taken by GPS and metadata associated to the report.\\
-				In particular, to take the requested picture, the user is allowed only to use the in-app dedicated camera tool in order to prevent users from reporting past violation uploading old pictures.\\ The picture is approved by the app if and only if the license plate is correctly recognized by the dedicated algorithm, otherwise, the app will ask to the user to make it again. If, after some attempts, SafeStreets' app warns that is still not possible to recognize the license plate, the user is asked to insert it manually. \\The type of violation is selectable only by the ones offered by SafeStreets.\\ The user is asked also to complete these two requests in a defined interval of time in order to guarantee the consistency of the report offered to SafeStreets.\\
+				In particular, to take the requested picture, the user is allowed only to use the in-app dedicated camera tool in order to prevent users from reporting past violation uploading old pictures.\\ The picture is approved by the app if and only if the license plate is correctly recognized by the dedicated algorithm, otherwise, the app will ask to the user to make it again. If, after some attempts, SafeStreets app warns that is still not possible to recognize the license plate, the user is asked to insert it manually. \\The type of violation is selectable only by the ones offered by SafeStreets.\\ The user is asked also to complete these two requests in a defined interval of time in order to guarantee the consistency of the report offered to SafeStreets.\\
 				When a violation is correctly filled in, it is sent to the system which will publish it and will make it visible to users.\\
 				Each violation is automatically sent to a competent authority, if available, and then will be managed by it.
 		
 		\subsubsection{Data-mining}
-			This function allows the user to analyze SafeStreets' data in order to mine some information, for example, by highlighting the streets (or the areas) with the highest frequency of violations, or the vehicles that commit the most violations. The kind of information requested can be filtered by user in order to restrict the research area. \\
+			This function allows the user to analyze SafeStreets data in order to mine some information, for example, by highlighting the streets (or the areas) with the highest frequency of violations, or the vehicles that commit the most violations. The kind of information requested can be filtered by user in order to restrict the research area. \\
 		
 		\subsubsection{Interactive suggestions}
-			This function is strictly related to the collaboration between SafeStreet's data, offered by users' reports, and authorities, which can enrich the database including information about the accidents that occur. \\SafeStreet can cross all these information and it can also identify potentially unsafe areas suggesting possible interventions to authorities. \\
+			This function is strictly related to the collaboration between SafeStreets data, offered by users' reports, and authorities, which can enrich the database including information about the accidents that occur. \\SafeStreets can cross all these information and it can also identify potentially unsafe areas suggesting possible interventions to authorities. \\
 			In a more detailed way, this function, analyzing data and making a comparison between them and some defined limit parameters, can automatically detect possible standard-defined improvements, create suggestions useful to reduce violations and accidents.
 		
 		\subsubsection{Traffic tickets}
@@ -215,9 +217,9 @@
 		\subsection{User characteristics}
 			The actors of the application are the following:
 			\begin{itemize}
-				\item User: a person that is using SafeStreet's app. He is a "guest" because he is not logged in, so no specific information about him are given. He can actively use the first two basic functions so he can make a violation reporting or data-mining.
-				\item Authority: special kind of user. It is allowed to use the user's functions but also including additional privileges on them such as to visualize more detailed information about reports. In particular, it is a registered identity that is responsible to manage its competent reports. \\An authority can send information about accidents of its area of competence to SafeStreets and can use SafeStreets' statistics to identify the most egregious offenders.\\
-		        A kind of authority is the Police, that can use reports to make traffic tickets validating SafeStreet's reports.
+				\item User: a person that is using SafeStreets app. He is a "guest" because he is not logged in, so no specific information about him are given. He can actively use the first two basic functions so he can make a violation reporting or data-mining.
+				\item Authority: special kind of user. It is allowed to use the user's functions but also including additional privileges on them such as to visualize more detailed information about reports. In particular, it is a registered identity that is responsible to manage its competent reports. \\An authority can send information about accidents of its area of competence to SafeStreets and can use SafeStreets statistics to identify the most egregious offenders.\\
+		        A kind of authority is the Police, that can use reports to make traffic tickets validating SafeStreets reports.
 			\end{itemize}
 		
 		\subsection{Assumptions, dependencies and constraints}
