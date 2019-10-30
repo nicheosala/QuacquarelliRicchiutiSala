@@ -50,13 +50,13 @@
 	
 		\subsection{Purpose}
 		Nowadays road traffic has quickly increased. Consequently, it is more and more common to face traffic violations.\\
-		SafeStreets is a system that wants to give a solution to this critical problem: it allows its users to notify possible traffic violations to authorities, which can evaluate them and eventually generate traffic tickets.\\
+		SafeStreets is a system that wants to help solving this critical problem: it allows its users to notify possible traffic violations to authorities, which can evaluate them and eventually generate traffic tickets.\\
 		Users are encouraged to report a violation because there is not a direct connection between the reporter and authorities: every report is anonymous.\\
-		The only thing a user needs is an electronic device with an internet connection and the SafeStreets app installed. He will only be asked to take a picture and select the kind of violation he wants to notify.\\
-		When these two simple operations are correctly done, SafeStreets handles the report, forwarding it to authorities if they are available to collaborate in the reported area.\\
+		The only thing a user needs is an electronic device with an internet connection and the SafeStreets app installed. He is only asked to take a picture and select the kind of violation he wants to notify.\\
+		When these two simple operations are correctly done, SafeStreets handles the report, publishing it on its platform and forwarding it to authorities, if they are available to collaborate in the reported area.\\
 		SafeStreets also provides a feature that allows to see statistics about violations. In this way, for example, it is possible to know the most dangerous area in a city.\\
-		SafeStreets can also collect information about incidents from authorities and combine them with the ones about violations to let users do data-mining and to show them more accurate statistics. This advanced feature is only available in areas in which authorities collaborate with SafeStreets.\\
-		This last feature is also productive for authorities because SafeStreets can combine the retrieved information to suggest them some possible solutions for particularly unsafe areas.\\
+		SafeStreets can also collect information about incidents from authorities and combine them with the ones about traffic violations to let users do data-mining and to show them more accurate statistics. This advanced feature is only available in areas where authorities collaborate with SafeStreets.\\
+		This last feature is especially productive for authorities, because SafeStreets can combine the retrieved information to suggest them some possible solutions for particularly unsafe areas.\\
 	
 		\subsection{Scope}
 			A user can report a violation using SafeStreets application.
@@ -70,16 +70,16 @@
 				\end{itemize}
 				\textbf{Shared phenomena}
 				\begin{itemize}
-					\item Authorities could generate traffic ticket thanks to reports. 
+					\item Authorities could generate traffic tickets thanks to reports. 
 					\item A municipality could collect some suggestions, derived from data analysis.
 					\item Traffic violations which are reported can be shown in a map.
 				\end{itemize}
 			\subsubsection{Goals}
-				SafeStreets wants to provide to its users a service which aim to reach these goals:
+				SafeStreets wants to provide to its users a service which aims to reach these goals:
 				\begin{itemize}
 					\goal{1}An individual can report traffic violations to SafeStreets.
 					\goal{2}An individual can mine information about violations.					
-					\goal{3}An authority can share its information about accidents occurred on its operative area with SafeStreets
+					\goal{3}An authority can share its information about accidents occurred on its operative area with SafeStreets.
 					\goal{4}An authority can retrieve suggestions of possible interventions from SafeStreets.
 					\goal{5}An authority can generate traffic tickets through SafeStreets reports.
 				\end{itemize}
@@ -88,7 +88,7 @@
 		\subsection{Definitions, Acronyms, Abbreviations}
 			\subsubsection{Definitions}
 				\begin{itemize}
-					\item \textbf{Operative area}: geographic area in which an authority retains  control and actually works.
+					\item \textbf{Operative area}: the geographic area in which an authority retains  control and actually works.
 					\item \textbf{Reporting image}: it is the image acquired through the SafeStreets app. It is obligatorily associated with a valid report.
 					\item \textbf{Reporting timeout}: it is the timeout started when Safestreets' app acquires the reporting image. If the user doesn't complete the completion of the report by the deadline of this timeout, the report is considered invalid.
 					\item \textbf{SafeStreets}: it is the crowdfunding app subject of this document.
@@ -116,17 +116,21 @@
 				\caption{Revision history}
 				\label{fig:Revision history}
 			\end{table}
+		
 		\subsection{Reference Documents}
-			\textbf{TODO}
-		\subsection{Document Structure}
-			In this part is shown how this document has been divided. For each chapter, is given a short description:
 			\begin{itemize}
-				\item Chapter 1 introduces the problem and describes an analysis of the world and of the shared phenomena. Here are included the purpose of SafeStreets application, its goals and some premises are formalized to provide a better understanding of following chapters.
-				\item Chapter 2 includes further details on the shared phenomena and domain model, specifying which are the most important requirements and who will be a user of the system. Moreover, a formalization of assumptions and constraints is given.
-				\item Chapter 3 analyzes more deeply all aspects of Chapter 2, providing more details for the development team: in this part, the focus is on requirements.
-				\item Chapter 4 presents a formal analysis of the problem, using Alloy. Some worlds are generated from the model and assertions are checked.
-				\item Chapter 5 shows the effort spent by each group member for this project.
-				\item Chapter 6 simply includes the reference documents.
+				\item "2019-2020 Software Engineering 2 mandatory project: goal, schedules and rules".
+			\end{itemize}
+			
+		\subsection{Document Structure}
+			In this part is shown how the document has been divided. For each chapter, is given a short description:
+			\begin{itemize}
+				\item \textit{Chapter 1} introduces the problem and describes an analysis of the world and of the shared phenomena. Here are included the purpose of SafeStreets application, its goals and some premises are formalized to provide a better understanding of following chapters.
+				\item \textit{Chapter 2} includes further details on the shared phenomena and domain model, specifying which are the most important requirements and who will be a user of the system. Moreover, a formalization of assumptions and constraints is given.
+				\item \textit{Chapter 3} analyzes more deeply all aspects of Chapter 2, providing more details for the development team: in this part, the focus is on requirements.
+				\item \textit{Chapter 4} presents a formal analysis of the problem, using Alloy. Some worlds are generated from the model and assertions are checked.
+				\item \textit{Chapter 5} shows the effort spent by each group member for this project.
+				\item \textit{Chapter 6} simply includes the reference documents.
 			\end{itemize}
 	
 	\newpage
