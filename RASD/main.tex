@@ -47,18 +47,19 @@
 	\setcounter{page}{1}
 	
 	\section{Introduction}
+	
 		\subsection{Purpose}
 		Nowadays road traffic has quickly increased. Consequently, it is more and more common to face traffic violations.\\
 		SafeStreets is a system that wants to give a solution to this critical problem: it allows its users to notify possible traffic violations to authorities, which can evaluate them and eventually generate traffic tickets.\\
-		Users are encouraged to report a violation because there is not a direct connection between the reporter and authorities: every notification is anonymous.\\
+		Users are encouraged to report a violation because there is not a direct connection between the reporter and authorities: every report is anonymous.\\
 		The only thing a user needs is an electronic device with an internet connection and the SafeStreets' app installed. He will only be asked to take a picture and select the kind of violation he wants to notify.\\
 		When these two simple operations are correctly done, SafeStreets handles the report, forwarding it to authorities if they are available to collaborate in the reported area.\\
 		SafeStreets also provides a feature that allows to see statistics about violations. In this way, for example, it is possible to know the most dangerous area in a city.\\
 		SafeStreets can also collect information about incidents from authorities and combine them with the ones about violations to let users do data-mining and to show them more accurate statistics. This advanced feature is only available in areas in which authorities collaborate with SafeStreets.\\
 		This last feature is also productive for authorities because SafeStreets can combine the retrieved information to suggest them some possible solutions for particularly unsafe areas.\\
-		
+	
 		\subsection{Scope}
-			A user can report a violation using SafeStreets application
+			A user can report a violation using SafeStreets application.
 			\subsubsection{World and shared phenomena}
 				In order to draw up a list of requirements, it is necessary to identify those events that occurs in the world. Some of them are shared with a machine: these phenomena define the interface through which machines interact with the world.\\\\				
 				\textbf{World phenomena}
@@ -88,6 +89,10 @@
 			\subsubsection{Definitions}
 				\begin{itemize}
 					\item \textbf{Operative area}: geographic area in which an authority retains  control and actually works.
+					\item \textbf{Reporting image}: it is the image acquired through the SafeStreets' app. It is obligatorily associated with a valid report.
+					\item \textbf{Reporting timeout}: it is the timeout started when Safestreets' app acquires the reporting image. If the user doesn't complete the completion of the report by the deadline of this timeout, the report is considered invalid.
+					\item \textbf{SafeStreets}: it is the crowdfunding app subject of this document.
+					\item \textbf{Violation reporting}: it is the message that SafeStreets collects through its app from users who want to report an alleged violation. It is often abbreviated as "reporting".
 				\end{itemize}
 			\subsubsection{Acronyms}
 			\subsubsection{Abbreviations}
