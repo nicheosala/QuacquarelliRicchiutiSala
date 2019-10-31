@@ -248,9 +248,71 @@
 		\subsection{External Interfaces Requirements}
 			\subsubsection{User Interfaces}
 			\subsubsection{Hardware Interfaces}
+				Since SafeStreets is a crowd-sourced application, each user could take advantage of the system only if it have a smartphone. In particular, the smartphone must have camera and GPS.
 			\subsubsection{Software Interfaces}
+				In order to provide information about traffic violations to users, SafeStreet uses \textbf{external (?)maps} to show where reports come from.\\
+				Moreover, one of the element to ensure that a report could be formalized is the validation of license plate. SafeStreets takes advantage of an algorithm to automatically recognize characters on license plates.
 			\subsubsection{Communication Interfaces}
+				Each function provided by SafeStreets needs an Internet connection.
 		\subsection{Functional Requirements}
+			In the current section will be shown for each goal the list of functional requirements and the assumptions to be respected.
+			
+			\begin{itemize}
+				\goal{1}An individual can report traffic violations to SafeStreets.
+				\begin{itemize}
+					\assumption{x}
+					\requirement{y}
+				\end{itemize}
+				\goal{2}An individual can mine information about violations.
+				\begin{itemize}
+					\assumption{x}
+					\requirement{y}
+				\end{itemize}					
+				\goal{3}An authority can share its information about accidents occurred on its operative area with SafeStreets.
+				\begin{itemize}
+					\assumption{x}
+					\requirement{y}
+				\end{itemize}
+				\goal{4}An authority can retrieve suggestions of possible interventions from SafeStreets.
+				\begin{itemize}
+					\assumption{x}
+					\requirement{y}
+				\end{itemize}
+				\goal{5}An authority can generate traffic tickets through SafeStreets reports.
+				\begin{itemize}
+					\assumption{x}
+					\requirement{y}
+				\end{itemize}
+			\end{itemize}
+		
+			\subsubsection{Use Case Diagrams}
+				In this section the use case of the system is shown.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1\textwidth]{diagrams/usecase_safestreets.png}
+					\caption[SafeStreets use case diagram]{SafeStreets Use Case Diagram}
+					\label{fig:usecase_safestreets}
+				\end{figure}
+			\subsubsection{Use Case Description}
+				
+					\textbf{ID}: \usecase{1} \\
+					\textbf{Name}:   \\
+					\textbf{Actor}:  \\
+					\textbf{Entry conditions}:
+					\begin{enumerate}
+						\item{}
+					\end{enumerate}
+					\textbf{Event flow}:
+					\begin{enumerate}
+						\item{}
+					\end{enumerate}
+					\textbf{Exit conditions}:
+					\begin{itemize}
+						\item{}
+					\end{itemize}
+					\textbf{Exceptions}: - \\
+					\rule{\linewidth}{0.4pt}
+
 		\subsection{Performance Requirements}
 		\subsection{Design Constraints}
 			\subsubsection{Standards compliance}
