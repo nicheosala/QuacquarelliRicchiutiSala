@@ -355,27 +355,7 @@
 						
 					\rule{\linewidth}{0.4pt}\\
 					
-					\textbf{ID}: \usecase{5} \\
-					\textbf{Name}: Report confirmation\\
-					\textbf{Actor}: Authority\\
-					\textbf{Entry conditions}:
-					\begin{enumerate}
-						\item Open SafeStreets AE.
-						\item Click on "Violation reports to evaluate".
-					\end{enumerate}
-					\textbf{Event flow}:
-					\begin{enumerate}
-						\item If there is at least one report to evaluate, the app shows all the information about the report. Choose between the buttons "Confirm" and "Discard". Their meaning is straightforward.
-					\end{enumerate}
-					\textbf{Exit conditions}:
-					\begin{itemize}
-						\item Click on the chosen button. If there is another violation report to evaluate, the event flow restarts. Otherwise, the application returns to the main page.
-						Remember that SafeStreets considers every confirmed violation report as a given traffic ticket.
-						\item The authority can always leave the violation report confirmation function clicking on the "Exit" button. In this way, it returns to the main page of SafeStreets AE.
-					\end{itemize}
-						
-					\rule{\linewidth}{0.4pt}
-					
+								
 			\textbf{ID}: \usecase{4} \\
 			\textbf{Name}:   Interactive suggestions\\
 			\textbf{Actor}:  Authority\\
@@ -399,6 +379,26 @@
 			\end{itemize}
 			
 			
+			
+			\rule{\linewidth}{0.4pt}
+				\textbf{ID}: \usecase{5} \\
+			\textbf{Name}: Report confirmation\\
+			\textbf{Actor}: Authority\\
+			\textbf{Entry conditions}:
+			\begin{enumerate}
+				\item Open SafeStreets AE.
+				\item Click on "Violation reports to evaluate".
+			\end{enumerate}
+			\textbf{Event flow}:
+			\begin{enumerate}
+				\item If there is at least one report to evaluate, the app shows all the information about the report. Choose between the buttons "Confirm" and "Discard". Their meaning is straightforward.
+			\end{enumerate}
+			\textbf{Exit conditions}:
+			\begin{itemize}
+				\item Click on the chosen button. If there is another violation report to evaluate, the event flow restarts. Otherwise, the application returns to the main page.
+				Remember that SafeStreets considers every confirmed violation report as a given traffic ticket.
+				\item The authority can always leave the violation report confirmation function clicking on the "Exit" button. In this way, it returns to the main page of SafeStreets AE.
+			\end{itemize}
 			
 			\rule{\linewidth}{0.4pt}
 
