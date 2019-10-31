@@ -94,10 +94,14 @@
 					\item \textbf{Report image}: it is the image acquired through the SafeStreets app. It is obligatorily associated with a valid report.
 					\item \textbf{Report timeout}: it is the timeout started when Safestreets' app acquires the report image. If the user doesn't complete the completion of the report by the deadline of this timeout, the report is considered invalid.
 					\item \textbf{SafeStreets}: it is the crowdfunding app subject of this document.
+					\item \textbf{SafeStreets application}: it is the application used by users, installed on their smartphone.
+					\item \textbf{SafeStreets Authority Edition}: it is the application used by authorities, installed on computers in their station.
 					\item \textbf{Traffic violation report}: it is the message that SafeStreets collects through its app from users who want to report an alleged violation. It is often abbreviated as "report".
 				\end{itemize}
 			\subsubsection{Acronyms}
-			 \textbf{TODO}
+				\begin{itemize}
+					\item \textbf{AE} \label{AE}: SafeStreets Authority Edition.
+				\end{itemize}
 			\subsubsection{Abbreviations}
 				\begin{itemize}
 					\item {[Gn]}: n\textsuperscript{th} goal.
@@ -297,34 +301,103 @@
 			\clearpage
 			\subsubsection{Use Case Description}
 				
-					\textbf{ID}: \usecase{1} \\
-					\textbf{Name}:   Violation reporting\\
-					\textbf{Actor}:  User\\
-					\textbf{Entry conditions}:
-					\begin{enumerate}
-						\item Open the SafeStreets application.
-						\item Open the "Violation reporting" section.
-					\end{enumerate}
-					\textbf{Event flow}:
-					\begin{enumerate}
-						\item The app opens the camera to take the picture of the violation. Take the picture. When the picture is taken, the reporting timeout starts.
-						\item The app shows the taken picture and the license plate read from it by the license plate recognition algorithm. If the user is not satisfied by the result, he can take a new picture clicking on the button "take picture". The reporting timeout is restarted every time a picture is taken.
-						\item Choose a "type of violation" from the list of violations recognized by SafeStreets. The user cannot define itself a type of violation.
-					\end{enumerate}
-					\textbf{Exit conditions}:
+				\textbf{ID}: \usecase{1} \\
+				\textbf{Name}:   Violation reporting\\
+				\textbf{Actor}:  User\\
+				\textbf{Entry conditions}:
+				\begin{enumerate}
+					\item Open the SafeStreets application.
+					\item Open the "Violation reporting" section.
+				\end{enumerate}
+				\textbf{Event flow}:
+				\begin{enumerate}
+					\item The app opens the camera to take the picture of the violation. Take the picture. When the picture is taken, the reporting timeout starts.
+					\item The app shows the taken picture and the license plate read from it by the license plate recognition algorithm. If the user is not satisfied by the result, he can take a new picture clicking on the button "take picture". The reporting timeout is restarted every time a picture is taken.
+					\item Choose a "type of violation" from the list of violations recognized by SafeStreets. The user cannot define itself a type of violation.
+				\end{enumerate}
+				\textbf{Exit conditions}:
+				\begin{itemize}
+					\item The user can always leave the violation reporting function clicking on the "Exit" button. In this way, he returns to the main page of the app.
+					\item Click "Send" to complete the violation reporting. The app returns to the main page.
+				\end{itemize}
+				\textbf{Exceptions}:
+				\begin{itemize}
+					\item If the camera or the geolocalization service aren't available, the app shows an error message and returns to the main page: it is not possible to send a violation report.
+					\item If the license plate recognition algorithm fails, the user is forced to take the picture again.
+					\item If the user clicks on "Send" without having filled all the requested fields, the app shows a warning message that tells the user what is wrong. The user can close the warning message and come back to the violation report. 
+				\end{itemize}
+			
+				\rule{\linewidth}{0.4pt}
+				\\
+				
+				\textbf{ID}: \usecase{2a} \\
+				\textbf{Name}:   Data Mining\\
+				\textbf{Actor}:  User\\
+				\textbf{Entry conditions}:
+				\begin{enumerate}
+					\item The app shows in a new screen the map, centred in user's position. Then, report violations are represented in the map with pins.\\
+					The user browse the map.
+					\item Taps on one of the reports.
+					\item Explores data about that report.
+				\end{enumerate}
+				\textbf{Exit conditions}:
+				\begin{itemize}
+					\item The user can always leave the "Search" function clicking on the "Back" button. In this way, he returns to the main page of the app.
+				\end{itemize}
+				\textbf{Exceptions}: -\\
+				
+				\rule{\linewidth}{0.4pt}
+				\\
+				
+				\textbf{ID}: \usecase{2b} \\
+				\textbf{Name}:   Data Mining\\
+				\textbf{Actor}:  Authority\\
+				\textbf{Entry conditions}:
+				\begin{enumerate}
+					\item Open the SafeStreets AE.
+					\item Open the "Search" section.
+				\end{enumerate}
+				\textbf{Event flow}:
+				\begin{enumerate}
+					\item The app shows in a new screen the map, centred in authority station position. Then, report violations are represented in the map with pins with different colours, based on confirmed or unconfirmed reports\\
+					The authority browse the map.
+					\item Taps on one of the reports.
+					\item Explores data about that report, in particular type of license plate, proof picture, type of violation, date and position.
+				\end{enumerate}
+				\textbf{Exit conditions}:
+				\begin{itemize}
+					\item The authority can always leave the "Search" function clicking on the "Back" button. In this way, he returns to the main page of the app.
+				\end{itemize}
+				
+				\rule{\linewidth}{0.4pt}
+				\\
+				
+				\textbf{ID}: \usecase{33} \\
+				\textbf{Name}:   Browse statistics\\
+				\textbf{Actor}:  User, Authority\\
+				\textbf{Entry conditions}:
+				\begin{enumerate}
+					\item User opens the SafeStreets application; authority opens SafeStreets AE.
+					\item Open the "Statistics" section.
+				\end{enumerate}
+				\textbf{Event flow}:
+				\begin{enumerate}
+					\item The app shows in a new screen a list of filter through which either an user or an authority can refine its research.
+					They select the filters they want.
+					\item Taps on "Show" button.
+					\item Explores data about result reports. In particular:
 					\begin{itemize}
-						\item The user can always leave the violation reporting function clicking on the "Exit" button. In this way, he returns to the main page of the app.
-						\item Click "Send" to complete the violation reporting. The app returns to the main page.
+						\item User can retrieve information about type of violation, date, position and eventually the label "confirmed" or "pending".
+						\item Authority can retrieve same information as before, adding license plate and proof picture.
 					\end{itemize}
-					\textbf{Exceptions}:
-					\begin{itemize}
-						\item If the camera or the geolocalization service aren't available, the app shows an error message and returns to the main page: it is not possible to send a violation report.
-						\item If the license plate recognition algorithm fails, the user is forced to take the picture again.
-						\item If the user clicks on "Send" without having filled all the requested fields, the app shows a warning message that tells the user what is wrong. The user can close the warning message and come back to the violation report. 
-					\end{itemize}
-						
-						
-					\rule{\linewidth}{0.4pt}
+				\end{enumerate}
+				\textbf{Exit conditions}:
+				\begin{itemize}
+					\item Either user or authority can always leave the "Statistics" function clicking on the "Back" button. In this way, he returns to the main page of the app.
+				\end{itemize}
+				
+				\rule{\linewidth}{0.4pt}
+				\\
 
 		\subsection{Performance Requirements}
 		\subsection{Design Constraints}
