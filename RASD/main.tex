@@ -293,24 +293,37 @@
 					\caption[SafeStreets use case diagram]{SafeStreets Use Case Diagram}
 					\label{fig:usecase_safestreets}
 				\end{figure}
+			
+			\clearpage
 			\subsubsection{Use Case Description}
 				
 					\textbf{ID}: \usecase{1} \\
-					\textbf{Name}:   \\
-					\textbf{Actor}:  \\
+					\textbf{Name}:   Violation reporting\\
+					\textbf{Actor}:  User\\
 					\textbf{Entry conditions}:
 					\begin{enumerate}
-						\item{}
+						\item Open the SafeStreets application.
+						\item Open the "Violation reporting" section.
 					\end{enumerate}
 					\textbf{Event flow}:
 					\begin{enumerate}
-						\item{}
+						\item The app opens the camera to take the picture of the violation. Take the picture. When the picture is taken, the reporting timeout starts.
+						\item The app shows the taken picture and the license plate read from it by the license plate recognition algorithm. If the user is not satisfied by the result, he can take a new picture clicking on the button "take picture". The reporting timeout is restarted every time a picture is taken.
+						\item Choose a "type of violation" from the list of violations recognized by SafeStreets. The user cannot define itself a type of violation.
 					\end{enumerate}
 					\textbf{Exit conditions}:
 					\begin{itemize}
-						\item{}
+						\item The user can always leave the violation reporting function clicking on the "Exit" button. In this way, he returns to the main page of the app.
+						\item Click "Send" to complete the violation reporting. The app returns to the main page.
 					\end{itemize}
-					\textbf{Exceptions}: - \\
+					\textbf{Exceptions}:
+					\begin{itemize}
+						\item If the camera or the geolocalization service aren't available, the app shows an error message and returns to the main page: it is not possible to send a violation report.
+						\item If the license plate recognition algorithm fails, the user is forced to take the picture again.
+						\item If the user clicks on "Send" without having filled all the requested fields, the app shows a warning message that tells the user what is wrong. The user can close the warning message and come back to the violation report. 
+					\end{itemize}
+						
+						
 					\rule{\linewidth}{0.4pt}
 
 		\subsection{Performance Requirements}
