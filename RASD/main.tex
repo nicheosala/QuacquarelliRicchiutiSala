@@ -212,6 +212,9 @@
 			\subsubsection{Data-mining}
 				This function allows the user to analyse SafeStreets data in order to mine some information, for example, by highlighting the streets (or the areas) with the highest frequency of violations. The kind of information requested can be filtered by user in order to restrict the research area.\\
 				Furthermore, SafeStreets can provide to authorities statistics about vehicles, not accessible to common users, for example about the most egregious offenders, or the effectiveness of the SafeStreets initiative by looking for trends in the issuing of tickets.\\
+				
+			\subsubsection{Accidents collector}
+				This function is available only for authorities that manage accidents. They are allowed to enrich SafeStreets' data inserting information about accidents in the competent area. This function will be useful for the interactive suggestion function defined below. 
 			
 			\subsubsection{Interactive suggestions}
 				This function is strictly related to the collaboration between SafeStreets data, offered by users' reports, and authorities, which can enrich the database including information about the accidents that occur. \\SafeStreets can cross all these information and it can also identify potentially unsafe areas suggesting possible interventions to authorities. \\
@@ -325,6 +328,30 @@
 						\item If the user clicks on "Send" without having filled all the requested fields, the app shows a warning message that tells the user what is wrong. The user can close the warning message and go back to complete the violation report. 
 						\item If the reporting timeout expires before the user has correctly sent the violation report, an error message is shown, than the app discard the violation report and returns to the main page.\\
 					\end{itemize}
+					\rule{\linewidth}{0.4pt}
+					
+				\textbf{ID}: \usecase{3} \\
+				\textbf{Name}:   Accident collector\\
+				\textbf{Actor}:  Authority\\
+				\textbf{Entry conditions}:
+				\begin{enumerate}
+					\item Open the SafeStreets AE.
+					\item Open the "Accident Collector" section.
+				\end{enumerate}
+				\textbf{Event flow}:
+				\begin{enumerate}
+					\item Define requested fields: type of accident, offender's license plate, address of the accident, date of the accident.
+				\end{enumerate}
+				\textbf{Exit conditions}:
+				\begin{itemize}
+					\item The authority can always leave the accident collector function clicking on the "Exit" button. In this way, it returns to the main page of the app.
+					\item Click "Send" to complete the accident compilation form. The SafeStreets AE returns to the main page.
+				\end{itemize}
+				\textbf{Exceptions}:
+				\begin{itemize}
+					\item Some of the requested form are not correctly compiled or empty. In this case a warning message is shown.
+				\end{itemize}
+				
 						
 					\rule{\linewidth}{0.4pt}\\
 					
@@ -346,6 +373,35 @@
 						Remember that SafeStreets considers every confirmed violation report as a given traffic ticket.
 						\item The authority can always leave the violation report confirmation function clicking on the "Exit" button. In this way, it returns to the main page of SafeStreets AE.
 					\end{itemize}
+						
+					\rule{\linewidth}{0.4pt}
+					
+			\textbf{ID}: \usecase{4} \\
+			\textbf{Name}:   Interactive suggestions\\
+			\textbf{Actor}:  Authority\\
+			\textbf{Entry conditions}:
+			\begin{enumerate}
+				\item Open the SafeStreets AE.
+				\item Open the "Interactive suggestions" section.
+			\end{enumerate}
+			\textbf{Event flow}:
+			\begin{enumerate}
+				\item A list of suggestion are shown.
+				\item The authority can mark the read suggestion clicking on the "Got it" button in order to hide the already read suggestions.
+			\end{enumerate}
+			\textbf{Exit conditions}:
+			\begin{itemize}
+			   \item The authority can always leave the accident collector function clicking on the "Exit" button. In this way, it returns to the main page of the app.
+			\end{itemize}
+			\textbf{Exceptions}:
+			\begin{itemize}
+				\item -
+			\end{itemize}
+			
+			
+			
+			\rule{\linewidth}{0.4pt}
+
 
 		\subsection{Performance Requirements}
 		\subsection{Design Constraints}
