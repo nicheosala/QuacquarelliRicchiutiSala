@@ -175,7 +175,7 @@
 			\begin{figure}[H]
 				\centering
 				\includegraphics {diagrams/statechart_AuthoritySS.png}
-				\caption[Statechart Diagram2]{Statechart Diagram about SafeStreets suggestions for an authority.}
+				\caption[State chart Diagram2]{State chart Diagram about SafeStreets suggestions for an authority.}
 				\label{fig:statechart_SuggestionsForAuthority}
 			\end{figure}
 			
@@ -242,6 +242,8 @@
 				\assumption{6} The algorithm used by SafeStreets for reading a license plate from an image reads the correct number plate, if it is present in the image.
 				\assumption{7} The SafeStreets software installed in the offices of the authorities registered with the service can only be used by the authorities themselves: it is not possible for an unauthorized user to gain access to such software.
 				\assumption{8} Each position on earth can be associated with a unique postal code.
+				\assumption{9} If an authority confirms a violation report, than the authority generates a traffic ticket from it. So, from the point of view of SafeStreets, every confirmed violation report equals to a traffic ticket.
+				
 			\end{itemize}
 	
 	\section{Specific requirements}
@@ -298,8 +300,8 @@
 			\subsubsection{Use Case Description}
 				
 					\textbf{ID}: \usecase{1} \\
-					\textbf{Name}:   Violation reporting\\
-					\textbf{Actor}:  User\\
+					\textbf{Name}: Violation reporting\\
+					\textbf{Actor}: User\\
 					\textbf{Entry conditions}:
 					\begin{enumerate}
 						\item Open the SafeStreets application.
@@ -313,18 +315,37 @@
 					\end{enumerate}
 					\textbf{Exit conditions}:
 					\begin{itemize}
-						\item The user can always leave the violation reporting function clicking on the "Exit" button. In this way, he returns to the main page of the app.
 						\item Click "Send" to complete the violation reporting. The app returns to the main page.
+						\item The user can always leave the violation reporting function clicking on the "Exit" button. In this way, he returns to the main page of the app.
 					\end{itemize}
 					\textbf{Exceptions}:
 					\begin{itemize}
 						\item If the camera or the geolocalization service aren't available, the app shows an error message and returns to the main page: it is not possible to send a violation report.
 						\item If the license plate recognition algorithm fails, the user is forced to take the picture again.
-						\item If the user clicks on "Send" without having filled all the requested fields, the app shows a warning message that tells the user what is wrong. The user can close the warning message and come back to the violation report. 
+						\item If the user clicks on "Send" without having filled all the requested fields, the app shows a warning message that tells the user what is wrong. The user can close the warning message and go back to complete the violation report. 
+						\item If the reporting timeout expires before the user has correctly sent the violation report, an error message is shown, than the app discard the violation report and returns to the main page.\\
 					\end{itemize}
 						
-						
-					\rule{\linewidth}{0.4pt}
+					\rule{\linewidth}{0.4pt}\\
+					
+					\textbf{ID}: \usecase{5} \\
+					\textbf{Name}: Report confirmation\\
+					\textbf{Actor}: Authority\\
+					\textbf{Entry conditions}:
+					\begin{enumerate}
+						\item Open SafeStreets AE.
+						\item Click on "Violation reports to evaluate".
+					\end{enumerate}
+					\textbf{Event flow}:
+					\begin{enumerate}
+						\item If there is at least one report to evaluate, the app shows all the information about the report. Choose between the buttons "Confirm" and "Discard". Their meaning is straightforward.
+					\end{enumerate}
+					\textbf{Exit conditions}:
+					\begin{itemize}
+						\item Click on the chosen button. If there is another violation report to evaluate, the event flow restarts. Otherwise, the application returns to the main page.
+						Remember that SafeStreets considers every confirmed violation report as a given traffic ticket.
+						\item The authority can always leave the violation report confirmation function clicking on the "Exit" button. In this way, it returns to the main page of SafeStreets AE.
+					\end{itemize}
 
 		\subsection{Performance Requirements}
 		\subsection{Design Constraints}
@@ -343,6 +364,18 @@
 	\section{Effort spent}
 	
 	\section{References}
+	
+	
+	\begin{enumerate}
+		\item SafeStreets receives a violation report from a user.
+		\item SafeStreets start the "autority search: it checks if there is a registered authority that handles violation reports from the postal code of the current violation report. More precisely:
+		\begin{enumerate}
+			\item SafeStreets checks if there is a municipality that covers the given postal code. If there is, SafeStreets sends the violation report to that authority and ends the authority search.
+			\item If a municipality isn't found, SafeStreets checks if there is a provincial authority that covers the given postal code. If there is, SafeStreets sends the violation report to that authority and ends the authority search.
+			\item If a provincial authority isn't found, SafeStreets checks if there is a statal authority that covers the given postal code. If there is, SafeStreets sends the violation report to that authority and ends the authority search.
+			\item If no registered authorities satisfy the conditions above, the violation report is discarded.
+		\end{enumerate}
+	\end{enumerate}
 	
 	
 \end{document}
