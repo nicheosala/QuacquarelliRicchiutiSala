@@ -6,6 +6,14 @@
 \usepackage{float}
 \usepackage{color, soulutf8}
 
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=black,      
+	urlcolor=black,
+}
+
 \renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
 \newcommand\goal[1]{\item[{[G#1]}] }
 \newcommand\requirement[1]{\item[{[R#1]}] }
@@ -238,7 +246,7 @@
 		        A kind of authority is the Police, that can use reports to make traffic tickets validating SafeStreets reports.
 			\end{itemize}
 		
-		\subsection{Assumptions, dependencies and constraints}
+		\subsection{Assumptions, dependencies and constraints}	\label{assumptions}
 			This section specifies the assumptions made in the rest of the document, that is those facts that have been considered true a priori and that are not manageable by SafeStreets.
 			\begin{itemize}
 				\assumption{1} The device on which the app is installed has internet access.
@@ -254,13 +262,25 @@
 			\end{itemize}
 	
 	\section{Specific requirements}
+		This section contains all the requirements of SafeStreets, i.e. all that allows the app to function as desired by the developer. The requirements depend exclusively on the choices of the developer. Aspects not controllable by the developer, but relevant for the application, are the assumptions reported in \ref{assumptions}.
+		
 		\subsection{External Interfaces Requirements}
+		
 			\subsubsection{User Interfaces}
+				\textbf{TODO}
+				
 			\subsubsection{Hardware Interfaces}
-				Since SafeStreets is a crowd-sourced application, each user could take advantage of the system only if it have a smartphone. In particular, the smartphone must have camera and GPS.
+				Since SafeStreets is a crowd-sourced application, each user could take advantage of the system only if it has a smartphone. In particular, the smartphone must have an external camera, GPS and an internet connection.
+				Without the camera or the GPS, it is not possible to report violations. Without an internet connection, every SafeStreets function isn't available.
+				
 			\subsubsection{Software Interfaces}
-				In order to provide information about traffic violations to users, SafeStreet uses \textbf{external (?)maps} to show where reports come from.\\
+				First of all, SafeStreets must be authorized by the operating system of the smartphone on which it is installed to access the camera, the GPS and the internet connection.\\
+				\\
+				In order to provide information about traffic violations to users, SafeStreets uses external maps to show where reports come from. SafeStreets gets these maps from OpenStreetMap (\url{https://www.openstreetmap.org}).\\
+				\\
 				Moreover, one of the element to ensure that a report could be formalized is the validation of license plate. SafeStreets takes advantage of an algorithm to automatically recognize characters on license plates.
+				\textbf{TODO} Choose license plate recognizer.
+				
 			\subsubsection{Communication Interfaces}
 				Each function provided by SafeStreets needs an Internet connection.
 		\subsection{Functional Requirements}
@@ -330,12 +350,13 @@
 					\item If the camera or the geolocalization service aren't available, the app shows an error message and returns to the main page: it is not possible to send a violation report.
 					\item If the license plate recognition algorithm fails, the user is forced to take the picture again.
 					\item If the user clicks on "Send" without having filled all the requested fields, the app shows a warning message that tells the user what is wrong. The user can close the warning message and come back to the violation report. 
+					\item If the reporting timeout expires before the user has correctly sent the violation report, an error message is shown, than the app discard the violation report and returns to the main page.\\
 				\end{itemize}
 			
 				\rule{\linewidth}{0.4pt}
 				\\
 				
-				\textbf{ID}: \usecase{2a} \\
+				\textbf{ID}: \usecase{2} \\
 				\textbf{Name}:   Data Mining\\
 				\textbf{Actor}:  User\\
 				\textbf{Entry conditions}:
@@ -345,45 +366,44 @@
 				\end{enumerate}
 				\textbf{Event flow}:
 				\begin{enumerate}
-					\item The app shows in a new screen the map, centred in user's position. Then, report violations are represented in the map with pins.\\
-					The user browse the map.
+					\item The app shows in a new screen the map, centred in user's position. Then, report violations are represented in the map with pins. Browse the map.
 					\item Taps on one of the reports.
-					\item Explores data about that report.
+					\item Explore data about that report.
 				\end{enumerate}
 				\textbf{Exit conditions}:
 				\begin{itemize}
-					\item The user can always leave the "Search" function clicking on the "Back" button. In this way, he returns to the main page of the app.
+					\item The user can always leave the "Search" function clicking on the "Exit" button. In this way, he returns to the main page of the app.
 				\end{itemize}
 				\textbf{Exceptions}: -\\
 				
 				\rule{\linewidth}{0.4pt}
 				\\
 				
-				\textbf{ID}: \usecase{2b} \\
+				\textbf{ID}: \usecase{3} \\
 				\textbf{Name}:   Data Mining\\
 				\textbf{Actor}:  Authority\\
 				\textbf{Entry conditions}:
 				\begin{enumerate}
-					\item Open the SafeStreets AE.
+					\item Open SafeStreets AE.
 					\item Open the "Search" section.
 				\end{enumerate}
 				\textbf{Event flow}:
 				\begin{enumerate}
 					\item The app shows in a new screen the map, centred in authority station position. Then, report violations are represented in the map with pins with different colours, based on confirmed or unconfirmed reports\\
 					The authority browse the map.
-					\item Taps on one of the reports.
-					\item Explores data about that report, in particular type of license plate, proof picture, type of violation, date and position.
+					\item Tap on one of the reports.
+					\item Explore data about that report, in particular type of license plate, proof picture, type of violation, date and position.
 				\end{enumerate}
 				\textbf{Exit conditions}:
 				\begin{itemize}
-					\item The authority can always leave the "Search" function clicking on the "Back" button. In this way, he returns to the main page of the app.
+					\item The authority can always leave the "Search" function clicking on the "Exit" button. In this way, it returns to the main page of the app.
 				\end{itemize}
-				\textbf{Exceptions}: -
+				\textbf{Exceptions}: -\\
 				
 				\rule{\linewidth}{0.4pt}
 				\\
 				
-				\textbf{ID}: \usecase{33} \\
+				\textbf{ID}: \usecase{4} \\
 				\textbf{Name}:   Browse statistics\\
 				\textbf{Actor}:  User, Authority\\
 				\textbf{Entry conditions}:
@@ -398,24 +418,25 @@
 					\item Taps on "Show" button.
 					\item Explores data about result reports. In particular:
 					\begin{itemize}
-						\item User can retrieve information about type of violation, date, position and eventually the label "confirmed" or "pending".
-						\item Authority can retrieve same information as before, adding license plate and proof picture.
+						\item A user can retrieve information about type of violation, date, position and eventually the label "confirmed" or "pending".
+						\item An authority can retrieve the same information as before, adding license plates and proof pictures.
 					\end{itemize}
 				\end{enumerate}
 				\textbf{Exit conditions}:
 				\begin{itemize}
-					\item Either user or authority can always leave the "Search" function clicking on the "Back" button. In this way, he returns to the main page of the app.
+					\item Either user or authority can always leave the "Search" function clicking on the "Exit" button. In this way, they return to the main page of the app.
 				\end{itemize}
+				\textbf{Exceptions}: -\\
 				
 				\rule{\linewidth}{0.4pt}
 				\\
 					
-				\textbf{ID}: \usecase{3} \\
+				\textbf{ID}: \usecase{5} \\
 				\textbf{Name}:   Accident collector\\
 				\textbf{Actor}:  Authority\\
 				\textbf{Entry conditions}:
 				\begin{enumerate}
-					\item Open the SafeStreets AE.
+					\item Open SafeStreets AE.
 					\item Open the "Accident Collector" section.
 				\end{enumerate}
 				\textbf{Event flow}:
@@ -425,62 +446,59 @@
 				\textbf{Exit conditions}:
 				\begin{itemize}
 					\item The authority can always leave the accident collector function clicking on the "Exit" button. In this way, it returns to the main page of the app.
-					\item Click "Send" to complete the accident compilation form. The SafeStreets AE returns to the main page.
+					\item Click "Send" to complete the accident compilation form. SafeStreets AE returns to the main page.
 				\end{itemize}
 				\textbf{Exceptions}:
 				\begin{itemize}
-					\item Some of the requested form are not correctly compiled or empty. In this case a warning message is shown.
+					\item Some of the requested form are not correctly compiled or empty. In this case a warning message is shown. The authority can close the warning message and come back to the accident collector.\\
 				\end{itemize}
 				
-						
-					\rule{\linewidth}{0.4pt}\\
-					
+				\rule{\linewidth}{0.4pt}
+				\\
 								
-			\textbf{ID}: \usecase{4} \\
-			\textbf{Name}:   Interactive suggestions\\
-			\textbf{Actor}:  Authority\\
-			\textbf{Entry conditions}:
-			\begin{enumerate}
-				\item Open the SafeStreets AE.
-				\item Open the "Interactive suggestions" section.
-			\end{enumerate}
-			\textbf{Event flow}:
-			\begin{enumerate}
-				\item A list of suggestion are shown.
-				\item The authority can mark the read suggestion clicking on the "Got it" button in order to hide the already read suggestions.
-			\end{enumerate}
-			\textbf{Exit conditions}:
-			\begin{itemize}
-			   \item The authority can always leave the accident collector function clicking on the "Exit" button. In this way, it returns to the main page of the app.
-			\end{itemize}
-			\textbf{Exceptions}:
-			\begin{itemize}
-				\item -
-			\end{itemize}
-			
-			
-			
-			\rule{\linewidth}{0.4pt}
-				\textbf{ID}: \usecase{5} \\
-			\textbf{Name}: Report confirmation\\
-			\textbf{Actor}: Authority\\
-			\textbf{Entry conditions}:
-			\begin{enumerate}
-				\item Open SafeStreets AE.
-				\item Click on "Violation reports to evaluate".
-			\end{enumerate}
-			\textbf{Event flow}:
-			\begin{enumerate}
-				\item If there is at least one report to evaluate, the app shows all the information about the report. Choose between the buttons "Confirm" and "Discard". Their meaning is straightforward.
-			\end{enumerate}
-			\textbf{Exit conditions}:
-			\begin{itemize}
-				\item Click on the chosen button. If there is another violation report to evaluate, the event flow restarts. Otherwise, the application returns to the main page.
-				Remember that SafeStreets considers every confirmed violation report as a given traffic ticket.
-				\item The authority can always leave the violation report confirmation function clicking on the "Exit" button. In this way, it returns to the main page of SafeStreets AE.
-			\end{itemize}
-			
-			\rule{\linewidth}{0.4pt}
+				\textbf{ID}: \usecase{6} \\
+				\textbf{Name}:   Interactive suggestions\\
+				\textbf{Actor}:  Authority\\
+				\textbf{Entry conditions}:
+				\begin{enumerate}
+					\item Open SafeStreets AE.
+					\item Open the "Interactive suggestions" section.
+				\end{enumerate}
+				\textbf{Event flow}:
+				\begin{enumerate}
+					\item A list of suggestion are shown.
+					\item The authority can mark the read suggestion clicking on the "Got it" button in order to hide the already read suggestions.
+				\end{enumerate}
+				\textbf{Exit conditions}:
+				\begin{itemize}
+				   \item The authority can always leave the accident collector function clicking on the "Exit" button. In this way, it returns to the main page of SafeStreets AE.
+				\end{itemize}
+				\textbf{Exceptions}: -\\
+				
+				\rule{\linewidth}{0.4pt}
+				\\
+				
+				\textbf{ID}: \usecase{7} \\
+				\textbf{Name}: Report evaluation\\
+				\textbf{Actor}: Authority\\
+				\textbf{Entry conditions}:
+				\begin{enumerate}
+					\item Open SafeStreets AE.
+					\item Click on "Violation reports to evaluate".
+				\end{enumerate}
+				\textbf{Event flow}:
+				\begin{enumerate}
+					\item If there is at least one report to evaluate, the app shows all the information about the report. Choose between the buttons "Confirm" and "Discard". Their meaning is straightforward.
+				\end{enumerate}
+				\textbf{Exit conditions}:
+				\begin{itemize}
+					\item Click on the chosen button. If there is another violation report to evaluate, the event flow restarts. Otherwise, SafeStreets AE returns to the main page. Remember that SafeStreets considers every confirmed violation report as a given traffic ticket.
+					\item The authority can always leave the violation report confirmation function clicking on the "Exit" button. In this way, it returns to the main page of SafeStreets AE.
+				\end{itemize}
+				\textbf{Exceptions}: -\\
+				
+				\rule{\linewidth}{0.4pt}
+				\\
 
 		\subsection{Performance Requirements}
 		\subsection{Design Constraints}
