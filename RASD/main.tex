@@ -506,10 +506,18 @@
 			\subsubsection{Hardware limitations}
 			\subsubsection{Any other constraint}
 		\subsection{Software System Attributes}
+		
 			\subsubsection{Reliability}
+			The system must be always accessible. Therefore, the
+			
 			\subsubsection{Availability}
+			
 			\subsubsection{Security}
+			An information, after being stored on SafeStreets servers, is in "read-only" mode: only the state of a violation report - "confirmed" or "pending"- can be modified by external agents (precisely, by authorities). This guarantees broad security against attacks aimed at changing the meaning of the data held by SafeStreets.\\
+			All communications between SafeStreets and its users use security protocols designed to guarantee the confidentiality and integrity of the communication.\\
+			
 			\subsubsection{Maintainability}
+			
 			\subsubsection{Portability}
 	
 	\section{Formal analysis using Alloy}
@@ -517,18 +525,5 @@
 	\section{Effort spent}
 	
 	\section{References}
-	
-	
-	\begin{enumerate}
-		\item SafeStreets receives a violation report from a user.
-		\item SafeStreets start the "autority search: it checks if there is a registered authority that handles violation reports from the postal code of the current violation report. More precisely:
-		\begin{enumerate}
-			\item SafeStreets checks if there is a municipality that covers the given postal code. If there is, SafeStreets sends the violation report to that authority and ends the authority search.
-			\item If a municipality isn't found, SafeStreets checks if there is a provincial authority that covers the given postal code. If there is, SafeStreets sends the violation report to that authority and ends the authority search.
-			\item If a provincial authority isn't found, SafeStreets checks if there is a statal authority that covers the given postal code. If there is, SafeStreets sends the violation report to that authority and ends the authority search.
-			\item If no registered authorities satisfy the conditions above, the violation report is discarded.
-		\end{enumerate}
-	\end{enumerate}
-	
 	
 \end{document}
