@@ -496,9 +496,6 @@
 					\item The authority can always leave the violation report confirmation function clicking on the "Exit" button. In this way, it returns to the main page of SafeStreets AE.
 				\end{itemize}
 				\textbf{Exceptions}: -\\
-				
-				\rule{\linewidth}{0.4pt}
-				\\
 
 		\subsection{Performance Requirements}
 		\subsection{Design Constraints}
@@ -508,17 +505,20 @@
 		\subsection{Software System Attributes}
 		
 			\subsubsection{Reliability}
-			The system must be always accessible. Therefore, the
+			Data collected by SafeStreets are fundamental for its functionalities. Therefore, there must be a redundant server structure to guarantee all the data about violations and accidents are never lose.
 			
 			\subsubsection{Availability}
+			SafeStreets doesn't provide services that are critical for the life of its users. However, a user should be able to exploit SafeStreets functionalities in every part of the day, so it is interested in keeping his infrastructure active as much as possible.
 			
 			\subsubsection{Security}
 			An information, after being stored on SafeStreets servers, is in "read-only" mode: only the state of a violation report - "confirmed" or "pending"- can be modified by external agents (precisely, by authorities). This guarantees broad security against attacks aimed at changing the meaning of the data held by SafeStreets.\\
-			All communications between SafeStreets and its users use security protocols designed to guarantee the confidentiality and integrity of the communication.\\
+			All communications between SafeStreets and its users use security protocols designed to guarantee the confidentiality and integrity of the communication.
 			
 			\subsubsection{Maintainability}
+			SafeStreets source code must be well-documented and well-tested. This means that every part of the program must be commented so that its meaning is "crystal-clear", and there must be at least a 80\% coverage of the code.
 			
 			\subsubsection{Portability}
+			SafeStreets must be implemented so that it is as much platform-independent as possible. For this reason, it won't rely on functions that are available only on particular operating systems.
 	
 	\section{Formal analysis using Alloy}
 	
