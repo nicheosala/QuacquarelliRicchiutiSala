@@ -269,7 +269,7 @@
 			\subsubsection{User Interfaces}
 				\textbf{TODO}
 				
-			\subsubsection{Hardware Interfaces}
+			\subsubsection{Hardware Interfaces} \label{hardware_interfaces}
 				Since SafeStreets is a crowd-sourced application, each user could take advantage of the system only if it has a smartphone. In particular, the smartphone must have an external camera, GPS and an internet connection.
 				Without the camera or the GPS, it is not possible to report violations. Without an internet connection, every SafeStreets function isn't available.
 				
@@ -500,12 +500,20 @@
 		\subsection{Performance Requirements}
 			SafeStreets aims to provide a smooth user experience. For this reason, all the functionalities must be implemented so that the delay between a data request and an answer is unnoticeable, as well as the delay between the sending of a violation report and its publication.\\
 			To achieve this goal, the system needs a fast internet connection. Moreover, the data sent between SafeStreets clients and servers must be compressed so to guarantee a good user experience also when the internet connection is pretty slow.\\
-			In general, SafeStreets app doesn't need a lot of resources to work, so it can be installed on a large variety of smartphones, also dated ones.
+			In general, SafeStreets app doesn't need a lot of resources, so it can be installed on a large variety of smartphones, also dated ones.
 
 		\subsection{Design Constraints}
+		
 			\subsubsection{Standards compliance}
+				SafeStreets app must respect the rules of the app stores in which it will be available.\\
+				Moreover, it must respect the authorization rules of the operating systems where it will be installed.\\
+				
 			\subsubsection{Hardware limitations}
+				As mentioned in \ref{hardware_interfaces}, the application relies on some hardware components, that, if not present, doesn't allow to use SafeStreets in all its power. An external camera, a GPS service and mechanisms to connect to the internet must be present on the device to use SafeStreets.\\
+				SafeStreets AE must have an internet connection of any kind and should be turned on round the clock to receive reports that have to be evaluated.
+			
 			\subsubsection{Any other constraint}
+				SafeStreets doesn't collect personal data from its users. The only sensitive data it has to manage are the license plate associated to violation reports: they are not visible to common users, because it would make possible to associate a license plate to a particular human identity. This is not advisable: SafeStreets is an app that wants to hep authorities in finding infractions, but it doesn't want to have any impact on the reputation of people that, for any kind of reason, had done a certain number of violations.
 		\subsection{Software System Attributes}
 		
 			\subsubsection{Reliability}
