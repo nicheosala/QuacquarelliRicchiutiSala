@@ -506,45 +506,51 @@
 				
 			\clearpage
 			\subsubsection{Activity diagrams}
-			The core of SafeStreets application is based on violation reports by users. \ref{fig:activitydiagram_report} explains in little steps how a user can do this operation.
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=1\textwidth]{diagrams/activity_report.png}
-					\caption[SafeStreets activity diagram]{SafeStreets activity diagram for violation reporting}
-					\label{fig:activitydiagram_report}
-				\end{figure} 
+			The core of SafeStreets application is based on violation reports by users. \figurename{ \ref{fig:activitydiagram_report}} explains in little steps how a user can do this operation.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\textwidth]{diagrams/activity_report.png}
+				\caption[SafeStreets activity diagram]{SafeStreets activity diagram for violation reporting}
+				\label{fig:activitydiagram_report}
+			\end{figure} 
 			Opening the SafeStreets application and selecting the "Violation Report" button, the user has to take a photo of the vehicle he thinks it is in a violation condition. The photo must clearly include the license plate of the vehicle.
 			An OCR algorithm get the picture and shows the read characters: if the user confirms that the license plate is correct, then proceeds in reporting, otherwise he can take a picture again until he's satisfied.\\
-			Proceeding in reporting, the user has given the possibility to choose one of the violation types provided by SafeStreets app. After that, report is sent.
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=1\textwidth]{diagrams/activity_dataMining.png}
-					\caption[SafeStreets activity diagram]{SafeStreets activity diagram for data mining}
-					\label{fig:activitydiagram_datamining}
-				\end{figure}
+			Proceeding in reporting, the user has given the possibility to choose one of the violation types provided by SafeStreets app. After that, report is sent.\\
+			
+			\clearpage
+			Data mining function (\figurename{ \ref{fig:activitydiagram_datamining}}) is executable either by users or by authorities: the main difference is the visibility level of some information.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\textwidth]{diagrams/activity_dataMining.png}
+				\caption[SafeStreets activity diagram]{SafeStreets activity diagram for data mining}
+				\label{fig:activitydiagram_datamining}
+			\end{figure}
+			Opening the app (SafeStreets application for users, SafeStreets AE for authority), it is possible to browse information about violation reports, selecting the "Search" button.\\
+			Both users and authorities can explore a map of violations position and click to retrieve information about them; moreover, they can specify some additional filter to refine a research.\\
+			Finally, results are shown.
 			
 			\clearpage
 			\subsubsection{Sequence Diagrams}
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=1\textwidth]{diagrams/sequence_suggestions.png}
-					\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for showing suggestions}
-					\label{fig:sequencediagram_suggestions}
-				\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\textwidth]{diagrams/sequence_suggestions.png}
+				\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for showing suggestions}
+				\label{fig:sequencediagram_suggestions}
+			\end{figure}
 			
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=1\textwidth]{diagrams/sequence_reportViolation.png}
-					\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for violation reporting}
-					\label{fig:sequencediagram_reporting}
-				\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\textwidth]{diagrams/sequence_reportViolation.png}
+				\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for violation reporting}
+				\label{fig:sequencediagram_reporting}
+			\end{figure}
 			
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=1\textwidth]{diagrams/sequence_evaluateReport.png}
-					\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for report evaluation}
-					\label{fig:sequencediagram_evaluation}
-				\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\textwidth]{diagrams/sequence_evaluateReport.png}
+				\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for report evaluation}
+				\label{fig:sequencediagram_evaluation}
+			\end{figure}
 			
 			\clearpage
 			\subsubsection{Requirements traceability matrix}
