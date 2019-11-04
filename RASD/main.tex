@@ -531,18 +531,24 @@
 			
 			\clearpage
 			\subsubsection{Sequence Diagrams}
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=1\textwidth]{diagrams/sequence_suggestions.png}
-				\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for showing suggestions}
-				\label{fig:sequencediagram_suggestions}
-			\end{figure}
+			Let's look at details in interactions between a user and SafeStreets, during the violation reporting phase (\figurename{ \ref{fig:sequencediagram_reporting}}).
 			
 			\begin{figure}[H]
 				\centering
 				\includegraphics[width=1\textwidth]{diagrams/sequence_reportViolation.png}
 				\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for violation reporting}
 				\label{fig:sequencediagram_reporting}
+			\end{figure}
+			
+			Steps from (1) to (3) have been explained in \figurename{ \ref{fig:activitydiagram_report}}. From step (3.1), SafeStreets application retrieve from the picture
+			 metadata such as date and position in which picture has been taken by user.\\
+			 Then, the application actually send both report and metadata to SafeStreets system, in order to publish the report and forward it to the registered authority which operates in the specified position.\\
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.1\textwidth]{diagrams/sequence_suggestions.png}
+				\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for showing suggestions}
+				\label{fig:sequencediagram_suggestions}
 			\end{figure}
 			
 			\begin{figure}[H]
