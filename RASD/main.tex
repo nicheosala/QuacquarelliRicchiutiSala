@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage[super,negative]{nth}
+\usepackage{longtable}
+\usepackage{multirow}
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{color, soulutf8}
@@ -68,27 +70,27 @@
 		This last feature is especially productive for authorities, because SafeStreets can combine the retrieved information to suggest them some possible solutions for particularly unsafe areas.\\
 	
 		\subsection{Scope}
-			The SafeStreets environment is basically composed in three parts: the central SafeStreet system, which is the main server of the service, the SafeStreets user interface and the Authority Edition interface. \\\\
-			An user is allowed to use two main functions that are:
+			The SafeStreets environment is basically composed of three parts: the central SafeStreets system, which is the main server of the service, the SafeStreets user interface and the Authority Edition interface. \\\\
+			A user is allowed to use two main functions that are:
 			\begin{itemize}
 				\item Reporting a traffic violation;
-				\item Analyzing statistics about traffic violation;
+				\item Analyzing statistics about traffic violations;
 			\end{itemize}
-			Everyone can simply download the SafeStreets app and can immediately use the User Interface to take advantage of these two main functions.\\
-	    	The first one simply gives, in a few minutes, the possibility to upload the main details of the traffic violation to report. The only thing that user know is that his report will be analyzed by the municipality if and only if the municipality of that area has received the SafeStreets Authority Edition thanks to which it can valuate his report and then possibly make a traffic ticket.
-	    	Anyway he will be sure that a traffic ticket for his report has been done only using the following function.\\
-	    	The second function helps users to analyze the traffic violation condition in a defined area. This condition is only defined thanks to the reports sent by users to SafeStreets. In addition user can also apply filters in his analyzing action such as requesting only confirmed tickets (the ones defined as valid violations by authorities), defining only some kind of traffic violation, restricting research area in a defined time interval and so forth.\\\\
-	    	An authority, thanks to the SafeStreets Authority Edition interface has much more privileges in all SafeStreets system than the ones offered to users. \\An authority is allowed to use four main functions:
+			Everyone can simply download the SafeStreets app and can immediately use the user Interface to take advantage of these two main functions.\\
+	    	The first one simply gives the possibility to upload the main details of the traffic violation to report. The only thing that a user knows is that his report will be analysed by an authority if and only if there exists an authority that covers the area where the violation occurred.\\
+	    	The second function helps users to analyse the traffic violation trends in a defined area. These trends are only defined thanks to the reports sent by users to SafeStreets. In addition a user can also apply filters in his analysis such as requesting only confirmed tickets (the ones defined as valid violations by authorities), defining only some kind of traffic violation, restricting research area in a defined time interval and so forth.\\\\
+	    	An authority, thanks to the SafeStreets Authority Edition interface, has much more privileges in all SafeStreets system than the ones offered to users.\\
+	    	In fact, an authority is also allowed to use four main functions:
 	    	\begin{itemize}
-	    		\item Valuating traffic violation reports about its competent area;
-	    		\item Sending accidents informations to SafeStreets system;
+	    		\item Evaluating traffic violation reports of its competent area;
+	    		\item Sending accidents information to SafeStreets system;
 	    		\item Receiving suggestion from SafeStreets to reduce accidents;
-	    		\item Analyzing (advanced) statistics about traffic violations;
+	    		\item Analysing advanced statistics about traffic violations;
 	    	\end{itemize}
-    	    The first function gives the possibility to validate the reports sent by user. It is assumed that if an authority validate a report, it was consistent and so the offender has been fined.\\
+    	    The first function gives the possibility to validate the reports sent by users. It is assumed that if an authority validates a report, it is consistent and so the offender will be fined.\\
     	    The second function allows authorities to enrich SafeStreets' database uploading accidents' details in order to enable the system to activate for them the third function defined below.\\
-    	    The third function combines SafeStreets received reports to the accidents informations to define automatically suggestions in order to reduce accidents. These suggestion are automatically sent, if available, from the SafeStreets system to the Authority Edition interface of the interested authority.
-    	    Finally, the last function is the advanced version of the user analyzing function. It is a more detailed version of that function according to the fact that authorities are allowed to see all the sensible data of SafeStreets system such as all the license plate related to each report or the names of the offenders (the ones that have been fined thanks to a report or the ones that are responsible for an accident).\\\\
+    	    The third function combines SafeStreets received reports to the accidents informations to define automatically suggestions in order to reduce accidents. These suggestions are sent, if available, from the SafeStreets system to the Authority Edition interface of the interested authority.
+    	    Finally, the last function is the advanced version of the user analysing function. It is a more detailed version of that function according to the fact that authorities are allowed to see all the sensible data of SafeStreets system such as all the license plate related to each report.\\
     		The detailed description of each function is defined in section 2.
     	    
 			\subsubsection{World and shared phenomena}
@@ -102,7 +104,7 @@
 				\textbf{Shared phenomena}
 				\begin{itemize}
 					\item Authorities could generate traffic tickets thanks to reports. 
-					\item A municipality could collect some suggestions, derived from data analysis.
+					\item An authority can receive some suggestions, derived from data analysis.
 					\item Traffic violations which are reported can be shown in a map.
 				\end{itemize}
 			\subsubsection{Goals}
@@ -370,7 +372,7 @@
 				In this section the use case of the system is shown.
 				\begin{figure}[H]
 					\centering
-					\includegraphics[width=1\textwidth]{diagrams/usecase_safestreets.png}
+					\includegraphics[width=0.8\textwidth]{diagrams/usecase_safestreets.png}
 					\caption[SafeStreets use case diagram]{SafeStreets Use Case Diagram}
 					\label{fig:usecase_safestreets}
 				\end{figure}
@@ -501,7 +503,63 @@
 					\item The authority can always leave the violation report confirmation function clicking on the "Exit" button. In this way, it returns to the main page of SafeStreets AE.
 				\end{itemize}
 				\textbf{Exceptions}: -\\
-
+				
+			\subsubsection{Activity diagrams}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1\textwidth]{diagrams/activity_report.png}
+					\caption[SafeStreets activity diagram]{SafeStreets activity diagram for violation reporting}
+					\label{fig:activitydiagram_report}
+				\end{figure}
+			
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1\textwidth]{diagrams/activity_dataMining.png}
+					\caption[SafeStreets activity diagram]{SafeStreets activity diagram for data mining}
+					\label{fig:activitydiagram_datamining}
+				\end{figure}
+			
+			\clearpage
+			\subsubsection{Sequence Diagrams}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1\textwidth]{diagrams/sequence_suggestions.png}
+					\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for showing suggestions}
+					\label{fig:sequencediagram_suggestions}
+				\end{figure}
+			
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1\textwidth]{diagrams/sequence_reportViolation.png}
+					\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for violation reporting}
+					\label{fig:sequencediagram_reporting}
+				\end{figure}
+			
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1\textwidth]{diagrams/sequence_evaluateReport.png}
+					\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for report evaluation}
+					\label{fig:sequencediagram_evaluation}
+				\end{figure}
+			
+			\clearpage
+			\subsubsection{Requirements traceability matrix}
+			\begin{longtable}{c | c | c | c}
+				\hline
+				\textbf{Goal ID} & \textbf{Requirement ID} & \textbf{Use Case ID} & \textbf{Comments} \\
+				\hline
+				\multirow{4}{*}{} 
+				[G1]  	& [R1] & [UCx] & \\ \cline{2-4}
+						& [R2] & [UCy] & \\ \cline{2-4}
+						& \multirow{2}{*}{[R3]} & [UC1] & \\ \cline{3-4}
+						&                       & [UC2] & \\ \cline{3-4}
+						&                       & [UC3] & \\ \cline{3-4}
+						&                       & [UC4] & \\ \cline{3-4}
+						&                       & [UC5] & \\ \cline{2-4}
+						& [R4] & [UC6] & \\
+				\hline
+			\end{longtable}
+		\clearpage
 		\subsection{Performance Requirements}
 			SafeStreets aims to provide a smooth user experience. For this reason, all the functionalities must be implemented so that the delay between a data request and an answer is unnoticeable, as well as the delay between the sending of a violation report and its publication.\\
 			To achieve this goal, the system needs a fast internet connection. Moreover, the data sent between SafeStreets clients and servers must be compressed so to guarantee a good user experience also when the internet connection is pretty slow.\\
