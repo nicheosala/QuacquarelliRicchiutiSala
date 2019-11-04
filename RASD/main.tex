@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage[super,negative]{nth}
+\usepackage{longtable}
+\usepackage{multirow}
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{color, soulutf8}
@@ -512,7 +514,22 @@
 			
 			\clearpage
 			\subsubsection{Requirements traceability matrix}
-
+			\begin{longtable}{c | c | c | c}
+				\hline
+				\textbf{Goal ID} & \textbf{Requirement ID} & \textbf{Use Case ID} & \textbf{Comments} \\
+				\hline
+				\multirow{4}{*}{} 
+				[G1]  	& [R1] & [UCx] & \\ \cline{2-4}
+						& [R2] & [UCy] & \\ \cline{2-4}
+						& \multirow{2}{*}{[R3]} & [UC1] & \\ \cline{3-4}
+						&                       & [UC2] & \\ \cline{3-4}
+						&                       & [UC3] & \\ \cline{3-4}
+						&                       & [UC4] & \\ \cline{3-4}
+						&                       & [UC5] & \\ \cline{2-4}
+						& [R4] & [UC6] & \\
+				\hline
+			\end{longtable}
+		\clearpage
 		\subsection{Performance Requirements}
 			SafeStreets aims to provide a smooth user experience. For this reason, all the functionalities must be implemented so that the delay between a data request and an answer is unnoticeable, as well as the delay between the sending of a violation report and its publication.\\
 			To achieve this goal, the system needs a fast internet connection. Moreover, the data sent between SafeStreets clients and servers must be compressed so to guarantee a good user experience also when the internet connection is pretty slow.\\
