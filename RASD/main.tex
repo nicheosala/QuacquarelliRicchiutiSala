@@ -540,7 +540,10 @@
 				\label{fig:sequencediagram_reporting}
 			\end{figure}
 			
-			Steps from (1) to (3) have been explained in \figurename{ \ref{fig:activitydiagram_report}}. From step (3.1), SafeStreets application retrieve from the picture
+			Steps from (1) to (3) have been explained in \figurename{ \ref{fig:activitydiagram_report}}: here, an additional information is given representing the time constraint \textit{"b-a"}.\\
+			This interval works as a timeout and guarantees that a report could be sent almost at the same time in which user sees a vehicle in a possible violation condition.\\
+			In this way, users can not keep for a long time a report before they send it.\\
+			From step (3.1), SafeStreets application retrieve from the picture
 			 metadata such as date and position in which picture has been taken by user.\\
 			 Then, the application actually send both report and metadata to SafeStreets system, in order to publish the report and forward it to the registered authority which operates in the specified position.\\
 			
