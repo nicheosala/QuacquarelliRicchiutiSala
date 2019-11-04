@@ -68,7 +68,29 @@
 		This last feature is especially productive for authorities, because SafeStreets can combine the retrieved information to suggest them some possible solutions for particularly unsafe areas.\\
 	
 		\subsection{Scope}
-			A user can report a violation using SafeStreets application.
+			The SafeStreets environment is basically composed in three parts: the central SafeStreet system, which is the main server of the service, the SafeStreets user interface and the Authority Edition interface. \\\\
+			An user is allowed to use two main functions that are:
+			\begin{itemize}
+				\item Reporting a traffic violation;
+				\item Analyzing statistics about traffic violation;
+			\end{itemize}
+			Everyone can simply download the SafeStreets app and can immediately use the User Interface to take advantage of these two main functions.\\
+	    	The first one simply gives, in a few minutes, the possibility to upload the main details of the traffic violation to report. The only thing that user know is that his report will be analyzed by the municipality if and only if the municipality of that area has received the SafeStreets Authority Edition thanks to which it can valuate his report and then possibly make a traffic ticket.
+	    	Anyway he will be sure that a traffic ticket for his report has been done only using the following function.\\
+	    	The second function helps users to analyze the traffic violation condition in a defined area. This condition is only defined thanks to the reports sent by users to SafeStreets. In addition user can also apply filters in his analyzing action such as requesting only confirmed tickets (the ones defined as valid violations by authorities), defining only some kind of traffic violation, restricting research area in a defined time interval and so forth.\\\\
+	    	An authority, thanks to the SafeStreets Authority Edition interface has much more privileges in all SafeStreets system than the ones offered to users. \\An authority is allowed to use four main functions:
+	    	\begin{itemize}
+	    		\item Valuating traffic violation reports about its competent area;
+	    		\item Sending accidents informations to SafeStreets system;
+	    		\item Receiving suggestion from SafeStreets to reduce accidents;
+	    		\item Analyzing (advanced) statistics about traffic violations;
+	    	\end{itemize}
+    	    The first function gives the possibility to validate the reports sent by user. It is assumed that if an authority validate a report, it was consistent and so the offender has been fined.\\
+    	    The second function allows authorities to enrich SafeStreets' database uploading accidents' details in order to enable the system to activate for them the third function defined below.\\
+    	    The third function combines SafeStreets received reports to the accidents informations to define automatically suggestions in order to reduce accidents. These suggestion are automatically sent, if available, from the SafeStreets system to the Authority Edition interface of the interested authority.
+    	    Finally, the last function is the advanced version of the user analyzing function. It is a more detailed version of that function according to the fact that authorities are allowed to see all the sensible data of SafeStreets system such as all the license plate related to each report or the names of the offenders (the ones that have been fined thanks to a report or the ones that are responsible for an accident).\\\\
+    		The detailed description of each function is defined in section 2.
+    	    
 			\subsubsection{World and shared phenomena}
 				In order to draw up a list of requirements, it is necessary to identify those events that occurs in the world. Some of them are shared with a machine: these phenomena define the interface through which machines interact with the world.\\\\				
 				\textbf{World phenomena}
