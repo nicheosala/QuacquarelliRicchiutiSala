@@ -104,7 +104,7 @@
 				\textbf{Shared phenomena}
 				\begin{itemize}
 					\item Authorities could generate traffic tickets thanks to reports. 
-					\item A municipality could collect some suggestions, derived from data analysis.
+					\item An authority can receive some suggestions, derived from data analysis.
 					\item Traffic violations which are reported can be shown in a map.
 				\end{itemize}
 			\subsubsection{Goals}
@@ -114,7 +114,7 @@
 					\goal{2}An individual can mine information about violations.					
 					\goal{3}An authority can share its information about accidents occurred on its operative area with SafeStreets.
 					\goal{4}An authority can retrieve suggestions of possible interventions from SafeStreets.
-					\goal{5}An authority can generate traffic tickets through SafeStreets reports.
+					\goal{5}An authority can evaluate SafeStreets reports related to its area of competence.
 				\end{itemize}
 				
 				
@@ -128,7 +128,9 @@
 					\item \textbf{SafeStreets}: it is the crowdfunding app subject of this document.
 					\item \textbf{SafeStreets application}: it is the application used by users, installed on their smartphone.
 					\item \textbf{SafeStreets Authority Edition}: it is the application used by authorities, installed on computers in their station.
+					\item \textbf{SafeStreets Client}: a generic way to point out the SafeStreet application or the SafeStreets Authority Edition.
 					\item \textbf{Traffic violation report}: it is the message that SafeStreets collects through its app from users who want to report an alleged violation. It is often abbreviated as "report".
+					\item \textbf{Individual}: A generic user or authority.
 				\end{itemize}
 			\subsubsection{Acronyms}
 				\begin{itemize}
@@ -273,7 +275,7 @@
 		\subsection{Assumptions, dependencies and constraints}	\label{assumptions}
 			This section specifies the assumptions made in the rest of the document, that is those facts that have been considered true a priori and that are not manageable by SafeStreets.
 			\begin{itemize}
-				\assumption{1} The device on which the app is installed has internet access.
+				\assumption{1} The device on which the SafeStreet client is installed has internet access.
 				\assumption{2} The device on which the app is installed has geolocation features.
 				\assumption{3} The device on which the app is installed has an external camera.
 				\assumption{4} The device on which the app is installed is able to detect its position with a maximum error of five meters.
@@ -282,7 +284,7 @@
 				\assumption{7} The SafeStreets software installed in the offices of the authorities registered with the service can only be used by the authorities themselves: it is not possible for an unauthorized user to gain access to such software.
 				\assumption{8} Each position on earth can be associated with a unique postal code.
 				\assumption{9} If an authority confirms a violation report, than the authority generates a traffic ticket from it. So, from the point of view of SafeStreets, every confirmed violation report equals to a traffic ticket.
-				
+				\assumption{10} The device on which the SafeStreets Authority Edition is installed is always switched on.
 			\end{itemize}
 	
 	\section{Specific requirements}
@@ -313,28 +315,56 @@
 			\begin{itemize}
 				\goal{1}An individual can report traffic violations to SafeStreets.
 				\begin{itemize}
-					\assumption{x}
-					\requirement{y}
+					\assumption{1} The device on which the SafeStreets client is installed has internet access.
+					\assumption{2} The device on which the app is installed has geolocation features.
+					\assumption{3} The device on which the app is installed has an external camera.
+					\assumption{4} The device on which the app is installed is able to detect its position with a maximum error of five meters.
+					\assumption{5} The position detected by the app coincides with the actual position detected by the geolocalizer.
+					\assumption{6} The algorithm used by SafeStreets for reading a license plate from an image reads the correct number plate, if it is present in the image.
+					\assumption{7} Each position on earth can be associated with a unique postal code.
+					\requirement{1} The SafeStreets client must be able to communicate with the SafeStreets system.
+					\requirement{2} The user report must be of one of the type of violation defined by SafeStreets.
+					\requirement{3} The report image must show the license plate of the offender.
+					\requirement{4} The only license plate shown in the report image is the one of the offender.
+					\requirement{5} Each violation report must refer to only one offender.	
+					\requirement{6} The GPS service, the external camera and the internet connection must be active.
 				\end{itemize}
 				\goal{2}An individual can mine information about violations.
 				\begin{itemize}
-					\assumption{x}
-					\requirement{y}
+					\assumption{1} The device on which the SafeStreets client is installed has internet access.
+					\assumption{2} If an authority confirms a violation report, than the authority generates a traffic ticket from it. So, from the point of view of 				SafeStreets, every confirmed violation report equals to a traffic ticket.
+					\requirement{1} The SafeStreets client must be able to communicate with the SafeStreets system.
+					\requirement{2} The internet connection must be active.
+					\requirement{3} The SafeStreets client must show all and only the information required by the individual.
 				\end{itemize}					
 				\goal{3}An authority can share its information about accidents occurred on its operative area with SafeStreets.
 				\begin{itemize}
-					\assumption{x}
-					\requirement{y}
+					\assumption{1} The device on which the SafeStreets client is installed has internet access.
+					\assumption{2} The SafeStreets software installed in the offices of the authorities registered with the service can only be used by the authorities 				themselves: it is not possible for an unauthorized user to gain access to such software.
+					\assumption{3} Each position on earth can be associated with a unique postal code.
+					\assumption{4} The device on which the SafeStreets Authority Edition is installed is always switched on.
+				   \requirement{1} The SafeStreets client must be able to communicate with the SafeStreets system.
+				   \requirement{2} The internet connection must be active.
+				   \requirement{3} The information about accidents must be of one of the type defined by SafeStreets.
 				\end{itemize}
 				\goal{4}An authority can retrieve suggestions of possible interventions from SafeStreets.
 				\begin{itemize}
-					\assumption{x}
-					\requirement{y}
+					\assumption{1} The device on which the SafeStreets client is installed has internet access.
+					\assumption{2} The SafeStreets software installed in the offices of the authorities registered with the service can only be used by the authorities 			themselves: it is not possible for an unauthorized user to gain access to such software.
+					\assumption{3} The device on which the SafeStreets Authority Edition is installed is always switched on.
+					\requirement{1} The SafeStreets client must be able to communicate with the SafeStreets system.
+					\requirement{2} The internet connection must be active.
+					\requirement{3} The SafeStreets Authority Edition must be always active.
 				\end{itemize}
-				\goal{5}An authority can generate traffic tickets through SafeStreets reports.
+				\goal{5}An authority can evaluate SafeStreets reports related to its area of competence.
 				\begin{itemize}
-					\assumption{x}
-					\requirement{y}
+					\assumption{1} The device on which the SafeStreets client is installed has internet access.
+					\assumption{2} The SafeStreets software installed in the offices of the authorities registered with the service can only be used by the authorities 			themselves: it is not possible for an unauthorized user to gain access to such software.
+					\assumption{3} If an authority confirms a violation report, than the authority generates a traffic ticket from it. So, from the point of view of 				SafeStreets, every confirmed violation report equals to a traffic ticket.
+					\assumption{4} The device on which the SafeStreets Authority Edition is installed is always switched on.
+					\requirement{1} The SafeStreets client must be able to communicate with the SafeStreets system.
+					\requirement{2} The internet connection must be active.
+					\requirement{3} An authority receives a report if and only if that report is related to a position covered by that authority (i.e. the postal code of the position of the violation report is assigned to that authority).
 				\end{itemize}
 			\end{itemize}
 		
