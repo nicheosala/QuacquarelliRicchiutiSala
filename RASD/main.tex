@@ -420,7 +420,7 @@
 				\end{enumerate}
 				\textbf{Event flow}:
 				\begin{enumerate}
-					\item The app shows in a new screen the map. Then, report violations are represented in the map with different coloured pins, based on confirmed or unconfirmed reports. This screen also provides a menu through which either an user or an authority can refine its research with data filters.
+					\item The app shows in a new screen the map. Then, report violations are represented in the map with different coloured pins, based on confirmed or unconfirmed reports. This screen also provides a menu through which either a user or an authority can refine its research with data filters.
 					They select the filters they want.
 					\item Taps on "Show" button.
 					\item Explores data about result reports. In particular:
@@ -504,14 +504,18 @@
 				\end{itemize}
 				\textbf{Exceptions}: -\\
 				
+			\clearpage
 			\subsubsection{Activity diagrams}
+			The core of SafeStreets application is based on violation reports by users. \ref{fig:activitydiagram_report} explains in little steps how a user can do this operation.
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=1\textwidth]{diagrams/activity_report.png}
 					\caption[SafeStreets activity diagram]{SafeStreets activity diagram for violation reporting}
 					\label{fig:activitydiagram_report}
-				\end{figure}
-			
+				\end{figure} 
+			Opening the SafeStreets application and selecting the "Violation Report" button, the user has to take a photo of the vehicle he thinks it is in a violation condition. The photo must clearly include the license plate of the vehicle.
+			An OCR algorithm get the picture and shows the read characters: if the user confirms that the license plate is correct, then proceeds in reporting, otherwise he can take a picture again until he's satisfied.\\
+			Proceeding in reporting, the user has given the possibility to choose one of the violation types provided by SafeStreets app. After that, report is sent.
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=1\textwidth]{diagrams/activity_dataMining.png}
