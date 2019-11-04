@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage[super,negative]{nth}
+\usepackage{longtable}
+\usepackage{multirow}
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{color, soulutf8}
@@ -340,7 +342,7 @@
 				In this section the use case of the system is shown.
 				\begin{figure}[H]
 					\centering
-					\includegraphics[width=1\textwidth]{diagrams/usecase_safestreets.png}
+					\includegraphics[width=0.8\textwidth]{diagrams/usecase_safestreets.png}
 					\caption[SafeStreets use case diagram]{SafeStreets Use Case Diagram}
 					\label{fig:usecase_safestreets}
 				\end{figure}
@@ -471,7 +473,63 @@
 					\item The authority can always leave the violation report confirmation function clicking on the "Exit" button. In this way, it returns to the main page of SafeStreets AE.
 				\end{itemize}
 				\textbf{Exceptions}: -\\
-
+				
+			\subsubsection{Activity diagrams}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1\textwidth]{diagrams/activity_report.png}
+					\caption[SafeStreets activity diagram]{SafeStreets activity diagram for violation reporting}
+					\label{fig:activitydiagram_report}
+				\end{figure}
+			
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1\textwidth]{diagrams/activity_dataMining.png}
+					\caption[SafeStreets activity diagram]{SafeStreets activity diagram for data mining}
+					\label{fig:activitydiagram_datamining}
+				\end{figure}
+			
+			\clearpage
+			\subsubsection{Sequence Diagrams}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1\textwidth]{diagrams/sequence_suggestions.png}
+					\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for showing suggestions}
+					\label{fig:sequencediagram_suggestions}
+				\end{figure}
+			
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1\textwidth]{diagrams/sequence_reportViolation.png}
+					\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for violation reporting}
+					\label{fig:sequencediagram_reporting}
+				\end{figure}
+			
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1\textwidth]{diagrams/sequence_evaluateReport.png}
+					\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for report evaluation}
+					\label{fig:sequencediagram_evaluation}
+				\end{figure}
+			
+			\clearpage
+			\subsubsection{Requirements traceability matrix}
+			\begin{longtable}{c | c | c | c}
+				\hline
+				\textbf{Goal ID} & \textbf{Requirement ID} & \textbf{Use Case ID} & \textbf{Comments} \\
+				\hline
+				\multirow{4}{*}{} 
+				[G1]  	& [R1] & [UCx] & \\ \cline{2-4}
+						& [R2] & [UCy] & \\ \cline{2-4}
+						& \multirow{2}{*}{[R3]} & [UC1] & \\ \cline{3-4}
+						&                       & [UC2] & \\ \cline{3-4}
+						&                       & [UC3] & \\ \cline{3-4}
+						&                       & [UC4] & \\ \cline{3-4}
+						&                       & [UC5] & \\ \cline{2-4}
+						& [R4] & [UC6] & \\
+				\hline
+			\end{longtable}
+		\clearpage
 		\subsection{Performance Requirements}
 			SafeStreets aims to provide a smooth user experience. For this reason, all the functionalities must be implemented so that the delay between a data request and an answer is unnoticeable, as well as the delay between the sending of a violation report and its publication.\\
 			To achieve this goal, the system needs a fast internet connection. Moreover, the data sent between SafeStreets clients and servers must be compressed so to guarantee a good user experience also when the internet connection is pretty slow.\\
