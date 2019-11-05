@@ -1,16 +1,19 @@
 ////////////////////////////////////////////////////////////////AUTHORITY////////////////////////////////////////////////////////////////
 sig AuthorityName, PostalCode {}
 
-sig Competence {} { #Competence = 3 }
+abstract sig Competence {}
+one sig Municipal, Provincial, Statal extends Competence {}
 
 // Two constraints are implicitly defined:
 // - every Authority has exactly one name;
 // - every authority has exactly one type of competence.
-sig Authority {
+abstract sig Authority {
 	name: one AuthorityName,
 	typeOfCompetence: one Competence,
 	areaOfCompetence: set PostalCode
-} { #Authority >= 1 }
+}
+
+sig RegisteredAuthority extends Authority {}
 
 // Every authority has a unique name.
 fact AuthorityKey {
@@ -34,7 +37,7 @@ fact AuthorityNotSameareaOfCompetence {
 
 //TODO vincoli sul tipo di competence!
 
-////////////////////////////////////////////////////////////////VIOLATION////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////VIOLATION REPORT////////////////////////////////////////////////////////////////
 sig Date, Time, Position, Image, TypeOfViolation, LicensePlate, ReportStatus {}
 
 sig ViolationReport {
@@ -45,7 +48,7 @@ sig ViolationReport {
 	type: one TypeOfViolation,
 	licensePlate: one LicensePlate,
 	status: one ReportStatus
-} { #ViolationReport >= 1 }
+}
 
 //The public key (== visible to all individuals)  of a ViolationReport is (date, time, position, type).
 fact ViolationReportKey {
@@ -82,5 +85,52 @@ pred AccidentKey {
 			a1.type = a2.type
 }
 
-pred show {}
-run show for 4
+
+////////////////////////////////////////////////////////////////SAFESTREETS SERVER////////////////////////////////////////////////////////////////
+sig SafeStreetsServer {
+	violationReports: set ViolationReport,
+	accidents: set Accident
+} { #SafeStreetsServer = 1 }
+
+////////////////////////////////////////////////////////////////SAFESTREETS AE////////////////////////////////////////////////////////////////
+sig SafeStreetsAE {
+	violationReportsChecked: set ViolationReport,
+	accidentsReported: set Accident,
+	authority: one RegisteredAuthority
+}
+
+fact SafeStreetsAERegisteredAuthorityBijection {
+	all ssae1: SafeStreetsAE |
+		no ssae2: SafeStreetsAE |
+			ssae1 != ssae2 and ssae1.authority = ssae2.authority
+	all ra: RegisteredAuthority |
+		one ssae: SafeStreetsAE |
+			ssae.authority = ra
+}
+
+sig SafeStreetsApp {
+	violationReportsSent: set ViolationReport,
+	user: one User
+}
+
+sig User {}
+
+fact SafeStreetsAppUserBijection {
+	all ssa1: SafeStreetsApp |
+		no ssa2: SafeStreetsApp |
+			ssa1 != ssa2 and ssa1.user = ssa2.user
+	all u: User |
+		one ssa: SafeStreetsApp |
+			ssa.user = u
+}
+
+pred EveryAccidentHasBeenReportedByARegisteredAuthority {
+	all accident: Accident |
+		one sfae: SafeStreetsAE |
+			accident in sfae.accidentsReported
+}
+
+run EveryAccidentHasBeenReportedByARegisteredAuthority for 3 but 1 SafeStreetsAE, 1 ViolationReport, 1 Accident, 0 SafeStreetsApp
+
+pred EveryViolationReportHasBeenReportedByAUser {}
+pred EveryRegisteredAuthorityReceivesOnlyCompetentViolationReports {}
