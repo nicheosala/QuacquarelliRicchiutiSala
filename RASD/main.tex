@@ -546,6 +546,23 @@
 			From step (3.1), SafeStreets application retrieve from the picture
 			 metadata such as date and position in which picture has been taken by user.\\
 			 Then, the application actually send both report and metadata to SafeStreets system, in order to publish the report and forward it to the registered authority which operates in the specified position.\\
+			 
+			 The next two sequence diagrams explain detailed steps about authorities' function, provided by SafeStreets AE.\\
+			 \figurename{ \ref{fig:sequencediagram_evaluation}} represents that service for authorities, able to manage and evaluate reports sent by users.\\
+			 The authority checks if there are new report to evaluate, so, through the application AE, contact SafeStreets system to retrieve these information.\\
+			 If there's at least one report to evaluate, SafeStreets AE will show it and permit authorities to establish if the report is correct or not.\\
+			 If it is correct, the system will update the report status, checking it as "Confirmed"; otherwise SafeStreets system will remove that report.\\
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1\textwidth]{diagrams/sequence_evaluateReport.png}
+				\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for report evaluation}
+				\label{fig:sequencediagram_evaluation}
+			\end{figure}
+		
+			Finally, an authority can eventually insert in SafeStreets system information about accidents occurred in its operative area.\\
+			Gradually, SafeStreets system collect these data and cross them with report violations: once it has analyzed enough data, SafeStreets system will generate for the authority a set of suggestions, aimed to secure the area. \\
+			\figurename{ \ref{fig:sequencediagram_suggestions}} describes the just mentioned functionality.
 			
 			\begin{figure}[H]
 				\centering
@@ -554,12 +571,7 @@
 				\label{fig:sequencediagram_suggestions}
 			\end{figure}
 			
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=1\textwidth]{diagrams/sequence_evaluateReport.png}
-				\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for report evaluation}
-				\label{fig:sequencediagram_evaluation}
-			\end{figure}
+			
 			
 			\clearpage
 			\subsubsection{Requirements traceability matrix}
