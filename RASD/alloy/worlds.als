@@ -1,5 +1,3 @@
-////////////////////////////////////////////////////////////////////////////WORLD 1////////////////////////////////////////////////////////////////////////////////////
-
 abstract sig Timeout {}
 sig Running, Ended extends Timeout {} 
 
@@ -16,6 +14,12 @@ sig ViolationReport {
 	type: one TypeOfViolation,
 	licensePlate: one LicensePlate,
 	status: one ReportStatus
+}
+
+fact EqualImagesIsImpossible {
+	all ri: Image |
+		one vr: ViolationReport |
+			vr.reportImage = ri
 }
 
 fact ViolationReportKey {
@@ -77,7 +81,6 @@ fact onlyRequestWithRunningTimeout {
 				vrr.violationReport = vrs and vrr.timeout = Running
 }
 
-// FIRST FUNCTION TO BE ANALYZED
 pred reportViolation [ssa, ssa': SafeStreetsApp, vrr: ViolationReportRequest] {
 	(	
 		vrr.timeout = Running and
@@ -96,7 +99,7 @@ pred reportViolation [ssa, ssa': SafeStreetsApp, vrr: ViolationReportRequest] {
 		ssa'.violationReportsSent = ssa.violationReportsSent + vrr.violationReport
 }
 
-// SafeStreets App doesn't send incomplete violation requests to the server.
+// Assertion 1: Every violation report received by the SafeStreets Server is complete in all its fields.
 assert NoIncompleteViolationReports {
 	all ssa, ssa': SafeStreetsApp, vrr: ViolationReportRequest |
 		reportViolation[ssa, ssa', vrr]
@@ -113,7 +116,7 @@ assert NoIncompleteViolationReports {
 			)
 }
 
-// SafeStreets App doesn't send to the server violation requests that were not completed before the timeout ended.
+// Assertion 2: Every violation report was sent to the server before the report timeout ended.
 assert NoTimedOutViolationReports {
 	all ssa, ssa': SafeStreetsApp, vrr: ViolationReportRequest |
 		vrr.timeout = Running and reportViolation[ssa, ssa', vrr]
@@ -122,14 +125,6 @@ assert NoTimedOutViolationReports {
 			vrr.violationReport = vrs and vrr.timeout = Running 
 }
 
-
-//check NoIncompleteViolationReports for 5
-//check NoTimedOutViolationReports for 5
-
-//pred showWorld1 {}
-//run showWorld1 {} for 2 but 0 Authority, 0 SafeStreetsAE, 0 SafeStreetsServer
-
-////////////////////////////////////////////////////////////////////////////WORLD 2////////////////////////////////////////////////////////////////////////////////////
 sig TypeOfAccident {}
 
 sig Accident {
@@ -154,9 +149,6 @@ pred AccidentKey {
 sig AuthorityName, PostalCode {}
 abstract sig Competence {}
 
-// Two constraints are implicitly defined:
-// - every Authority has exactly one name;
-// - every authority has exactly one type of competence.
 abstract sig Authority {
 	name: one AuthorityName,
 	typeOfCompetence: one Competence,
@@ -207,7 +199,7 @@ fact AllReportsInAEAlsoInServer {
 }
 
 pred ConfirmViolationReport[ssae, ssae': SafeStreetsAE, sss: SafeStreetsServer, vr: ViolationReport] {
-	vr in ssae.violationsReported//and vr in sss, but this is guaranteed by fact AllReportsInAEAlsoInServer
+	vr in ssae.violationsReported //and vr in sss, but this is guaranteed by fact AllReportsInAEAlsoInServer
 	implies
 	(
 		ssae'.violationsReported = ssae.violationsReported - vr and
@@ -218,6 +210,7 @@ pred ConfirmViolationReport[ssae, ssae': SafeStreetsAE, sss: SafeStreetsServer, 
 	)
 }
 
+// Assertion 3: When a registered authority confirms a violation report, that confirmation is consistently reported into the server.
 assert ConsistentConfirmation {
 	all ssae, ssae': SafeStreetsAE, sss: SafeStreetsServer, vr: ViolationReport |
 		vr in ssae.violationsReported and
@@ -241,6 +234,7 @@ pred RefuseViolationReport[ssae, ssae': SafeStreetsAE, sss, sss': SafeStreetsSer
 	)
 }
 
+// Assertion 4: A violation report rejected by a registered authority is removed from SafeStreets database.
 assert ConsistentRejection {
 	all ssae, ssae': SafeStreetsAE, sss, sss': SafeStreetsServer, vr: ViolationReport |
 	vr in ssae.violationsReported and
@@ -252,13 +246,6 @@ assert ConsistentRejection {
 	)	
 }
 
-//check ConsistentRejection for 5 but 0 SafeStreetsApp, 0 User, 0 Accident, 0 ViolationReportRequest
-//check ConsistentConfirmation for 5 but 0 SafeStreetsApp, 0 User, 0 Accident, 0 ViolationReportRequest
-
-//pred showWorld2 {}
-//run showWorld2 for 3 but 0 SafeStreetsApp, 0 User, 0 Accident, 0 ViolationReportRequest
-
-////////////////////////////////////////////////////////////////////////////WORLD 3////////////////////////////////////////////////////////////////////////////////////
 fact AllAccidentsReportedByAnAuthority {
 	all a: Accident |
 		one ssae: SafeStreetsAE |
@@ -272,6 +259,7 @@ pred ReportAccident[ssae, ssae': SafeStreetsAE, sss, sss': SafeStreetsServer, a:
 	sss'.accidents = sss.accidents + a
 }
 
+// Assertion 5: Every accident reported by a registered authority is consistently saved into the SafeStreets database.
 assert ConsistentAccidentReport {
 	all ssae, ssae': SafeStreetsAE, sss, sss': SafeStreetsServer, a: Accident |
 		a in ssae.accidentsToReport and
@@ -281,7 +269,20 @@ assert ConsistentAccidentReport {
 		sss'.accidents = sss.accidents + a	
 }
 
-//check ConsistentAccidentReport for 5 but 0 SafeStreetsApp, 0 User, 0 ViolationReportRequest, 0 ViolationReport
+
+// Checks on assertions.
+check NoIncompleteViolationReports for 5
+check NoTimedOutViolationReports for 5
+check ConsistentRejection for 5
+check ConsistentConfirmation for 5
+check ConsistentAccidentReport for 5
+
+// Generation of worlds.
+pred showWorld1 {}
+run showWorld1 {} for 2 but 0 Authority, 0 SafeStreetsAE, 0 SafeStreetsServer, exactly 2 SafeStreetsApp, exactly 2 ViolationReportRequest
+
+pred showWorld2 {}
+run showWorld2 for 3 but 0 SafeStreetsApp, 0 User, 0 Accident, 0 ViolationReportRequest, exactly 2 SafeStreetsAE, exactly 1 SafeStreetsServer, exactly 2 ViolationReport
 
 pred showWorld3 {}
-run showWorld3 for 3 but  0 SafeStreetsApp, 0 User, 0 ViolationReport, 0 ViolationReportRequest, 1 SafeStreetsAE
+run showWorld3 for 3 but  0 SafeStreetsApp, 0 User, 0 ViolationReport, 0 ViolationReportRequest, exactly 2 SafeStreetsAE, exactly 2 Accident, exactly 1 SafeStreetsServer

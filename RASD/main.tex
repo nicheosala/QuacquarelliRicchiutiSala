@@ -16,6 +16,10 @@
 	urlcolor=black,
 }
 
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+\usepackage{alloy-style}
+
 \renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
 \newcommand\goal[1]{\item[{[G#1]}] }
 \newcommand\requirement[1]{\item[{[R#1]}] }
@@ -647,15 +651,25 @@
 			SafeStreets must be implemented so that it is as much platform-independent as possible. For this reason, it won't rely on functions that are available only on particular operating systems.
 	
 	\section{Formal analysis using Alloy}
+	
+		\subsection{Purpose of the model}
 		In this section some basic functionalities of SafeStreets are proved to be consistent. These are the assertions checked:
-		\begin{itemize}
+		\begin{enumerate}
 			\item Every violation report received by the SafeStreets Server is complete in all its fields.
 			\item Every violation report was sent to the server before the report timeout ended.
 			\item When a registered authority confirms a violation report, that confirmation is consistently reported into the server.
 			\item A violation report rejected by a registered authority is removed from SafeStreets database.
 			\item Every accident reported by a registered authority is consistently saved into the SafeStreets database.
-		\end{itemize}
+		\end{enumerate}
 		Moreover, there are other fundamental constraints expressed so to get consistent models. For example, it is specified that every SafeStreets App is associated to one and only one user. Anyway, every constraint is straightforward or it is well commented in Alloy code.
+		
+		\subsection{Alloy model}
+		\vspace{2 mm}
+		
+		\lstinputlisting[language=alloy]{alloy/worlds.als}
+		
+		\vspace{8 mm}
+		
 	\section{Effort spent}
 	
 	\section{References}
