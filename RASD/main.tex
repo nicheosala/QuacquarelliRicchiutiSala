@@ -665,10 +665,36 @@
 		
 		\subsection{Alloy model}
 		\vspace{2 mm}
-		
 		\lstinputlisting[language=alloy]{alloy/worlds.als}
-		
 		\vspace{8 mm}
+		
+		\subsection{Checks on assertions with the Alloy Analyser}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{images/AlloyAssertionsChecks.png}
+			\caption[Alloy Analyser results]{These are the results of the evaluation of the assertions defined in Alloy.}
+			\label{fig:check_assertions}
+		\end{figure}
+	
+		\subsection{Worlds generated in Alloy}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{images/alloyWorlds/world1.png}
+			\caption[World 1]{This world shows the relation between the report of a violation and SafeStreets App.}
+			\label{fig:alloy_world1}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{images/alloyWorlds/world2.png}
+			\caption[World 2]{This world shows the relation between the SafeStreets server and SafeStreets AE's in violation report evaluation.}
+			\label{fig:alloy_world2}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{images/alloyWorlds/world3.png}
+			\caption[World 3]{This world shows the relation between the SafeStreets server and SafeStreets AE's in reporting accidents.}
+			\label{fig:alloy_world3}
+		\end{figure}
 		
 	\section{Effort spent}
 	
