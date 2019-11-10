@@ -6,7 +6,10 @@
 \usepackage{multirow}
 \usepackage{fancyhdr}
 \usepackage{float}
+\usepackage{subfig}
 \usepackage{color, soulutf8}
+\usepackage{graphicx}
+\usepackage{grffile}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -292,8 +295,69 @@
 		\subsection{External Interfaces Requirements}
 		
 			\subsubsection{User Interfaces}
-				\textbf{TODO}
-				
+		    The following mockups give an approximate idea of how the application’s interfaces should appear. In the fist block main SafeStreets application interfaces are shown. In the second one main SafeStreets Authority Edition interfaces are shown.
+			
+			\begin{figure}
+				\centering
+				\subfloat[][\emph{Welcome page, starting the application}]
+				{\includegraphics[width=.35\textwidth]{mock/SafeStreetsApplication/1.Welcome.png}} \quad \quad
+				\subfloat[][\emph{Application Home Page. The two main function are shown to the user.}]
+				{\includegraphics[width=.35\textwidth]{mock/SafeStreetsApplication/2.Home.png}} \\
+				\clearpage
+				\subfloat[][\emph{Violation Reporting: Take Picture}]
+				{\includegraphics[width=.35\textwidth]{mock/SafeStreetsApplication/4.TakePhoto.png}} \quad \quad
+				\subfloat[][\emph{Violation Reporting: Metadata acquired from picture + Violation Type selection}]
+				{\includegraphics[width=.35\textwidth]{mock/SafeStreetsApplication/5.ReportViolation.png}} \\
+	
+				\caption{SafeStreets application interfaces}
+				\label{fig:app_interfaces}
+			\end{figure}
+
+			
+			\begin{figure}
+				\centering
+				\subfloat[][\emph{Data Mining: browse map}]
+				{\includegraphics[width=.35\textwidth]{mock/SafeStreetsApplication/3.Search.png}} \quad \quad
+				\subfloat[][\emph{Data Mining: side menu filters}]
+				{\includegraphics[width=.35\textwidth]{mock/SafeStreetsApplication/3b.sideMenuFilters.png}} \\			
+				\caption{SafeStreets application interfaces}
+				\label{fig:app_interfaces2}
+			\end{figure}
+
+		
+			\begin{figure}
+				\centering
+				\subfloat[][\emph{Welcome page, starting the AE system}]
+				{\includegraphics[width=.90\textwidth]{mock/SafeStreetsAE/1.Welcome.png}} \quad \quad
+				\subfloat[][\emph{Home Page}]
+				{\includegraphics[width=.90\textwidth]{mock/SafeStreetsAE/2.Menu.png}} \\			
+				\caption{SafeStreets Authority Edition interfaces}
+				\label{fig:AE_interfaces}
+			\end{figure}
+
+			\begin{figure}
+				\centering
+				\subfloat[][\emph{Report Evaluation}]
+				{\includegraphics[width=.90\textwidth]{mock/SafeStreetsAE/4.ReportEvaluation.png}} \quad \quad
+				\subfloat[][\emph{Data Mining}]
+				{\includegraphics[width=.90\textwidth]{mock/SafeStreetsAE/3.Search.png}} \\			
+				\caption{SafeStreets Authority Edition interfaces}
+				\label{fig:AE_interfaces2}
+			\end{figure}
+
+		
+			\begin{figure}
+			\centering
+			\subfloat[][\emph{Accident Collector}]
+			{\includegraphics[width=.90\textwidth]{mock/SafeStreetsAE/5.AccidentCollector.png}} \quad \quad
+			\subfloat[][\emph{Interactive Suggestions}]
+			{\includegraphics[width=.90\textwidth]{mock/SafeStreetsAE/6.InteractiveSuggestions.png}} \\			
+			\caption{SafeStreets Authority Edition interfaces}
+			\label{fig:AE_interfaces2}
+		\end{figure}
+
+			
+			
 			\subsubsection{Hardware Interfaces} \label{hardware_interfaces}
 				Since SafeStreets is a crowd-sourced application, each user could take advantage of the system only if it has a smartphone. In particular, the smartphone must have an external camera, GPS and an internet connection.
 				Without the camera or the GPS, it is not possible to report violations. Without an internet connection, every SafeStreets function isn't available.
@@ -395,7 +459,7 @@
 				\end{enumerate}
 				\textbf{Exit conditions}:
 				\begin{itemize}
-					\item The user can always leave the violation reporting function clicking on the "Exit" button. In this way, he returns to the main page of the app.
+					\item The user can always leave the violation reporting function clicking on the "Back" button. In this way, he returns to the main page of the app.
 					\item Click "Send" to complete the violation reporting. The app returns to the main page.
 				\end{itemize}
 				\textbf{Exceptions}:
@@ -430,7 +494,7 @@
 				\end{enumerate}
 				\textbf{Exit conditions}:
 				\begin{itemize}
-					\item Either user or authority can always leave the "Search" function clicking on the "Exit" button. In this way, they return to the main page of the app.
+					\item Either user or authority can always leave the "Search" function clicking on the "Back" button. In this way, they return to the main page of the app.
 				\end{itemize}
 				\textbf{Exceptions}: -\\
 				
@@ -447,11 +511,11 @@
 				\end{enumerate}
 				\textbf{Event flow}:
 				\begin{enumerate}
-					\item Define requested fields: type of accident, offender's license plate, address of the accident, date of the accident.
+					\item Compile requested fields: type of accident, offenders' license plate (separated by a semicolon), address of the accident, date of the accident.
 				\end{enumerate}
 				\textbf{Exit conditions}:
 				\begin{itemize}
-					\item The authority can always leave the accident collector function clicking on the "Exit" button. In this way, it returns to the main page of the app.
+					\item The authority can always leave the accident collector function clicking on the "Back" button. In this way, it returns to the main page of the app.
 					\item Click "Send" to complete the accident compilation form. SafeStreets AE returns to the main page.
 				\end{itemize}
 				\textbf{Exceptions}:
@@ -477,7 +541,7 @@
 				\end{enumerate}
 				\textbf{Exit conditions}:
 				\begin{itemize}
-				   \item The authority can always leave the accident collector function clicking on the "Exit" button. In this way, it returns to the main page of SafeStreets AE.
+				   \item The authority can always leave the accident collector function clicking on the "Back" button. In this way, it returns to the main page of SafeStreets AE.
 				\end{itemize}
 				\textbf{Exceptions}: -\\
 				
@@ -494,12 +558,12 @@
 				\end{enumerate}
 				\textbf{Event flow}:
 				\begin{enumerate}
-					\item If there is at least one report to evaluate, the app shows all the information about the report. Choose between the buttons "Confirm" and "Discard". Their meaning is straightforward.
+					\item If there is at least one report to evaluate, the app shows all the information about the report. Choose between the buttons "Confirmed" and "Not valid". Their meaning is straightforward.
 				\end{enumerate}
 				\textbf{Exit conditions}:
 				\begin{itemize}
 					\item Click on the chosen button. If there is another violation report to evaluate, the event flow restarts. Otherwise, SafeStreets AE returns to the main page. Remember that SafeStreets considers every confirmed violation report as a given traffic ticket.
-					\item The authority can always leave the violation report confirmation function clicking on the "Exit" button. In this way, it returns to the main page of SafeStreets AE.
+					\item The authority can always leave the violation report confirmation function clicking on the "Back" button. In this way, it returns to the main page of SafeStreets AE.
 				\end{itemize}
 				\textbf{Exceptions}: -\\
 				
@@ -694,59 +758,8 @@
 		
 	\newpage
 	\section{Effort spent}
-		\begin{table}[h]
-		\centering
-		\begin{tabular}{l c}
-			\hline\hline
-			\multicolumn{2}{c}{\textbf{Team Work}} \\
-			\hline
-			\textbf{Task} & \textbf{Hours} \\ [0.5ex]
-			\hline
-			Understanding the problem & 2  \\
-			Brainstorming & 4 \\
-			Software system attributes & 8 \\
-			\hline
-			\textbf{Total} & 14  \\
-			\hline
-		\end{tabular}
-		\caption{Time spent by all team members}
-		\label{fig:Time spent by all team members}
-	\end{table}
 	
-	\begin{table}[h]
-			\centering
-			\begin{tabular}{l c l c l c}
-				\hline\hline
-				\multicolumn{6}{c}{\textbf{Individual Work}} \\
-				\hline
-				\multicolumn{2}{c |}{\textbf{Nicolò Sala}}  &
-				\multicolumn{2}{c |}{\textbf{Sebastiano Quacquarelli}} &
-				\multicolumn{2}{c}{\textbf{Simone Ricchiuti}}\\
-				\hline
-				\textbf{Task} & \textbf{Hours}
-				& \textbf{Task} & \textbf{Hours}
-				& \textbf{Task} & \textbf{Hours} \\ [0.5ex]
-				\hline
-				%Nicolò								Sebastiano							Simone
-				Constraints & 2						& Definitions & 1					& UC description & 3
-				\\\hline
-				Definitions & 1						& Performance req. & 1				& Design constraints & 1
-				\\\hline
-				UC description & 3					& Domain model & 4					& User characteristics & 1
-				\\\hline
-				Performance req. & 1				& Statechart diagrams & 4			& User interfaces & 4  
-				\\\hline
-				Design constraints & 1				& Assumptions & 2					& Design constraints & 1  
-				\\\hline
-				Alloy & 9							& Activity diagrams & 3				& External Interface  & 1  
-				\\\hline
-				\textbf{Total} & 17					& \textbf{Total} & 19				& \textbf{Total} & 13
-				\\\hline
-			\end{tabular}
-		\caption{Time spent by each team member}
-		\label{fig:Time spent by each team member}
-	\end{table}
-	
+	\newpage
 	\section{References}
 	\begin{itemize}
 		\item "2019-2020 Software Engineering 2 mandatory project: goal, schedules and rules";
