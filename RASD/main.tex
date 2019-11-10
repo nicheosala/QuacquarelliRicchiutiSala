@@ -84,8 +84,8 @@
 				\item Analyzing statistics about traffic violations;
 			\end{itemize}
 			Everyone can simply download the SafeStreets app and can immediately use the user Interface to take advantage of these two main functions.\\
-	    	The first one simply gives the possibility to upload the main details of the traffic violation to report. The only thing that a user knows is that his report will be analysed by an authority if and only if there exists an authority that covers the area where the violation occurred.\\
-	    	The second function helps users to analyse the traffic violation trends in a defined area. These trends are only defined thanks to the reports sent by users to SafeStreets. In addition a user can also apply filters in his analysis such as requesting only confirmed tickets (the ones defined as valid violations by authorities), defining only some kind of traffic violation, restricting research area in a defined time interval and so forth.\\\\
+	    	The first one gives the possibility to upload the main details of the traffic violation to report. The only thing that a user knows is that his report will be analysed by an authority if and only if there exists an authority that covers the area where the violation occurred.\\
+	    	The second function helps users to analyse the traffic violation trends in a defined area. These trends are only defined thanks to the reports sent by users to SafeStreets. In addition a user can also apply filters in his analysis such as requesting only confirmed tickets (the ones defined as valid violations by authorities), specifying only some kind of traffic violation, restricting research area in a defined time interval and so forth.\\\\
 	    	An authority, thanks to the SafeStreets Authority Edition interface, has much more privileges in all SafeStreets system than the ones offered to users.\\
 	    	In fact, an authority is also allowed to use four main functions:
 	    	\begin{itemize}
@@ -95,8 +95,8 @@
 	    		\item Analysing advanced statistics about traffic violations;
 	    	\end{itemize}
     	    The first function gives the possibility to validate the reports sent by users. It is assumed that if an authority validates a report, it is consistent and so the offender will be fined.\\
-    	    The second function allows authorities to enrich SafeStreets' database uploading accidents' details in order to enable the system to activate for them the third function defined below.\\
-    	    The third function combines SafeStreets received reports to the accidents informations to define automatically suggestions in order to reduce accidents. These suggestions are sent, if available, from the SafeStreets system to the Authority Edition interface of the interested authority.
+    	    The second function allows authorities to enrich SafeStreets' database uploading details of accidents in order to enable the system to activate for them the third function defined below.\\
+    	    The third function combines SafeStreets received reports to accidents information to define automatically suggestions in order to reduce accidents. These suggestions are sent, if available, from the SafeStreets system to the Authority Edition interface of the interested authority.
     	    Finally, the last function is the advanced version of the user analysing function. It is a more detailed version of that function according to the fact that authorities are allowed to see all the sensible data of SafeStreets system such as all the license plate related to each report.\\
     		The detailed description of each function is defined in section 2.
     	    
@@ -131,11 +131,11 @@
 					\item \textbf{Operative area}: the geographic area in which an authority retains  control and actually works.
 					\item \textbf{Registered authority}: an authority that decided to participate in SafeStreets initiative and that installed in its head office a particular version of the application that provides some features not available to common users (for example, the possibility to rate the traffic violation reports collected by SafeStreets).
 					\item \textbf{Report image}: it is the image acquired through the SafeStreets app. It is obligatorily associated with a valid report.
-					\item \textbf{Report timeout}: it is the timeout started when Safestreets' app acquires the report image. If the user doesn't complete the completion of the report by the deadline of this timeout, the report is considered invalid.
+					\item \textbf{Report timeout}: it is the timeout started when SafeStreets app acquires the report image. If the user doesn't complete the completion of the report by the deadline of this timeout, the report is considered invalid.
 					\item \textbf{SafeStreets}: it is the crowdfunding app subject of this document.
 					\item \textbf{SafeStreets application}: it is the application used by users, installed on their smartphone.
 					\item \textbf{SafeStreets Authority Edition}: it is the application used by authorities, installed on computers in their station.
-					\item \textbf{SafeStreets Client}: a generic way to point out the SafeStreet application or the SafeStreets Authority Edition.
+					\item \textbf{SafeStreets Client}: a generic way to point out the SafeStreets application or the SafeStreets Authority Edition.
 					\item \textbf{Traffic violation report}: it is the message that SafeStreets collects through its app from users who want to report an alleged violation. It is often abbreviated as "report".
 					\item \textbf{Individual}: A generic user or authority.
 				\end{itemize}
@@ -170,10 +170,10 @@
 			\begin{itemize}
 				\item \textit{Chapter 1} introduces the problem and describes an analysis of the world and of the shared phenomena. Here are included the purpose of SafeStreets application, its goals and some premises are formalized to provide a better understanding of following chapters.
 				\item \textit{Chapter 2} includes further details on the shared phenomena and domain model, specifying which are the most important requirements and who will be a user of the system. Moreover, a formalization of assumptions and constraints is given.
-				\item \textit{Chapter 3} analyzes more deeply all aspects of Chapter 2, providing more details for the development team: in this part, the focus is on requirements.
+				\item \textit{Chapter 3} analyses more deeply all aspects of Chapter 2, providing more details for the development team: in this part, the focus is on requirements.
 				\item \textit{Chapter 4} presents a formal analysis of the problem, using Alloy. Some worlds are generated from the model and assertions are checked.
 				\item \textit{Chapter 5} shows the effort spent by each group member for this project.
-				\item \textit{Chapter 6} simply includes the reference documents.
+				\item \textit{Chapter 6} simply includes the references.
 			\end{itemize}
 	
 	\newpage
@@ -207,7 +207,7 @@
 			\begin{figure}[H]
 				\centering
 				\includegraphics[width=0.5\textwidth]{diagrams/statechart_UserSS.png}
-				\caption[Statechart Diagram1]{Statechart Diagram about user report.}
+				\caption[Statechart Diagram1]{State chart Diagram about user report.}
 				\label{fig:statechart_userReporting}
 			\end{figure}
 			
@@ -229,7 +229,7 @@
 			\begin{figure}[H]
 				\centering
 				\includegraphics {diagrams/statechart_trafficTicket.png}
-				\caption[Statechart Diagram3]{Statechart Diagram about SafeStreets system for traffic tickets generation.}
+				\caption[Statechart Diagram3]{State chart Diagram about SafeStreets system for traffic tickets generation.}
 				\label{fig:statechart_trafficTickets}
 			\end{figure}
 			
@@ -272,19 +272,19 @@
 				\item User: a person that is using SafeStreets app. He is a "guest" because he is not logged in, so no specific information about him are given. He can actively use the first two basic functions so he can send a violation reporting or do data-mining.
 				\item Authority: special kind of user. It is allowed to use the user functions but it has also additional privileges on them such as to visualize more detailed information about reports. In particular, it is a registered identity that is responsible to manage reports addressed to its area of competence.\\
 				An authority can send information about accidents of its area of competence to SafeStreets and can use SafeStreets statistics to identify the most egregious offenders.\\
-		        A kind of authority is the Police, that can use reports to make traffic tickets validating SafeStreets reports.
+		        A kind of authority is the police, that can use reports to make traffic tickets validating SafeStreets reports.
 			\end{itemize}
 		
 		\subsection{Assumptions, dependencies and constraints}	\label{assumptions}
 			This section specifies the assumptions made in the rest of the document, that is those facts that have been considered true a priori and that are not manageable by SafeStreets.
 			\begin{itemize}
-				\assumption{1} The device on which the SafeStreet client is installed has internet access.
+				\assumption{1} The device on which the SafeStreets client is installed has internet access.
 				\assumption{2} The device on which the app is installed has geolocation features.
 				\assumption{3} The device on which the app is installed has an external camera.
 				\assumption{4} The device on which the app is installed is able to detect its position with a maximum error of five meters.
 				\assumption{5} The position detected by the app coincides with the actual position detected by the geolocalizer.
 				\assumption{6} The algorithm used by SafeStreets for reading a license plate from an image reads the correct number plate, if it is present in the image.
-				\assumption{7} The SafeStreets software installed in the offices of the authorities registered with the service can only be used by the authorities themselves: it is not possible for an unauthorized user to gain access to such software.
+				\assumption{7} SafeStreets AE can only be used by the authorities themselves: it is not possible for an unauthorized user to gain access to such software.
 				\assumption{8} Each position on earth can be associated with a unique postal code.
 				\assumption{9} If an authority confirms a violation report, than the authority generates a traffic ticket from it. So, from the point of view of SafeStreets, every confirmed violation report equals to a traffic ticket.
 				\assumption{10} The device on which the SafeStreets Authority Edition is installed is always switched on.
@@ -296,7 +296,7 @@
 		\subsection{External Interfaces Requirements}
 		
 			\subsubsection{User Interfaces}
-		    The following mockups give an approximate idea of how the application’s interfaces should appear. In the fist block main SafeStreets application interfaces are shown. In the second one main SafeStreets Authority Edition interfaces are shown.
+		    The following mockups give an approximate idea of how the interfaces of the application should appear. In the fist block main SafeStreets application interfaces are shown. In the second one main SafeStreets Authority Edition interfaces are shown.
 			
 			\begin{figure}
 				\centering
@@ -396,7 +396,7 @@
 				\goal{2}An individual can mine information about violations.
 				\begin{itemize}
 					\assumption{1} The device on which the SafeStreets client is installed has internet access.
-					\assumption{9} If an authority confirms a violation report, than the authority generates a traffic ticket from it. So, from the point of view of 				SafeStreets, every confirmed violation report equals to a traffic ticket.
+					\assumption{9} If an authority confirms a violation report, than the authority generates a traffic ticket from it. So, from the point of view of SafeStreets, every confirmed violation report equals to a traffic ticket.
 					\requirement{1} The SafeStreets client must be able to communicate with the SafeStreets system.
 					\requirement{2} The internet connection must be active.
 					\requirement{3} The SafeStreets client must show all and only the information required by the individual.
@@ -404,7 +404,7 @@
 				\goal{3}An authority can share its information about accidents occurred on its operative area with SafeStreets.
 				\begin{itemize}
 					\assumption{1} The device on which the SafeStreets client is installed has internet access.
-					\assumption{7} The SafeStreets software installed in the offices of the authorities registered with the service can only be used by the authorities 				themselves: it is not possible for an unauthorized user to gain access to such software.
+					\assumption{7} The SafeStreets software installed in the offices of the authorities registered with the service can only be used by the authorities themselves: it is not possible for an unauthorized user to gain access to such software.
 					\assumption{8} Each position on earth can be associated with a unique postal code.
 					\assumption{10} The device on which the SafeStreets Authority Edition is installed is always switched on.
 				   \requirement{1} The SafeStreets client must be able to communicate with the SafeStreets system.
