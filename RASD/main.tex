@@ -142,6 +142,7 @@
 			\subsubsection{Acronyms}
 				\begin{itemize}
 					\item \textbf{AE} \label{AE}: SafeStreets Authority Edition.
+					\item \textbf{OCR} \label{OCR}: Optical Character Recognition
 				\end{itemize}
 			\subsubsection{Abbreviations}
 				\begin{itemize}
@@ -163,7 +164,7 @@
 				\caption{Revision history}
 				\label{fig:Revision history}
 			\end{table}
-			
+		\clearpage	
 		\subsection{Document Structure}
 			In this part is shown how the document has been divided. For each chapter, is given a short description:
 			\begin{itemize}
@@ -367,8 +368,8 @@
 				\\
 				In order to provide information about traffic violations to users, SafeStreets uses external maps to show where reports come from. SafeStreets gets these maps from OpenStreetMap (\url{https://www.openstreetmap.org}).\\
 				\\
-				Moreover, one of the element to ensure that a report could be formalized is the validation of license plate. SafeStreets takes advantage of an algorithm to automatically recognize characters on license plates.
-				\textbf{TODO} Choose license plate recognizer.
+				Moreover, one of the element to ensure that a report could be formalized is the validation of license plate. SafeStreets takes advantage of an algorithm to automatically recognize characters on license plates (OCR Algorithm).
+				
 				
 			\subsubsection{Communication Interfaces}
 				Each function provided by SafeStreets needs an Internet connection.
@@ -794,17 +795,17 @@
 			%Nicolò								Sebastiano							Simone
 			Constraints & 2						& Definitions & 1					& UC description & 3
 			\\\hline
-			Definitions & 1						& Performance req. & 1				& Design constraints & 1
+			Definitions & 1						& User interfaces. & 5				& Design constraints & 1
 			\\\hline
 			UC description & 3					& Domain model & 4					& User characteristics & 1
 			\\\hline
-			Performance req. & 1				& Statechart diagrams & 4			& User interfaces & 4  
+			Performance req. & 1				& UC descr./diagrams & 4			& Activity diagrams & 2  
 			\\\hline
 			Design constraints & 1				& Assumptions & 2					& Design constraints & 1  
 			\\\hline
-			Alloy & 9							& Activity diagrams & 3				& External Interface  & 1  
+			Alloy & 9							& Sequence diagrams & 2				& Product functions  & 3  
 			\\\hline
-			\textbf{Total} & 17					& \textbf{Total} & 19				& \textbf{Total} & 13
+			\textbf{Total} & 17					& \textbf{Total} & 18				& \textbf{Total} & 11
 			\\\hline
 		\end{tabular}
 		\caption{Time spent by each team member}
