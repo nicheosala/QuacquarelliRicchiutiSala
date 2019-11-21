@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[super,negative]{nth}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{color, soulutf8}
+\usepackage{graphicx}
+\usepackage{grffile}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=black,      
+	urlcolor=black,
+}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\newcommand\goal[1]{\item[{[G#1]}] }
+\newcommand\requirement[1]{\item[{[R#1]}] }
+\newcommand\assumption[1]{\item[{[A#1]}] }
+\newcommand\usecase[1]{ [UC#1] }
+
+\begin{document}
+	\begin{titlepage}
+		
+		\centering
+		\vspace*{0.7 cm}
+		\includegraphics[scale = 0.7]{images/PolimiLogo.png}\\[1 cm]
+		\textsc{\large Dipartimento di Elettronica, Informazione e Bioingegneria}\\[2 cm]
+		
+		\rule{\linewidth}{0.2 mm} \\[0.5 cm]
+		{\huge \bfseries Design Document (DD)}\\
+		\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+		
+		\textsc{\Large SafeStreets}\\[0.5 cm]
+		\textsc{\large - v1.0 -}\\[1 cm]
+		
+		\begin{minipage}{\textwidth}
+			\begin{flushleft} \large
+				\emph{Authors:}\\
+				\textbf{Quacquarelli} Sebastiano \hfill 945071 \\
+				\textbf{Ricchiuti} Simone \hfill 945613  \\
+				\textbf{Sala} Nicolò \hfill 945898  \\[2 cm]
+			\end{flushleft}
+		\end{minipage}\\[2 cm]
+		
+		{\large December \nth{9} , 2019}\\[2 cm]
+		
+	\end{titlepage}
+	
+	\pagenumbering{roman}
+	\tableofcontents
+	
+	\section{Introduction}
+		\subsection{Context}
+		\subsection{Purpose}
+		\subsection{Scope}
+		\subsection{Definitions, Acronyms, Abbreviations}
+			\subsubsection{Definitions}
+			\subsubsection{Acronyms}
+			\subsubsection{Abbreviations}
+		\subsection{Revision history}
+		\subsection{Reference history}
+		\subsection{Document structure}
+	\section{Architectural design}
+		\subsection{Overview}
+		\subsection{Component view}
+		\subsection{Deployment	view}
+		\subsection{Runtime	view}
+		\subsection{Component interfaces}
+		\subsection{Selected architectural styles and patterns}
+		\subsection{Other design decision}
+	\section{User Interface Design}
+	\section{Requirements Traceability}
+	\section{Implementation, integratin and test plan}
+	\section{Effort Spent}
+	\section{References}
+	
+	
+		
+
+
+	
+	\clearpage
+	\newpage
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	
+\end{document}
