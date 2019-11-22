@@ -96,7 +96,17 @@
 			\end{itemize}
 	\section{Architectural design}
 		\subsection{Overview}
+		\newpage
 		\subsection{Component view}
+		Figure \ref{fig:component_diagram} represents all the components of SafeStreets ecosystem: SafeStreets App, SafeStreets AE (Authority Edition), SafeStreets Server and the database.\\
+		The clients, so SafeStrees app and SafeStreetsAE, are not thin: they include part of the application logic. For example, the server receives violation reports the has already been validated by the app.
+		\begin{figure}[H]
+			\centering
+			\includegraphics {diagrams/component_diagram.png}
+			\caption[Component diagram]{Component diagram}
+			\label{fig:component_diagram}
+		\end{figure}
+		
 		\subsection{Deployment	view}
 		\subsection{Runtime	view}
 		\subsection{Component interfaces}
@@ -186,7 +196,7 @@
 		\begin{itemize}
 			\item "2019-2020 Software Engineering 2 mandatory project: goal, schedules and rules";
 			\item TeXstudio (\url{https://www.texstudio.org}) to edit the LaTeX document;
-			\item Visual Paradigm CE (\url{https://www.visual-paradigm.com/}) to create UML diagrams.
+			\item Visual Paradigm CE (\url{https://www.visual-paradigm.com/}) to create UML and ArchiMate diagrams.
 		\end{itemize} 
 	
 \end{document}
