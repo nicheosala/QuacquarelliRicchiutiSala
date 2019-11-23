@@ -159,7 +159,11 @@
 			\includegraphics [scale=0.5] {diagrams/High-level.png}
 			\caption[High-Level Layers]{High-Level layers}
 			\label{fig:hlayers}
-		\end{figure}		 
+		\end{figure}
+		In figure \ref{fig:hlayers}	are defined three software logic layers on which the system is defined. \\
+		The \textit{Individuals Layer} includes the two different kind of applications used by individuals. The distinction between applications is made because the two different implementation include different functionalities and, eventually, a different kind of interaction with the server with respect to the granularity of informations exchanged between them. \\
+		The \textit{Server Layer} contains all the managerial components to interact correctly with individuals. It is also important as a security step. Indeed, individuals never communicate with the DBMS, that contains sensitive informations. They have to make requests to server and it manage them forwarding data requests to the DBMS. \\
+		The \textit{Data Layer} is simply defined only by the data management system, that collects and execute queries from relational databases.
 		\clearpage
 		\subsection{Component view}
 		Figure \ref{fig:component_diagram} represents all the components of SafeStreets ecosystem: SafeStreets App, SafeStreets AE (Authority Edition), SafeStreets Server and the database.\\
