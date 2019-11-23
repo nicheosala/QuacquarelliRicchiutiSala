@@ -65,11 +65,53 @@
 	
 	\section{Introduction}
 		\subsection{Purpose}
+		The main aspects of SafeStreets system are presented in the RASD document (see References section). The purpose of this document is to describe in a more detailed way the technical aspects regarding architectural and design choices for SafeStreets components.\\\\
+		More precisely, the document presents:
+		\begin{itemize}
+			\item Overview of the high level architecture;
+			\item The main components, their interfaces; 
+			\item The runtime behavior; 
+			\item The design patterns;
+			\item Additional details about user interface;
+			\item A mapping of the requirements on the architecture's components;
+			\item Implementation, integration and testing plan;
+		\end{itemize}
 		\subsection{Scope}
+		In this section is shortly summarised what is already defined in a more detailed way in the \textit{Scope} section of the RASD document. \\
+		SafeStreets's scope is to give the opportunity to report traffic violations by users and eventually to manage them by the competent authority in an easy way. Basically users can simply open the SafeStreets Application on their smartphones and immediately take a picture of the traffic violation to report. Including a few more other informations, such as selecting the type of violation, the report is done and is ready to be sent to SafeStreets system.\\ On the other hand, authorities in collaboration with SafeStreets, collect all the received reports and can check them on their SafeStreets Authority Edition (desktop dedicated application).\\ Valuating reports, authorities can eventually define them consistent or not and, if consistent valuated, they fine the offender reported.\\
+		These ones are the basic functionalities offered by SafeStreets but also other ones are offered to individuals:
+		\begin{itemize}
+			\item Users can browse the map to know statistics about traffic violations sent to SafeStreets and their status (confirmed or not by authorities);
+			\item Authorities can browse map such as users but including access also to sensitive informations such as license plates included in reports;
+			\item Authorities can access to advanced statistics such as filtering results to return the most egregious offender;
+			\item Authorities can also send to SafeSteets system accident information in order to enrich SafeStreets' database. It is important becouse authorities can receive suggestions from SafeStreets system to improve the security of streets according to violations and accidents occurred in a defined area.
+		\end{itemize}
 		\subsection{Definitions, Acronyms, Abbreviations}
-			\subsubsection{Definitions}
-			\subsubsection{Acronyms}
-			\subsubsection{Abbreviations}
+		\subsubsection{Definitions}
+		\begin{itemize}
+			\item \textbf{Operative area}: the geographic area in which an authority retains  control and actually works.
+			\item \textbf{Registered authority}: an authority that decided to participate in SafeStreets initiative and that installed in its head office a particular version of the application that provides some features not available to common users (for example, the possibility to rate the traffic violation reports collected by SafeStreets).
+			\item \textbf{Report image}: it is the image acquired through the SafeStreets app. It is obligatorily associated with a valid report.
+			\item \textbf{Report timeout}: it is the timeout started when SafeStreets app acquires the report image. If the user doesn't complete the completion of the report by the deadline of this timeout, the report is considered invalid.
+			\item \textbf{SafeStreets}: it is the crowdfunding app subject of this document.
+			\item \textbf{SafeStreets application}: it is the application used by users, installed on their smartphone.
+			\item \textbf{SafeStreets Authority Edition}: it is the application used by authorities, installed on computers in their station.
+			\item \textbf{SafeStreets Client}: a generic way to point out the SafeStreets application or the SafeStreets Authority Edition.
+			\item \textbf{Traffic violation report}: it is the message that SafeStreets collects through its app from users who want to report an alleged violation. It is often abbreviated as "report".
+			\item \textbf{Individual}: A generic user or authority.
+		\end{itemize}
+		\subsubsection{Acronyms}
+		\begin{itemize}
+			\item \textbf{AE} \label{AE}: SafeStreets Authority Edition.
+			\item \textbf{OCR} \label{OCR}: Optical Character Recognition
+		\end{itemize}
+		\subsubsection{Abbreviations}
+		\begin{itemize}
+			\item {[Gn]}: n\textsuperscript{th} goal.
+			\item {[Rn]}: n\textsuperscript{th} functional requirement.
+			\item {[An]}: n\textsuperscript{th} domain assumption.
+			\item {[UCn]}: n\textsuperscript{th} use case.
+		\end{itemize}
 		\subsection{Revision history}
 			\begin{table}[h]
 				\centering
@@ -86,12 +128,20 @@
 		\subsection{Document structure}
 			In this part is shown how the document has been divided. For each chapter, is given a short description:
 			\begin{itemize}
-				\item \textit{Chapter 1} 
-				\item \textit{Chapter 2} 
-				\item \textit{Chapter 3} 
-				\item \textit{Chapter 4} 
-				\item \textit{Chapter 5} 
-				\item \textit{Chapter 6} 
+				\item \textit{Chapter 1} gives an introduction of the design document. It contains the purpose of the document and the scope of the SafeStreets system, as well as some abbreviation in order to provide a better understanding of the document to the reader.
+				\item \textit{Chapter 2} is the core section of the design document and it deals with the architectural design of the application. It gives an overview of the architecture and it also contains the most relevant architecture views: 
+				\begin{itemize}
+					\item High-‐level components and their interactions;
+					\item Component view;
+					\item Class view;
+					\item Deployment view;
+					\item Runtime view. 
+				\end{itemize}
+			  	Some of the used architectural designs and designs patterns are also presented here, with an explanation of each one of them and the purpose of their usage.				
+				\item \textit{Chapter 3} refers to the mock-ups already presented in the RASD document including some more detailed versions of them such as interaction diagrams.
+				\item \textit{Chapter 4} explains how the requirements that have been deﬁned in the RASD are assigned to the design elements deﬁned in this document.
+				\item \textit{Chapter 5} presents the implementation, integration and test plan. It includes the how the different components of the application are integrated with each other, how they react and the testing strategy.				
+				\item \textit{Chapter 6}  shows the effort spent by each group member while working on this document.
 				\item \textit{Chapter 7} simply includes the references.
 			\end{itemize}
 	\section{Architectural design}
