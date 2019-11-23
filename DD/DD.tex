@@ -181,22 +181,31 @@
 		\subsection{Other design decision}
 	\clearpage	
 	\section{User Interface Design}
-	To give an approximate idea of how the interfaces of the application should appear, some mockups, both for SafeStreets Application and SafeStreets AE, have been given in \href{run:d:../DeliveryFolder/RASD1.pdf}{RASD} [Section 3.1.1].\\ 
-	In order to express the relations among pictures RASD [3.1.1], here it will be illustrated a pair of UX Diagrams.
+		To give an approximate idea of how the interfaces of the application should appear, some mockups, both for SafeStreets Application and SafeStreets AE, have been given in \href{run:d:../DeliveryFolder/RASD1.pdf}{RASD} [Section 3.1.1].\\ 
+		In order to express the relations among pictures in RASD [3.1.1], here it will be illustrated a pair of UX Diagrams.
+		\\\\\\
+		Functionalities have been represented with different colours, while "Welcome Screen" and "Main Menu" (in purple) are basically the first graphical approach to the app, in particular "Main Menu" contains the menu voices at its right.
+		Each functionality has an own sub-flow: black dotted lines represent optional navigation from a screen to another one; blue dotted lines simply refers to the possibility to go back through screens until "Main Menu" is reached.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{diagrams/UXSafeStreetsApp.png}
+			\caption[User Experience diagram for SafeStreets App]{User Experience diagram for SafeStreets App}
+			\label{fig:UX_SSApp}
+		\end{figure}
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1\textwidth]{diagrams/UXSafeStreetsApp.png}
-		\caption[User Experience diagram for SafeStreets App]{User Experience diagram for SafeStreets App}
-		\label{fig:UX_SSApp}
-	\end{figure}
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1\textwidth]{diagrams/UXSafeStreetsAE.png}
-		\caption[User Experience diagram for SafeStreets AE]{User Experience diagram for SafeStreets AE}
-		\label{fig:UX_SSAE}
-	\end{figure}
+		Figure \ref{fig:UX_SSApp} shows the possibilities given to users, in order to navigate in SafeStreets application. A user can, for instance, select the "Search Menu" to browse all traffic violations reported in an area, showed in a map and listed together in a list.
+		Moreover, optionally, a user can improve its research swiping right a side menu in which he can select some filters: the result of research filtered will be shown as the previous modalities, i.e. in the map with a list.
+	
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{diagrams/UXSafeStreetsAE.png}
+			\caption[User Experience diagram for SafeStreets AE]{User Experience diagram for SafeStreets AE}
+			\label{fig:UX_SSAE}
+		\end{figure}
+	
+		Figure \ref{fig:UX_SSAE} is the user interface flow, designed for authorities who use SafeStreets AE.\\
+		Similarly as in figure \ref{fig:UX_SSApp}, here is shown how authorities can explore the offered features. In particular, there's an optional flow which jumps from a result of a research to the "Evaluation" functionality: when an authority browse in a map (using "Search Menu") all traffic violations reported, it can both read information about a particular report and go to evaluation of the same report if and only if its state is pending. In this case, authorities can immediately decide if a report is correct or not valid.
 		
 	\clearpage	
 	\section{Requirements Traceability}
@@ -213,11 +222,10 @@
 				\hline
 				\textbf{Task} & \textbf{Hours} \\ [0.5ex]
 				\hline
-				Understanding the problem & 2  \\
-				Brainstorming & 4 \\
-				Software system attributes & 8 \\
+				Architectural design & 2  \\
+				
 				\hline
-				\textbf{Total} & 14  \\
+				\textbf{Total} & 2  \\
 				\hline
 			\end{tabular}
 			\caption{Time spent by all team members}
@@ -239,19 +247,19 @@
 				& \textbf{Task} & \textbf{Hours} \\ [0.5ex]
 				\hline
 				%Nicolò								Sebastiano							Simone
-				Constraints & 2						& Definitions & 1					& Introduction & 4
+				Constraints & 2						& User Interface Design & 3					& Introduction & 4
 				\\\hline
-				Definitions & 1						& User interfaces. & 5				& Product functions  & 4
+				Definitions & 1						&  & 				& Product functions  & 4
 				\\\hline
-				UC description & 3					& Domain model & 4				    & User characteristics  & 0.5 
+				UC description & 3					&  & 				    & User characteristics  & 0.5 
 				\\\hline
-				Performance req. & 1				& UC descr./diagrams & 4			& Functional req & 2 
+				Performance req. & 1				&  & 			& Functional req & 2 
 				\\\hline
-				Design constraints & 1				& Assumptions & 2					& UC description & 3  
+				Design constraints & 1				&  & 					& UC description & 3  
 				\\\hline
-				Alloy & 9							& Sequence diagrams & 2				& Activity Diagrams  & 2  
+				Alloy & 9							&  & 				& Activity Diagrams  & 2  
 				\\\hline
-				\textbf{Total} & 17					& \textbf{Total} & 18				& \textbf{Total} & 15.5
+				\textbf{Total} & 17					& \textbf{Total} & 3				& \textbf{Total} & 15.5
 				\\\hline
 			\end{tabular}
 			\caption{Time spent by each team member}
