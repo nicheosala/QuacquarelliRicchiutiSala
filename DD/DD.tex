@@ -146,7 +146,21 @@
 			\end{itemize}
 	\section{Architectural design}
 		\subsection{Overview}
-		\newpage
+		In this section is defined the high-level architecture of SafeStreets' system. \\ 
+		Figure \ref{fig:hinteraction_diagram} represents the high level interaction between the main parts of SafeStreets' structure.
+		\begin{figure}[H]
+			\includegraphics [scale=0.5] {diagrams/high-interaction.png}
+			\caption[High-Level Interaction]{High-Level Interaction diagram}
+			\label{fig:hinteraction_diagram}
+		\end{figure}
+		The figure describes how individuals interact with SafeStreets. Only one user is represented on the left and only one authority on the right, but this is only made to define clearly interactions. The real system is actually composed by multiple individuals.\\
+		Basically everyone can download the SafeStreets application on his smartphone and can be an \textit{user}. On the other hand the Authority Edition is distributed by SafeStreets only to certificated \textit{authorities} that wants to collaborate with it. 
+		\begin{figure}[H]
+			\includegraphics [scale=0.5] {diagrams/High-level.png}
+			\caption[High-Level Layers]{High-Level layers}
+			\label{fig:hlayers}
+		\end{figure}		 
+		\clearpage
 		\subsection{Component view}
 		Figure \ref{fig:component_diagram} represents all the components of SafeStreets ecosystem: SafeStreets App, SafeStreets AE (Authority Edition), SafeStreets Server and the database.\\
 		The clients, so SafeStrees app and SafeStreetsAE, are not thin: they include part of the application logic. For example, the server receives violation reports the has already been validated by the app.
