@@ -70,7 +70,7 @@
 		\begin{itemize}
 			\item Overview of the high level architecture;
 			\item The main components, their interfaces; 
-			\item The runtime behavior; 
+			\item The runtime behaviour; 
 			\item The design patterns;
 			\item Additional details about user interface;
 			\item A mapping of the requirements on the architecture's components;
@@ -164,17 +164,61 @@
 		The \textit{Individuals Layer} includes the two different kind of applications used by individuals. The distinction between applications is made because the two different implementation include different functionalities and, eventually, a different kind of interaction with the server with respect to the granularity of informations exchanged between them. \\
 		The \textit{Server Layer} contains all the managerial components to interact correctly with individuals. It is also important as a security step. Indeed, individuals never communicate with the DBMS, that contains sensitive informations. They have to make requests to server and it manage them forwarding data requests to the DBMS. \\
 		The \textit{Data Layer} is simply defined only by the data management system, that collects and execute queries from relational databases.
+		
 		\clearpage
 		\subsection{Component view}
-		Figure \ref{fig:component_diagram} represents all the components of SafeStreets ecosystem: SafeStreets App, SafeStreets AE (Authority Edition), SafeStreets Server and the database.\\
-		The clients, so SafeStrees app and SafeStreetsAE, are not thin: they include part of the application logic. For example, the server receives violation reports the has already been validated by the app.
+		Figure \ref{fig:component_diagram} represents all the components of SafeStreets ecosystem.\\
+		The diagram focuses on the applicative layer: the view layer is described in the section "User interfaces" of the RASD.\\
+		The diagram underlines that the clients, SafeStreets app and SafeStreets AE, are not thin: they include part of the application logic.\\
+		
 		\begin{figure}[H]
-			\includegraphics [scale=0.65] {diagrams/component_diagram.png}
+			\includegraphics [scale=0.8] {diagrams/component_diagram.png}
 			\caption[Component diagram]{Component diagram}
 			\label{fig:component_diagram}
 		\end{figure}
 		
-		\subsection{Deployment	view}
+		\clearpage
+		For each component of each node, a description of its role is given.
+		
+		\subsubsection{SafeStreets App components}
+		\begin{itemize}
+			\item \textbf{Violation report manager}\\
+			It deals with the management of a request for a violation report. First of all, it manages the acquisition of the reporting image: it automatically retrieves information about date, time and position. Afterwards, it forwards the image to the license plate recognition algorithm (OCR). If the algorithm returns a valid license plate and the user confirms the request by the deadline of the reporting timeout, then the violation report manager sends such report to the SafeStreets Server through the "violation report" interface.
+			\item \textbf{User data-mining}\\
+			This component provides data mining and statistical survey capabilities to SafeStreets app. Remember that SafeStreets App doesn't receive information considered private from the server, in particular it doesn't receive the license plates associated to violations or accidents. The component retrieves information from the server through the "anonymous data" interface.
+			\item \textbf{OCR}\\
+			This is the software used in order to retrieve a valid license plate from the reporting image. When it receives an image from the violation report manager, it looks for a valid license plate into the image, then returns an error message or the license plate found.
+			\item \textbf{Timeout manager}\\
+			It manages the report timeout. When the user starts a new violation report request, a timeout starts: if the timeout ends, the timeout manager sends a message to the violation report manager in order to cancel the current violation report request.
+		\end{itemize}
+		\subsubsection{SafeStreets AE components}
+		\begin{itemize}
+			\item \textbf{Violation report evaluator}\\
+			This component receives violation reports from the server, via the "violation report evaluation" interface. After that, it manages the evaluation of the same by the authority. Once the evaluation has taken place, the violation report evaluator sends the result to the server through the aforementioned interface.
+			\item \textbf{Authority data-mining}\\
+			This component provides data mining and statistical survey capabilities to SafeStreets AE. Remember that SafeStreets AE can also retrieve information about the license plates linked to accidents and violations. The component retrieves information from the server through the "complete data" interface.
+			\item \textbf{Suggestion receiver}\\
+			It waits for suggestions from the SafeStreets Server, listening the "suggestion" interface. Then it forwards the information to the view and stores the received suggestion into a database, which is not shown into the component diagram because its role is not very relevant.
+			\item \textbf{Accident manager}\\
+			It manages the forwarding of incident-related information from an authority to SafeStreets Server. It ensures that the reporting of the accident is accompanied by all the data deemed necessary (see RASD, 3.2.1 for more details), after which it forwards the same to the server through the "accident" interface.
+		\end{itemize}
+		\subsubsection{SafeStreets Server components}
+		\begin{itemize}
+			\item \textbf{Violation report router}\\
+			It passes violation reports received from users to the database. Also, it routes them to the authorities through the "violation report evaluation" interface, so they can be evaluated. The router follows a precise routing policy: it reads the position associated with the violation report, after which it consults the authority database: if there is an authority with has "municipal" jurisdiction for that area, the report is forwarded to it. Otherwise, an authority with "provincial" competence is sought for that area. If this is not the case, an authority with "state" jurisdiction is sought. If no authority can handle the validation of the report, it is not forwarded to any authority.
+			\item \textbf{Data-mining manager}\\
+			This component handles data requests from SafeStreets clients. In particular, it deals with extracting the data requested from the SafeStreets database, through the DB manager, filtering such data according to the authorizations of visibility available to the applicant. If the applicant is an authority, it can view all the data; if you are a user, the license and image information is deleted before sending it through the "anonymous data" interface.
+			\item \textbf{Suggestion generator}\\
+			When SafeStreets Server receives a new confirmation of violation or a new incident report, it is also received by this component, which compares the newly obtained data with those already saved in the database. Depending on a table of which it is available, it can generate advice to be sent to the authorities in order to avoid the repetition of certain dangerous situations, through the "suggestions" interface.
+			\item \textbf{Accident collector}\\
+			This component listens for new incident reports through the "accident" interface. The correctness of these reports has already been confirmed by SafeStreets AE, so it is only necessary to send the new data to the DB manager, so that they are saved in the database.
+			\item \textbf{DB manager}\\
+			It manages the interaction between SafeStreets Server and SafeStreets Database. All the components of the server that wants to interact with the database has to pass through this component. This means that in the event of updates to the structure or operation of the database, only the DB manager may need to be updated, guaranteeing better independence between the server and the database.
+		\end{itemize}
+		\subsubsection{SafeStreets Database components}
+		The database stores all the information used by SafeStreets ecosystem. It is composed by three sub-databases, whose role can easily be understood from their name: \textbf{Violation report DB}, \textbf{Accident DB} and \textbf{Authority DB}.
+		
+		\subsection{Deployment view}
 		\subsection{Runtime	view}
 		\subsection{Component interfaces}
 		\subsection{Selected architectural styles and patterns}
