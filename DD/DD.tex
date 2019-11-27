@@ -223,7 +223,7 @@
 		
 		\clearpage
 		\subsection{Component interfaces}
-		This section describes the methods exposed by each interface that allows the communication between SafeStreets server and clients. They are shown in the component diagram of figure \ref{fig:component_diagram}.\\
+		This section describes the methods exposed by each interface that allows the communication between SafeStreets server and clients. These interfaces were already shown briefly in the component diagram of figure \ref{fig:component_diagram}.\\
 		The information exchanged through these interfaces are standardized with respect to the following class diagram.\\
 		\begin{figure}[H]
 			\includegraphics {diagrams/class_diagram.png}
@@ -232,7 +232,107 @@
 		\end{figure}
 		The class diagram represents only the classes considered fundamental to understand the operation of SafeStreets. In any case, the classes referred to without providing an explicit declaration - for example the "LicensePlate" class - have a name that effectively expresses their meaning.\\
 		\\
-		A list of interfaces follows. For each interface, all the methods it displays are pointed out. For each method, the necessary input parameters and outputs are indicated.\\
+		A list of the interfaces follows. For each interface, all the methods it displays are pointed out. For each method, the necessary input parameters and outputs are indicated.\\
+		Every interface is exposed by the server to the clients. Therefore, the names of the methods have been chosen from the point of view of the server.\\
+		\begin{itemize}
+			\item \textbf{Anonymous data}\\
+				Opportunely combining calls to the following two methods, SafeStreets App can retrieve all the information then used to do data-mining or to show statistics. Notice that SafeStreets App will receive information that doesn't include images or license plates, so it is not possible, being useless, to specify these parameters in the method calls.
+				\begin{itemize}
+					\item{getCompleteViolationReports}\\\\
+					\begin{tabular}{l | l}
+						\textbf{Input} & \textbf{Output}\\
+						\hline
+						positions: Set(Position) & requestedViolationReports: Set(ViolationReport) \\
+						dates: Set(Date) &\\
+						times: Set(Time) &\\
+						types: Set(TypeOfViolation) &\\
+						onlyConfirmed: Boolean &\\
+					\end{tabular}\\
+					\item{getCompleteAccidents}\\\\
+					\begin{tabular}{l | l}
+						\textbf{Input} & \textbf{Output}\\
+						\hline
+						positions: set(Position) & requestedAccidents: Set(Accident) \\
+						dates: set(Date) &\\
+						times: set(Time) &\\
+						types: Set(TypeOfAccident) &\\
+					\end{tabular}\\
+				\end{itemize}
+			\item \textbf{Violation report}\\
+				This interface exposes only one method that SafeStreets App uses to send a new violation report to the server. The correctness and the completeness of the violation report has already been checked by the app, so the server doesn't have to check it again and to return something as output.
+				\begin{itemize}
+					\item{receiveViolationReport}\\\\
+					\begin{tabular}{l | l}
+						\textbf{Input} & \textbf{Output}\\
+						\hline
+						newViolationReport: ViolationReport & void\\
+					\end{tabular}\\
+				\end{itemize}
+			\item \textbf{Complete data}\\
+				Combining calls to the following methods, SafeStreets AE can retrieve all the information used to do data-mining or show statistics to authorities. The information received also contains license plates and images.
+				\begin{itemize}
+					\item{getCompleteViolationReports}\\\\
+					\begin{tabular}{l | l}
+						\textbf{Input} & \textbf{Output}\\
+						\hline
+						positions: Set(Position) & requestedViolationReports: Set(ViolationReport) \\
+						dates: Set(Date) &\\
+						times: Set(Time) &\\
+						types: Set(TypeOfViolation) &\\
+						licencePlates: Set(LicensePlate)&\\
+						onlyConfirmed: Boolean &\\
+					\end{tabular}\\
+					\item{getCompleteAccidents}\\\\
+					\begin{tabular}{l | l}
+						\textbf{Input} & \textbf{Output}\\
+						\hline
+						positions: set(Position) & requestedAccidents: Set(Accident) \\
+						dates: set(Date) &\\
+						times: set(Time) &\\
+						licensePlates: set(LicensePlate)&\\
+						types: Set(TypeOfAccident) &\\
+					\end{tabular}\\
+				\end{itemize}
+			\item \textbf{Violation report evaluation}\\
+				The interface is used to send violation reports to evaluate to an authority, and also by the authority to send the result of an evaluation.
+				\begin{itemize}
+					\item{sendViolationReportsToEvaluate}\\\\
+					\begin{tabular}{l | l}
+						\textbf{Input} & \textbf{Output}\\
+						\hline
+						destinationAuthority: Authority & void\\
+						ViolationReportTOEvaluate: ViolationReport &\\
+					\end{tabular}\\
+					\item{receiveEvaluation}\\\\
+					\begin{tabular}{l | l}
+						\textbf{Input} & \textbf{Output}\\
+						\hline
+						evaluatedViolationReport: ViolationReport & void\\
+						evaluation: Boolean&\\
+					\end{tabular}\\
+				\end{itemize}
+			\item \textbf{Suggestion}\\
+			This interface is used by SafeStreets Server to send suggestions to authorities.
+				\begin{itemize}
+					\item{sendSuggestions}\\\\
+					\begin{tabular}{l | l}
+						\textbf{Input} & \textbf{Output}\\
+						\hline
+						destinationAuthority: Authority & void\\
+						suggestions: Set(Suggestion)&\\
+					\end{tabular}\\
+				\end{itemize}
+			\item \textbf{Accident}\\
+				This interface is used by an authority to send information about an accident to SafeStreets Server.
+				\begin{itemize}
+					\item{receiveAccidents}\\\\
+					\begin{tabular}{l | l}
+						\textbf{Input} & \textbf{Output}\\
+						\hline
+						newAccident: Accident & void\\
+					\end{tabular}\\
+				\end{itemize}
+		\end{itemize}
 		
 		\subsection{Selected architectural styles and patterns}
 		\subsection{Other design decision}
