@@ -220,7 +220,20 @@
 		
 		\subsection{Deployment view}
 		\subsection{Runtime	view}
+		
+		\clearpage
 		\subsection{Component interfaces}
+		This section describes the methods exposed by each interface that allows the communication between SafeStreets server and clients. They are shown in the component diagram of figure \ref{fig:component_diagram}.\\
+		The information exchanged through these interfaces are standardized with respect to the following class diagram.\\
+		\begin{figure}[H]
+			\includegraphics {diagrams/class_diagram.png}
+			\caption[Class diagram]{Class diagram}
+			\label{fig:class_diagram}
+		\end{figure}
+		The class diagram represents only the classes considered fundamental to understand the operation of SafeStreets. In any case, the classes referred to without providing an explicit declaration - for example the "LicensePlate" class - have a name that effectively expresses their meaning.\\
+		\\
+		A list of interfaces follows. For each interface, all the methods it displays are pointed out. For each method, the necessary input parameters and outputs are indicated.\\
+		
 		\subsection{Selected architectural styles and patterns}
 		\subsection{Other design decision}
 	\clearpage	
