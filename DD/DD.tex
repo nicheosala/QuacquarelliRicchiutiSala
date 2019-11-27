@@ -156,14 +156,14 @@
 		The figure describes how individuals interact with SafeStreets. Only one user is represented on the left and only one authority on the right, but this is only made to define clearly interactions. The real system is actually composed by multiple individuals.\\
 		Basically everyone can download the SafeStreets application on his smartphone and can be an \textit{user}. On the other hand the Authority Edition is distributed by SafeStreets only to certificated \textit{authorities} that wants to collaborate with it. 
 		\begin{figure}[H]
-			\includegraphics [scale=0.5] {diagrams/High-level.png}
+			\includegraphics [scale=0.5] {diagrams/system_overview.png}
 			\caption[High-Level Layers]{High-Level layers}
 			\label{fig:hlayers}
 		\end{figure}
-		In figure \ref{fig:hlayers}	are defined three software logic layers on which the system is defined. \\
-		The \textit{Individuals Layer} includes the two different kind of applications used by individuals. The distinction between applications is made because the two different implementation include different functionalities and, eventually, a different kind of interaction with the server with respect to the granularity of informations exchanged between them. \\
-		The \textit{Server Layer} contains all the managerial components to interact correctly with individuals. It is also important as a security step. Indeed, individuals never communicate with the DBMS, that contains sensitive informations. They have to make requests to server and it manage them forwarding data requests to the DBMS. \\
-		The \textit{Data Layer} is simply defined only by the data management system, that collects and execute queries from relational databases.
+		In figure \ref{fig:hlayers}	are defined three software logic layers on which the system is defined. \\\\
+		The \textit{Presentation layer} contains the presentation logic of the system. It includes the two views addressed to different kind of SafeStreets clients.\\ The SafeStreets APP is addressed to everyone that is interested in SafeStreets and wants to use the smartphone application.\\
+		The SafeStreets Authority Edition (AE) is addressed to certified authorities collaborating with SafeStreets that has received from SafeStreets the desktop application.\\\\The \textit{Application layer} contains the application logic of the system. Basically it is the layer in which all functionalities are concretely defined.  \\
+		This layer contains the SafeStreets APP backend, the SafeStreets AE backend and the SafeStreets Server. The two backend communicate only with the server. This is important because only the server can exchange messages with the database system of the data layer, ensuring an highest level of security not allowing individuals to access directly to sensitive data.\\\\The \textit{Data layer} is simply defined only by the data management system, that collects and execute queries from relational databases. All the queries results are sent only to the SafeStreets server.
 		
 		\clearpage
 		\subsection{Component view}
@@ -219,7 +219,19 @@
 		The database stores all the information used by SafeStreets ecosystem. It is composed by three sub-databases, whose role can easily be understood from their name: \textbf{Violation report DB}, \textbf{Accident DB} and \textbf{Authority DB}.
 		
 		\subsection{Deployment view}
-		\subsection{Runtime	view}
+		In this section are defined the devices and the environments in which the three layer defined in the chapter 2.1 are concretely realized.
+			\begin{figure}[H]
+			\includegraphics [scale=0.5] {diagrams/deployment_view.png}
+			\caption[Deployment View]{Deployment view}
+			\label{fig:deployment_view}
+		\end{figure}
+   		The SafeStreets APP is executed on smartphones and the application is available for the two most popular mobile systems (iOS/Android).
+   		The smartphone is the device in which both the SafeStreets APP view and the SafeStreets APP backend are defined, so it contains the first two logic layers that are the presentation and the application one.\\ The smartphone can only communicate with SafeStreets Server to execute all the SafeStreets services such as sending a report or browsing in reporting statistics.\\
+   		The SafeStreets AE is distributed by SafeStreets only to certificated authorities that collaborate with SafeStreets. In this context, the application is executable only on desktop computers or notebooks located in authorities' stations. This type of application is developed for all types of operative systems, such as Windows, Linux or Mac systems.\\ The reason why the AE is different from the simpler APP is that authorities are allowed to make additional and more complete requests to the system and so, a desktop interface and hardware is better to manage all these requests and to make longer sessions.\\
+   		The SafeStreets server is installed on an Application Server using preferably Linux operative system for better performance. Other operative systems are also allowed. The server has to manage and forward all the requests in the system and it represent the only way for individuals to retrieve information from the SafeStreets database.\\ The database management system is installed on a non-specific type of Server. The important aspect is that the database structure must be relational because of the functionalities required by the system that needs a fixed data structure to return specific kind of information or it needs to aggregate related information to make the server able to generate suggestions.
+   		 
+   		
+		
 		
 		\clearpage
 		\subsection{Component interfaces}
@@ -333,7 +345,7 @@
 					\end{tabular}\\
 				\end{itemize}
 		\end{itemize}
-		
+		\subsection{Runtime	view}
 		\subsection{Selected architectural styles and patterns}
 		\subsection{Other design decision}
 	\clearpage	
