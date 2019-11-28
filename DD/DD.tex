@@ -347,7 +347,6 @@
 		\end{itemize}
 		\subsection{Runtime	view}
 		\subsection{Selected architectural styles and patterns}
-		\subsection{Other design decision}
 	\clearpage	
 	\section{User Interface Design}
 		To give an approximate idea of how the interfaces of the application should appear, some mockups, both for SafeStreets Application and SafeStreets AE, have been given in \href{run:d:../DeliveryFolder/RASD1.pdf}{RASD} [Section 3.1.1].\\ 
@@ -378,8 +377,16 @@
 		
 	\clearpage	
 	\section{Requirements Traceability}
+	
 	\clearpage	
 	\section{Implementation, integration and test plan}
+	We define a precise order of implementation for the various components of SafeStreets ecosystem. To have a complete view of the components, please see the diagram of figure \ref{fig:component_diagram}.\\
+	First of all, "DB manager" must be implemented: it manages the interaction between the server and the database, providing query and definition functionalities that are fundamental for the other components.\\
+	After that, the components are grouped by the functionality they implement. These groups are sequentially implemented with respect to the order with which their associated functionality is presented into the project assignment. Inside every group, the order of implementation depends on the physical node in which the component is: first the Server, than the App, AE in the end.\\
+	Therefore, the first components to be implemented are the ones related to violation reports. In this group, the component of the server closer to the database is "Violation report router". Then we implement the "violation report manager" on SafeStreets App, with its sub-components "OCR" and "Timeout manager". Finally, "Violation report evaluator" is implemented on SafeStreets AE.\\
+	The second functionality is  about data-mining and statistics. Therefore, in this order, we implement: "data-mining manager" in the server, "user data-mining" in the App, "authority data-mining" in SafeStreets AE.\\
+	For "suggestion" functionality, we have "suggestion generator"in the server and "suggestion receiver" in AE.\\
+	In the end, for the "accident" functionality, the "suggestion generator" component is implemented, then the "accident manager" on AE.\\
 	
 	\clearpage
 	\section{Effort Spent}
