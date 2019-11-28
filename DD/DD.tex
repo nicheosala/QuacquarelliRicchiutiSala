@@ -345,7 +345,47 @@
 					\end{tabular}\\
 				\end{itemize}
 		\end{itemize}
+	
+		\clearpage
 		\subsection{Runtime	view}
+			In the following section, sequence diagrams for SafeStreets are shown.\\\\
+			Figure \ref{fig:sd-violationReport} shows a detailed interaction between a user and SafeStreets system, through SafeStreets Application, using the violation report functionality.\\
+			
+			\begin{figure}[H]
+				\includegraphics [scale=0.7] {diagrams/DD_SeqD_ViolationReport.png}
+				\caption[Sequence diagram]{Sequence diagram for violation reports in SafeStreets AE}
+				\label{fig:sd-violationReport}
+			\end{figure}
+		
+			After clicking the apposite menu, the application change its frame and let the user take a photo of traffic violation. Once completed, a countdown of 10 minutes starts: this guarantees that a report could represent an actual violation, so it's not possible neither taking a photo and compile report after a long time, nor upload any photo. SafeStreets Application forces the user to take a photo of violation only through the user interface.\\
+			Now, two scenarios can occur: the OCR component of SafeStreets Application backend (described in Figure \ref{fig:component_diagram} and in 2.2.1) recognize the right license plate or not.\\
+			If license plate read is correct, then the application let the user compile the violation report with reaming information and, before sending it, retrieve data as position and date. 
+			The \textbf{:violationReportRouter} forward the report coming from application to \textbf{:DBManager}.
+			This last component stores the report (in pending status) and let the \textbf{:violationReportRouter} notify the authority which operates in the area where the violation occurred. 
+			If license plate is either not correct or not detected, then user can repeat operation from and timeout is reset.\\\\
+			
+			Authorities evaluate reports as follows in Figure \ref{fig:sd-reportEvaluation}.
+			After clicking the apposite menu, the SafeStreets AE asks to \textbf{:violationReportRouter} get from \textbf{:DBManager} eventual new reports.\\
+			If any reports are retrieved, an authority for each of them can do evaluation, based on photo and information.\\
+			Two scenarios have to be managed: if the authority establish that a report is valid ("confirmed"), then \textbf{:violationReportRouter} queries an update of report status to \textbf{:DBManager}; otherwise, if not valid, report should be discarded, so the query asks to delete that report.
+			
+			\begin{figure}[H]
+				\includegraphics [scale=0.8] {diagrams/DD_SeqD_ReportEvaluation.png}
+				\caption[Sequence diagram]{Sequence diagram for report evaluation in SafeStreets AE}
+				\label{fig:sd-reportEvaluation}
+			\end{figure}
+			
+			\begin{figure}[H]
+				\includegraphics [scale=0.7] {diagrams/DD_SeqD_Suggestions.png}
+				\caption[Sequence diagram]{Sequence diagram for interactive suggestions in SafeStreets AE}
+				\label{fig:sd-suggestions}
+			\end{figure}
+		
+			A more complex interaction between authorities and SafeStreets system is given in Figure \ref{fig:sd-suggestions}
+			An authority can share with SafeStreets system its data about accident occurred in its operative area, using the apposite menu. The \textbf{:AccidentCollector} component forwards the accident data from application to \textbf{:DBManager}, which will insert them onto database.
+			The more data is collected in SafeStreets system, the more it can generate suggestions for an authority.\\
+			When an authority is notified about new suggestions, it clicks on the apposite menu:  SafeStreets AE contacts \textbf{:SuggestionGenerator} component to get suggestions, based on analysis over accident data, stored in database. 
+			
 		\subsection{Selected architectural styles and patterns}
 	\clearpage	
 	\section{User Interface Design}
