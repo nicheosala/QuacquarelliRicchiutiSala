@@ -224,7 +224,7 @@
 			\includegraphics [scale=0.5] {diagrams/deployment_view.png}
 			\caption[Deployment View]{Deployment view}
 			\label{fig:deployment_view}
-		\end{figure}
+			\end{figure}
    		The SafeStreets APP is executed on smartphones and the application is available for the two most popular mobile operative systems (iOS/Android).
    		The smartphone is the device in which both the SafeStreets APP view and the SafeStreets APP backend are defined, so it contains the first two logic layers that are the presentation and the application one.\\ The smartphone can only communicate with SafeStreets Server to execute all the SafeStreets services such as sending a report or browsing through reporting statistics.\\
    		The SafeStreets AE is distributed by SafeStreets only to certificated authorities that collaborate with SafeStreets. In this context, the application is executable only on desktop computers or notebooks located in authorities' stations. This type of application is developed for the following types of operative systems: Windows, Linux or Mac operative systems.\\ The reason why the AE is different from the simpler APP is that authorities are allowed to make additional and more complete requests to the system and so, a desktop interface and a powerful hardware is better to manage all these requests and to make longer working sessions.\\\\
@@ -384,9 +384,29 @@
 	First of all, "DB manager" must be implemented: it manages the interaction between the server and the database, providing query and definition functionalities that are fundamental for the other components.\\
 	After that, the components are grouped by the functionality they implement. These groups are sequentially implemented with respect to the order with which their associated functionality is presented into the project assignment. Inside every group, the order of implementation depends on the physical node in which the component is: first the Server, than the App, AE in the end.\\
 	Therefore, the first components to be implemented are the ones related to violation reports. In this group, the component of the server closer to the database is "Violation report router". Then we implement the "violation report manager" on SafeStreets App, with its sub-components "OCR" and "Timeout manager". Finally, "Violation report evaluator" is implemented on SafeStreets AE.\\
+	\begin{figure}[H]
+		\includegraphics [scale=0.9] {diagrams/report_impltest.png}
+		\caption[Report Implementation order]{Report Implementation order}
+		\label{fig:report_order}
+	\end{figure}
 	The second functionality is  about data-mining and statistics. Therefore, in this order, we implement: "data-mining manager" in the server, "user data-mining" in the App, "authority data-mining" in SafeStreets AE.\\
+	\begin{figure}[H]
+		\includegraphics [scale=0.9] {diagrams/datam_impltest.png}
+		\caption[Data Mining Implementation order]{Data Mining Implementation order}
+		\label{fig:datamining_order}
+	\end{figure}
 	For "suggestion" functionality, we have "suggestion generator"in the server and "suggestion receiver" in AE.\\
+	\begin{figure}[H]
+		\includegraphics [scale=0.9] {diagrams/suggestion_impltest.png}
+		\caption[Suggestions Implementation order]{Suggestions Implementation order}
+		\label{fig:suggestions_order}
+	\end{figure}
 	In the end, for the "accident" functionality, the "suggestion generator" component is implemented, then the "accident manager" on AE.\\
+		\begin{figure}[H]
+		\includegraphics [scale=0.9] {diagrams/accident_impltest.png}
+		\caption[Accident Implementation order]{Accident Implementation order}
+		\label{fig:accident_order}
+	\end{figure}
 	
 	\clearpage
 	\section{Effort Spent}
