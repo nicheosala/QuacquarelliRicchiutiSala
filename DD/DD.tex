@@ -75,6 +75,7 @@
 			\item Additional details about user interface;
 			\item A mapping of the requirements on the architecture's components;
 			\item Implementation, integration and testing plan;
+
 		\end{itemize}
 		\subsection{Scope}
 		In this section is shortly summarised what is already defined in a more detailed way in the \textit{Scope} section of the RASD document. \\
@@ -417,7 +418,17 @@
 		
 	\clearpage	
 	\section{Requirements Traceability}
-	
+		In this section is shown how the requirements specified in RASD are mapped
+		to the design components defined in this document.
+		\begin{itemize}
+			\requirement{1} The SafeStreets client must be able to communicate with the SafeStreets system.
+			\requirement{2} The user report must be of one of the type of violation defined by SafeStreets.
+			\requirement{3} The report image must show the license plate of the offender.
+			\requirement{4} The only license plate shown in the report image is the one of the offender.
+			\requirement{5} Each violation report must refer to only one offender.	
+			\requirement{6} The GPS service, the external camera and the internet connection must be active.
+		\end{itemize}
+			
 	\clearpage	
 	\section{Implementation, integration and test plan}
 
