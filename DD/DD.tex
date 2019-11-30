@@ -105,6 +105,7 @@
 		\begin{itemize}
 			\item \textbf{AE} \label{AE}: SafeStreets Authority Edition.
 			\item \textbf{OCR} \label{OCR}: Optical Character Recognition
+			\item \textbf{MVC} \label{MVC}: Model-View-Controller design pattern.
 		\end{itemize}
 		\subsubsection{Abbreviations}
 		\begin{itemize}
@@ -386,8 +387,36 @@
 			An authority can share with SafeStreets system its data about accident occurred in its operative area, using the apposite menu. The \textbf{:AccidentCollector} component forwards the accident data from application to \textbf{:DBManager}, which will insert them onto database.
 			The more data is collected in SafeStreets system, the more it can generate suggestions for an authority.\\
 			When an authority is notified about new suggestions, it clicks on the apposite menu:  SafeStreets AE contacts \textbf{:SuggestionGenerator} component to get suggestions, based on analysis over accident data, stored in database. 
-			
+		
+		\clearpage	
 		\subsection{Selected architectural styles and patterns}
+			In order to obtain a clear division between data, user interfaces and software logics, a
+			Model–View–Controller (\textbf{MVC}) pattern has been used. MVC is a software design pattern commonly used for developing user interfaces which divides the related program logic into three interconnected elements:
+			
+			\begin{itemize}
+				\item \textit{Model}: the central component of the pattern. It represents the application's data structure, independent of the user interface. It directly manages the data, logic and rules of the application.
+				\item \textit{View}: any form of data representation. 
+				\item \textit{Controller}: accepts input and converts it to commands for the model or view
+			\end{itemize}
+			
+			One of the biggest advantages of MVC is the possibility to have multiple views of the same information. Thinking about SafeStreets, both users and authorities have an own GUI and different level of details about data.
+			it is based on separation
+			This division of concerns makes the application easier to test and maintain: requests first arrive at the controller (or some of them) which binds the model with the
+			corresponding view. 
+			In fact, an other advantage is the possibility of parallelize application development among workers, such that groups can focus on a fixed part, i.e. model, view and controller.\\
+			
+			Focusing more on SafeStreets, the MVC division is also observable in Figure \ref{fig:component_diagram}. The backend of each application, both client and server side, is part of \textit{controller}; SafeStreets user interfaces represent the \textit{view} and they are just a mean to let users and authorities to communicate with the \textit{model}, information stored in SafeStreets databases.\\\\
+			Follows an high-level representation of SafeStreets architecture.
+			
+			\begin{figure}[H]
+				\includegraphics [scale=0.7] {diagrams/tieredArchitecture.png}
+				\caption[Architecture]{High-level representation of SafeStreets architecture}
+				\label{fig:tieredArchitecture}
+			\end{figure}
+		
+			Figure \ref{fig:tieredArchitecture} gives the idea of two-tiered architecture on which SafeStreets is based: clearly, clients are not \textit{thin}, because they don't have only a presentation layer in their application.
+			In fact, with \textit{fat} or \textit{thick} clients there is no need for continuous server communications (e.g. violation reporting for users involve locally an OCR algorithm to verify a correct reading of license plate, without contacting server and generate more workload).
+		
 	\clearpage	
 	\section{User Interface Design}
 		To give an approximate idea of how the interfaces of the application should appear, some mockups, both for SafeStreets Application and SafeStreets AE, have been given in \href{run:d:../DeliveryFolder/RASD1.pdf}{RASD} [Section 3.1.1].\\ 
