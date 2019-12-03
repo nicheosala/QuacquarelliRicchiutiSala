@@ -78,26 +78,28 @@
 
 		\end{itemize}
 		\subsection{Scope}
-		In this section is shortly summarised what is already defined in a more detailed way in the \textit{Scope} section of the RASD document. \\
-		SafeStreets's scope is to give the opportunity to report traffic violations by users and eventually to manage them by the competent authority in an easy way. Basically users can simply open the SafeStreets Application on their smartphones and immediately take a picture of the traffic violation to report. Including a few more other informations, such as selecting the type of violation, the report is done and is ready to be sent to SafeStreets system.\\ On the other hand, authorities in collaboration with SafeStreets, collect all the received reports and can check them on their SafeStreets Authority Edition (desktop dedicated application).\\ Valuating reports, authorities can eventually define them consistent or not and, if consistent valuated, they fine the offender reported.\\
+		In this section is shortly summarised what is already defined in a more detailed way in the \textit{Scope} section of the RASD document.\\
+		SafeStreets scope is to give the opportunity to report traffic violations by users and eventually to let them be managed by a competent authority in an easy way. Basically users can simply open the SafeStreets Application on their smartphones and immediately take a picture of the traffic violation to report. Including a few more information, the report is done and is ready to be sent to SafeStreets system.\\
+		On the other hand, authorities in collaboration with SafeStreets can check violation reports on their SafeStreets Authority Edition (desktop dedicated application).\\
+		Evaluating reports, authorities can eventually define them consistent or not and, if consistent evaluated, they fine the offender reported.\\
 		These ones are the basic functionalities offered by SafeStreets but also other ones are offered to individuals:
 		\begin{itemize}
 			\item Users can browse the map to know statistics about traffic violations sent to SafeStreets and their status (confirmed or not by authorities);
-			\item Authorities can browse map such as users but including access also to sensitive informations such as license plates included in reports;
+			\item Authorities can browse map such as users but including access also to sensitive information such as license plates included in reports;
 			\item Authorities can access to advanced statistics such as filtering results to return the most egregious offender;
-			\item Authorities can also send to SafeSteets system accident information in order to enrich SafeStreets' database. It is important becouse authorities can receive suggestions from SafeStreets system to improve the security of streets according to violations and accidents occurred in a defined area.
+			\item Authorities can also send to SafeStreets some information about accidents in order to enrich SafeStreets database. It is important because authorities can receive suggestions from SafeStreets system to improve the security of streets according to violations and accidents occurred in a defined area.
 		\end{itemize}
 		\subsection{Definitions, Acronyms, Abbreviations}
 		\subsubsection{Definitions}
 		\begin{itemize}
-			\item \textbf{Operative area}: the geographic area in which an authority retains  control and actually works.
-			\item \textbf{Registered authority}: an authority that decided to participate in SafeStreets initiative and that installed in its head office a particular version of the application that provides some features not available to common users (for example, the possibility to rate the traffic violation reports collected by SafeStreets).
+			\item \textbf{Operative area}: the geographic area in which an authority retains control and actually works.
+			\item \textbf{Registered authority}: an authority that decided to participate in SafeStreets initiative and that installed in its head office SafeStreets AE, a particular version of the application that provides some features not available to common users (for example, the possibility to rate the traffic violation reports collected by SafeStreets).
 			\item \textbf{Report image}: it is the image acquired through the SafeStreets app. It is obligatorily associated with a valid report.
 			\item \textbf{Report timeout}: it is the timeout started when SafeStreets app acquires the report image. If the user doesn't complete the completion of the report by the deadline of this timeout, the report is considered invalid.
 			\item \textbf{SafeStreets}: it is the crowdfunding app subject of this document.
 			\item \textbf{SafeStreets application}: it is the application used by users, installed on their smartphone.
 			\item \textbf{SafeStreets Authority Edition}: it is the application used by authorities, installed on computers in their station.
-			\item \textbf{SafeStreets Client}: a generic way to point out the SafeStreets application or the SafeStreets Authority Edition.
+			\item \textbf{SafeStreets Client}: a generic way to point out the SafeStreets App or the SafeStreets Authority Edition.
 			\item \textbf{Traffic violation report}: it is the message that SafeStreets collects through its app from users who want to report an alleged violation. It is often abbreviated as "report".
 			\item \textbf{Individual}: A generic user or authority.
 		\end{itemize}
@@ -106,11 +108,12 @@
 			\item \textbf{AE} \label{AE}: SafeStreets Authority Edition.
 			\item \textbf{OCR} \label{OCR}: Optical Character Recognition
 			\item \textbf{MVC} \label{MVC}: Model-View-Controller design pattern.
-			\item \textbf{REST} \label{REST}: REpresentational State Transfer.
+			\item \textbf{REST} \label{REST}: Representational State Transfer.
 			\item \textbf{URI} \label{URI}: Universal Resource Identifier.
 		\end{itemize}
 		\subsubsection{Abbreviations}
 		\begin{itemize}
+			\item {[DB]}: Database.
 			\item {[Gn]}: n\textsuperscript{th} goal.
 			\item {[Rn]}: n\textsuperscript{th} functional requirement.
 			\item {[An]}: n\textsuperscript{th} domain assumption.
@@ -130,27 +133,29 @@
 				\label{fig:Revision history}
 			\end{table}
 		\subsection{Document structure}
-			In this part is shown how the document has been divided. For each chapter, is given a short description:
+			In this part it is shown how the document has been divided. For each chapter, is given a short description:
 			\begin{itemize}
-				\item \textit{Chapter 1} gives an introduction of the design document. It contains the purpose of the document and the scope of the SafeStreets system, as well as some abbreviation in order to provide a better understanding of the document to the reader.
+				\item \textit{Chapter 1} gives an introduction of the design document. It contains the purpose of the document and the scope of the SafeStreets system, as well as some abbreviations in order to provide a better understanding of the document to the reader.
 				\item \textit{Chapter 2} is the core section of the design document and it deals with the architectural design of the application. It gives an overview of the architecture and it also contains the most relevant architecture views: 
 				\begin{itemize}
-					\item High-‐level components and their interactions;
+					\item High‐level components and their interactions;
 					\item Component view;
-					\item Class view;
 					\item Deployment view;
+					\item Component interfaces;
 					\item Runtime view. 
 				\end{itemize}
-			  	Some of the used architectural designs and designs patterns are also presented here, with an explanation of each one of them and the purpose of their usage.				
-				\item \textit{Chapter 3} refers to the mock-ups already presented in the RASD document including some more detailed versions of them such as interaction diagrams.
-				\item \textit{Chapter 4} explains how the requirements that have been deﬁned in the RASD are assigned to the design elements deﬁned in this document.
-				\item \textit{Chapter 5} presents the implementation, integration and test plan. It includes the how the different components of the application are integrated with each other, how they react and the testing strategy.				
-				\item \textit{Chapter 6}  shows the effort spent by each group member while working on this document.
+			  	Some of the used architectural designs and designs patterns are also presented here, with an explanation of each one and the purpose of their usage.				
+				\item \textit{Chapter 3} refers to the mockups already presented in the RASD document including some more detailed versions of them such as interaction diagrams.
+				\item \textit{Chapter 4} explains how the requirements that were defined in the RASD are now assigned to the design elements defined in this document.
+				\item \textit{Chapter 5} presents the implementation, integration and test plan. It specifies how the different components of the application are integrated with each other and the testing strategy.				
+				\item \textit{Chapter 6} shows the effort spent by each group member while working on this document.
 				\item \textit{Chapter 7} simply includes the references.
 			\end{itemize}
+		
+	\clearpage
 	\section{Architectural design}
 		\subsection{Overview}
-		In this section is defined the high-level architecture of SafeStreets' system. \\ 
+		In this section is defined the high-level architecture of SafeStreets system.\\ 
 		Figure \ref{fig:hinteraction_diagram} represents the high level interaction between the main parts of SafeStreets' structure.
 		\begin{figure}[H]
 			\includegraphics [scale=0.5] {diagrams/high-interaction.png}
@@ -164,15 +169,19 @@
 			\caption[High-Level Layers]{High-Level layers}
 			\label{fig:hlayers}
 		\end{figure}
-		In figure \ref{fig:hlayers}	are defined three software logic layers on which the system is defined. \\\\
-		The \textit{Presentation layer} contains the presentation logic of the system. It includes the two views addressed to different kind of SafeStreets clients.\\ The SafeStreets APP is addressed to everyone that is interested in SafeStreets and uses its services through the smartphone application.\\
-		The SafeStreets Authority Edition (AE) is addressed to certified authorities collaborating with SafeStreets that have received from SafeStreets the desktop application.\\\\The \textit{Application layer} contains the application logic of the system. Basically it is the layer in which all functionalities are concretely defined.  \\
-		This layer contains the SafeStreets APP backend, the SafeStreets AE backend and the SafeStreets Server. The two backend communicate only with the server. This is important because only the server can exchange messages with the database system of the data layer, ensuring an highest level of security not allowing individuals to access directly to sensitive data.\\\\The \textit{Data layer} is simply defined only by the Data Management System, that collects and execute queries from relational databases. All the queries results are sent only to the SafeStreets server.
+		In figure \ref{fig:hlayers}	are shown the three software logic layers by which the system is defined.\\
+		\\
+		The \textit{Presentation layer} contains the presentation logic of the system. It includes the two views addressed to different kind of SafeStreets clients.\\ The SafeStreets App is addressed to everyone that is interested in SafeStreets and uses its services through the smartphone application.\\
+		The SafeStreets Authority Edition (AE) is addressed to certified authorities collaborating with SafeStreets that have received from SafeStreets the desktop application.\\
+		\\
+		The \textit{Application layer} contains the application logic of the system. Basically it is the layer in which all functionalities are implemented.\\
+		This layer contains the SafeStreets App back-end, the SafeStreets AE back-end and the SafeStreets Server. The two back-ends communicate only with the server. This is important because only the server can exchange messages with the database system of the data layer, ensuring an highest level of security not allowing individuals to access directly to sensitive data.\\
+		\\
+		The \textit{Data layer} simply contains the Data Management System, that collects and execute queries from relational databases. All the queries results are sent only to the SafeStreets server.
 		
-		\clearpage
 		\subsection{Component view}
 		Figure \ref{fig:component_diagram} represents all the components of SafeStreets ecosystem.\\
-		The diagram focuses on the applicative layer: the view layer is described in the section "User interfaces" of the RASD.\\
+		The diagram focuses on the applicative layer: the presentation layer is described in the section "User interfaces" of the RASD and deepened in section 3 of this document.\\
 		The diagram underlines that the clients, SafeStreets app and SafeStreets AE, are not thin: they include part of the application logic.\\
 		
 		\begin{figure}[H]
@@ -187,9 +196,9 @@
 		\subsubsection{SafeStreets App components}
 		\begin{itemize}
 			\item \textbf{Violation report manager}\\
-			It deals with the management of a request for a violation report. First of all, it manages the acquisition of the reporting image: it automatically retrieves information about date, time and position. Afterwards, it forwards the image to the license plate recognition algorithm (OCR). If the algorithm returns a valid license plate and the user confirms the request by the deadline of the reporting timeout, then the violation report manager sends such report to the SafeStreets Server through the "violation report" interface.
+			It deals with the management of a request for a violation report. First of all, it manages the acquisition of the reporting image: it automatically retrieves information about date, time and position. Afterwards, it forwards the image to the license plate recognition algorithm (OCR). If the algorithm returns a valid license plate and the user confirms the request by the deadline of the report timeout, then the violation report manager sends such report to SafeStreets Server through the "violation report" interface.
 			\item \textbf{User data-mining}\\
-			This component provides data mining and statistical survey capabilities to SafeStreets app. Remember that SafeStreets App doesn't receive information considered private from the server, in particular it doesn't receive the license plates associated to violations or accidents. The component retrieves information from the server through the "anonymous data" interface.
+			This component provides data-mining and statistical survey capabilities to SafeStreets App. Remember that SafeStreets App doesn't receive information considered private from the server, in particular it doesn't receive the license plates associated to violations or accidents. The component retrieves information from the server through the "anonymous data" interface.
 			\item \textbf{OCR}\\
 			This is the software used in order to retrieve a valid license plate from the reporting image. When it receives an image from the violation report manager, it looks for a valid license plate into the image, then returns an error message or the license plate found.
 			\item \textbf{Timeout manager}\\
@@ -198,11 +207,11 @@
 		\subsubsection{SafeStreets AE components}
 		\begin{itemize}
 			\item \textbf{Violation report evaluator}\\
-			This component receives violation reports from the server, via the "violation report evaluation" interface. After that, it manages the evaluation of the same by the authority. Once the evaluation has taken place, the violation report evaluator sends the result to the server through the aforementioned interface.
+			This component receives violation reports from the server, via the "violation report" interface. After that, it manages the evaluation of the same by the authority. Once the evaluation has taken place, the violation report evaluator sends the result to the server through the aforementioned interface.
 			\item \textbf{Authority data-mining}\\
 			This component provides data mining and statistical survey capabilities to SafeStreets AE. Remember that SafeStreets AE can also retrieve information about the license plates linked to accidents and violations. The component retrieves information from the server through the "complete data" interface.
 			\item \textbf{Suggestion receiver}\\
-			It waits for suggestions from the SafeStreets Server, listening the "suggestion" interface. Then it forwards the information to the view and stores the received suggestion into a database, which is not shown into the component diagram because its role is not very relevant.
+			It waits for suggestions from the SafeStreets Server, listening the "suggestion" interface. Then it forwards the information to the view.
 			\item \textbf{Accident manager}\\
 			It manages the forwarding of incident-related information from an authority to SafeStreets Server. It ensures that the reporting of the accident is accompanied by all the data deemed necessary (see RASD, 3.2.1 for more details), after which it forwards the same to the server through the "accident" interface.
 		\end{itemize}
@@ -220,32 +229,39 @@
 			It manages the interaction between SafeStreets Server and SafeStreets Database. All the components of the server that wants to interact with the database has to pass through this component. This means that in the event of updates to the structure or operation of the database, only the DB manager may need to be updated, guaranteeing better independence between the server and the database.
 		\end{itemize}
 		\subsubsection{SafeStreets Database components}
-		The database stores all the information used by SafeStreets ecosystem. It is composed by three sub-databases, whose role can easily be understood from their name: \textbf{Violation report DB}, \textbf{Accident DB} and \textbf{Authority DB}.
+		The database stores all the information used by SafeStreets ecosystem. It is composed by three sub-databases, whose role can be easily understood from their name: \textbf{Violation report DB}, \textbf{Accident DB} and \textbf{Authority DB}.
 		
 		\subsection{Deployment view}
-		In this section are defined the devices and the environments in which the three layer defined in the chapter 2.1 are concretely realized.
-			\begin{figure}[H]
+		In this section are defined the devices and the environments in which the three layers defined in the chapter 2.1 are concretely realized.
+		
+		\begin{figure}[H]
 			\includegraphics [scale=0.5] {diagrams/deployment_view.png}
 			\caption[Deployment View]{Deployment view}
 			\label{fig:deployment_view}
-			\end{figure}
-   		The SafeStreets APP is executed on smartphones and the application is available for the two most popular mobile operative systems (iOS/Android).
-   		The smartphone is the device in which both the SafeStreets APP view and the SafeStreets APP backend are defined, so it contains the first two logic layers that are the presentation and the application one.\\ The smartphone can only communicate with SafeStreets Server to execute all the SafeStreets services such as sending a report or browsing through reporting statistics.\\
-   		The SafeStreets AE is distributed by SafeStreets only to certificated authorities that collaborate with SafeStreets. In this context, the application is executable only on desktop computers or notebooks located in authorities' stations. This type of application is developed for the following types of operative systems: Windows, Linux or Mac operative systems.\\ The reason why the AE is different from the simpler APP is that authorities are allowed to make additional and more complete requests to the system and so, a desktop interface and a powerful hardware is better to manage all these requests and to make longer working sessions.\\\\
-   		The SafeStreets Server is installed on an Application Server using preferably Linux operative system for better performance. Other operative systems are also allowed. The server has to manage and forward all the requests in the system and it represent the only way for individuals to retrieve information from the SafeStreets database.\\\\ The Database Management System is installed on a non-specific type of Server. One possible suggestion is to define it in MongoDB that provides a several number of advantage in terms of security, performance and scalability.\\ Other kind of DBMS are also allowed. The key aspect is that the database structure must be relational to satisfy the functionalities required by the system that need a fixed data structure to return specific kind of information or it needs to aggregate related information to make the server able to generate suggestions.
-   		 
-   		
-		
+		\end{figure}
+	
+   		SafeStreets App is executed on smartphones and the application is available for the two most popular mobile operative systems (iOS/Android).
+   		The smartphone is the device in which both the SafeStreets App view and the SafeStreets App back-end are defined, so it contains the first two logic layers that are the presentation and the application one.\\
+   		The smartphone can communicate with SafeStreets Server to execute all the SafeStreets services such as sending a report or browsing through reporting statistics.\\
+   		SafeStreets AE is distributed by SafeStreets only to certificated authorities that collaborate with SafeStreets. In this context, the application is executable only on desktop computers or notebooks located in authorities' stations. This type of application is developed for the following types of operative systems: Windows, Linux or Mac operative systems.\\
+   		The reason why the AE is different from the simpler App is that authorities are allowed to make additional and more complete requests to the system and so, a desktop interface and a powerful hardware is better to manage all these requests and to make longer working sessions.\\
+   		\\
+   		SafeStreets Server is installed on an application Server using preferably Linux operative system for better performance. Other operative systems are also allowed. The server has to manage and forward all the requests in the system and it represent the only way for individuals to retrieve information from the SafeStreets database.\\
+   		\\
+   		The Database Management System is installed on a non-specific type of server. One possible suggestion is to define it in MongoDB that provides a several number of advantage in terms of security, performance and scalability.\\
+   		Other kind of DBMS are also allowed. The key aspect is that the database structure must be relational to satisfy the functionalities required by the system that need a fixed data structure to return specific kind of information or it needs to aggregate related information to make the server able to generate suggestions.
 		
 		\clearpage
 		\subsection{Component interfaces}
-		This section describes the methods exposed by each interface that allows the communication between SafeStreets server and clients. These interfaces were already shown briefly in the component diagram of figure \ref{fig:component_diagram}.\\
-		The information exchanged through these interfaces are standardized with respect to the following class diagram.\\
+		This section describes the methods exposed by each interface that allows the communication between SafeStreets Server and the clients. These interfaces were already briefly shown in the component diagram of figure \ref{fig:component_diagram}.\\
+		Information exchanged through these interfaces is standardized with respect to the following class diagram.\\
+		
 		\begin{figure}[H]
 			\includegraphics {diagrams/class_diagram.png}
 			\caption[Class diagram]{Class diagram}
 			\label{fig:class_diagram}
 		\end{figure}
+	
 		The class diagram represents only the classes considered fundamental to understand the operation of SafeStreets. In any case, the classes referred to without providing an explicit declaration - for example the "LicensePlate" class - have a name that effectively expresses their meaning.\\
 		\\
 		A list of the interfaces follows. For each interface, all the methods it displays are pointed out. For each method, the necessary input parameters and outputs are indicated.\\
@@ -353,8 +369,9 @@
 	
 		\clearpage
 		\subsection{Runtime	view}
-			In the following section, sequence diagrams for SafeStreets are shown.\\\\
-			Figure \ref{fig:sd-violationReport} shows a detailed interaction between a user and SafeStreets system, through SafeStreets Application, using the violation report functionality.\\
+			In the following section, sequence diagrams for SafeStreets are shown.\\
+			\\
+			Figure \ref{fig:sd-violationReport} shows a detailed interaction between a user and SafeStreets system, through SafeStreets App, using the violation report functionality.\\
 			
 			\begin{figure}[H]
 				\includegraphics [scale=0.7] {diagrams/DD_SeqD_ViolationReport.png}
@@ -428,12 +445,6 @@
 				
 				an architectural style for communication based on strict use of HTTP request types (Figure\ref{fig:RESTful web services}) .\\
 				
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=1\textwidth]{diagrams/REST.png}
-					\caption[RESTful web services]{RESTful web services}
-					\label{fig:RESTful web services}
-				\end{figure}
 				
 				RESTful Web services allow the requesting systems to access and manipulate textual representations of Web resources by using a uniform and predefined set of \textit{stateless} operations: the client-server communication is constrained by no client context being stored on the server between requests. Each request from any client contains all the information necessary to service the request and the session state is held in the client.\\
 				
