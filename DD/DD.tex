@@ -382,14 +382,14 @@
 			\end{figure}
 		
 			After clicking the apposite menu, the application change its frame and let the user take a photo of traffic violation. Once completed, a countdown of 10 minutes starts: this guarantees that a report could represent an actual violation, so it's not possible neither taking a photo and compile report after a long time, nor upload any photo. SafeStreets Application forces the user to take a photo of violation only through the user interface.\\
-			Now, two scenarios can occur: the OCR component of SafeStreets Application backend (described in Figure \ref{fig:component_diagram} and in 2.2.1) recognize the right license plate or not.\\
-			If license plate read is correct, then the application let the user compile the violation report with reaming information and, before sending it, retrieve data as position and date. 
-			The \textbf{:violationReportRouter} forward the report coming from application to \textbf{:DBManager}.
+			Now, two scenarios can occur: the OCR component of SafeStreets App (described in Figure \ref{fig:component_diagram} and in 2.2.1) recognizes the right license plate or not.\\
+			If the license plate read is correct, then the application let the user compile the violation report with remaining information and, before sending it, retrieves data as position and date. 
+			The \textbf{:violationReportRouter} forward the report coming from the application to \textbf{:DBManager}.
 			This last component stores the report (in pending status) and let the \textbf{:violationReportRouter} notify the authority which operates in the area where the violation occurred. 
-			If license plate is either not correct or not detected, then user can repeat operation from and timeout is reset.\\
+			If license plate is either not correct or not detected, then user can repeat the procedure and the report timeout is reset.\\
 			
 			Authorities evaluate reports as follows in Figure \ref{fig:sd-reportEvaluation}.
-			After clicking the apposite menu, the SafeStreets AE asks to \textbf{:violationReportRouter} get from \textbf{:DBManager} eventual new reports.\\
+			After clicking the apposite menu, SafeStreets AE asks \textbf{:violationReportRouter} to get from \textbf{:DBManager} eventual new reports.\\
 			If any reports are retrieved, an authority for each of them can do evaluation, based on photo and information.\\
 			Two scenarios have to be managed: if the authority establish that a report is valid ("confirmed"), then \textbf{:violationReportRouter} queries an update of report status to \textbf{:DBManager}; otherwise, if not valid, report should be discarded, so the query asks to delete that report.
 			
@@ -405,10 +405,9 @@
 				\label{fig:sd-suggestions}
 			\end{figure}
 		
-			A more complex interaction between authorities and SafeStreets system is given in Figure \ref{fig:sd-suggestions}
-			An authority can share with SafeStreets system its data about accident occurred in its operative area, using the apposite menu. The \textbf{:AccidentCollector} component forwards the accident data from application to \textbf{:DBManager}, which will insert them onto database.
-			The more data is collected in SafeStreets system, the more it can generate suggestions for an authority.\\
-			When an authority is notified about new suggestions, it clicks on the apposite menu:  SafeStreets AE contacts \textbf{:SuggestionGenerator} component to get suggestions, based on analysis over accident data, stored in database. 
+			A more complex interaction between authorities and SafeStreets system is given in Figure \ref{fig:sd-suggestions}.
+			An authority can share with SafeStreets system its data about accidents occurred in its operative area, using the apposite menu. The \textbf{:AccidentCollector} component forwards the accident data from application to \textbf{:DBManager}, which will insert them onto database.\\
+			When an authority is notified about new suggestions, it clicks on the apposite menu: SafeStreets AE contacts \textbf{:SuggestionGenerator} component to get suggestions, based on analysis over accident data, stored in the database. 
 		
 		\clearpage	
 		\subsection{Selected architectural styles and patterns}
@@ -417,18 +416,17 @@
 				Model–View–Controller (\textbf{MVC}) pattern has been used. MVC is a software design pattern commonly used for developing user interfaces which divides the related program logic into three interconnected elements:
 				
 				\begin{itemize}
-					\item \textit{Model}: the central component of the pattern. It represents the application's data structure, independent of the user interface. It directly manages the data, logic and rules of the application.
+					\item \textit{Model}: the central component of the pattern. It represents the application's data structure, independent from the user interface. It directly manages the data of the application.
 					\item \textit{View}: any form of data representation. 
-					\item \textit{Controller}: accepts input and converts it to commands for the model or view
+					\item \textit{Controller}: accepts input and converts it to commands for the the model or the view.
 				\end{itemize}
 				
-				One of the biggest advantages of MVC is the possibility to have multiple views of the same information. Thinking about SafeStreets, both users and authorities have an own GUI and different level of details about data.
-				it is based on separation
-				This division of concerns makes the application easier to test and maintain: requests first arrive at the controller (or some of them) which binds the model with the
-				corresponding view. 
-				In fact, an other advantage is the possibility of parallelize application development among workers, such that groups can focus on a fixed part, i.e. model, view and controller.\\
+				One of the biggest advantages of MVC is the possibility to have multiple views of the same information. Thinking about SafeStreets: both users and authorities have their own GUI and different level of details about data.
+				This division of concerns makes the application easier to test and maintain: requests first arrive at the controller (or some of them) which binds the model with the corresponding view. 
+				In fact, another advantage is the possibility of parallelize application development among workers, such that groups can focus on a fixed part, i.e. model, view and controller.\\
 				
-				Focusing more on SafeStreets, the MVC division is also observable in Figure \ref{fig:component_diagram}. The backend of each application, both client and server side, is part of \textit{controller}; SafeStreets user interfaces represent the \textit{view} and they are just a mean to let users and authorities to communicate with the \textit{model}, information stored in SafeStreets databases.\\\\
+				Focusing more on SafeStreets, the MVC division is also observable in Figure \ref{fig:component_diagram}. The back-end of each application, both client and server side, is part of the \textit{controller}; SafeStreets user interfaces represent the \textit{view} and they are just a mean to let users and authorities to communicate with the \textit{model}, information stored in SafeStreets databases.\\
+				\\
 				Follows an high-level representation of SafeStreets architecture.
 				
 				\begin{figure}[H]
@@ -438,10 +436,10 @@
 				\end{figure}
 			
 				Figure \ref{fig:tieredArchitecture} gives the idea of two-tiered architecture on which SafeStreets is based: clearly, clients are not \textit{thin}, because they don't have only a presentation layer in their application.
-				In fact, with \textit{fat} or \textit{thick} clients there is no need for continuous server communications (e.g. violation reporting for users involve locally an OCR algorithm to verify a correct reading of license plate, without contacting server and generate more workload).
+				In fact, with \textit{fat} or \textit{thick} clients there is no need for continuous server communications (e.g. violation reporting for users involve locally an OCR algorithm to verify a correct reading of license plate, without contacting the server generating more workload).
 			
 			\subsubsection{RESTful web services}
-				SafeStreets system doesn't need to exchange, with individuals, complex objects or computations. Basically, there's an exchange of simple objects, easy to format (e.g. in strings, text, file). \\
+				SafeStreets system doesn't need to exchange, with individuals, complex objects or computations. Basically, there's an exchange of simple objects, easy to format (e.g. in strings, text, file).\\
 				In this way, SafeStreets retrieves requests from individuals and returns responses via HTTP, following \textbf{REST} principles.\\
 				\textbf{REST} is a software architectural style that defines a set of constraints to be used for creating Web services, in order to provide interoperability between systems on the Internet. 
 				
@@ -455,8 +453,9 @@
 				
 				RESTful Web services allow the requesting systems to access and manipulate textual representations of Web resources by using a uniform and predefined set of \textit{stateless} operations: the client-server communication is constrained by no client context being stored on the server between requests. Each request from any client contains all the information necessary to service the request and the session state is held in the client.\\
 				
-				A resource is an item of interest, exposed to the clients. In SafeStreets context, resources examples can be violation reports, accidents or suggestions for authorities.\\
-				Every resource is referred in requests using a \textit{URI}, a string of characters that unambiguously identifies the resource.\\\\			
+				A resource is an item of interest, exposed to the clients. In SafeStreets context, examples of resources can be violation reports, accidents or suggestions for authorities.\\
+				Every resource is referred in requests using a \textit{URI}, a string of characters that unambiguously identifies the resource.\\
+				\\			
 				In a RESTful application, some HTTP methods are used:
 				
 				\begin{itemize}
@@ -470,8 +469,8 @@
 	\clearpage	
 	\section{User Interface Design}
 		To give an approximate idea of how the interfaces of the application should appear, some mockups, both for SafeStreets Application and SafeStreets AE, have been given in \href{run:d:../DeliveryFolder/RASD1.pdf}{RASD} [Section 3.1.1].\\ 
-		In order to express the relations among pictures in RASD [3.1.1], here it will be illustrated a pair of UX Diagrams.
-		\\\\\\
+		In order to express the relations among pictures in RASD [3.1.1], here it will be illustrated a pair of UX Diagrams.\\
+		\\
 		Functionalities have been represented with different colours, while "Welcome Screen" and "Main Menu" (in purple) are basically the first graphical approach to the app, in particular "Main Menu" contains the menu voices at its right.
 		Each functionality has an own sub-flow: black dotted lines represent optional navigation from a screen to another one; blue dotted lines simply refers to the possibility to go back through screens until "Main Menu" is reached.
 		
