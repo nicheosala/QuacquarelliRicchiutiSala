@@ -106,9 +106,11 @@
 		\subsubsection{Acronyms}
 		\begin{itemize}
 			\item \textbf{AE} \label{AE}: SafeStreets Authority Edition.
+			\item \textbf{GUI} \label{GUI}: Graphic User Interface.
 			\item \textbf{HTTP} \label{HTTP}: Hypertext Transfer Protocol.
 			\item \textbf{MVC} \label{MVC}: Model-View-Controller design pattern.
-			\item \textbf{OCR} \label{OCR}: Optical Character Recognition
+			\item \textbf{OCR} \label{OCR}: Optical Character Recognition.
+			\item \textbf{RASD} \label{RASD}: Requirement Analysis and Specification Document.
 			\item \textbf{REST} \label{REST}: REpresentational State Transfer.
 			\item \textbf{URI} \label{URI}: Universal Resource Identifier.
 
@@ -187,7 +189,7 @@
 		The diagram underlines that the clients, SafeStreets app and SafeStreets AE, are not thin: they include part of the application logic.\\
 		
 		\begin{figure}[H]
-			\includegraphics [scale=0.8] {diagrams/component_diagram.png}
+			\includegraphics [scale=0.75] {diagrams/component_diagram.png}
 			\caption[Component diagram]{Component diagram}
 			\label{fig:component_diagram}
 		\end{figure}
@@ -242,13 +244,13 @@
 			\label{fig:deployment_view}
 		\end{figure}
 	
-   		SafeStreets App is executed on smartphones and the application is available for the two most popular mobile operative systems (iOS/Android).
-   		The smartphone is the device in which both the SafeStreets App view and the SafeStreets App back-end are defined, so it contains the first two logic layers that are the presentation and the application one.\\
-   		The smartphone can communicate with SafeStreets Server to execute all the SafeStreets services such as sending a report or browsing through reporting statistics.\\
-   		SafeStreets AE is distributed by SafeStreets only to certificated authorities that collaborate with SafeStreets. In this context, the application is executable only on desktop computers or notebooks located in authorities' stations. This type of application is developed for the following types of operative systems: Windows, Linux or Mac operative systems.\\
+   		SafeStreets App is executed on smartphones and the application is available for the two most popular mobile operative systems: iOS and Android.
+   		The smartphone is the device in which both the SafeStreets App view and the SafeStreets App back-end are placed, so it contains the first two logic layers that are the presentation and the application one.\\
+   		The smartphone can communicate with SafeStreets Server to execute all the SafeStreets services such as sending a report or browsing through statistics.\\
+   		SafeStreets AE is distributed only to authorities that collaborate with SafeStreets. In this context, the application is executable only on computers located in authorities' stations. This type of application is distributed into a (\href{https://www.docker.io}{Docker container}). In this way, the app can be installed on any operating system (more precisely, on any OS for which Docker is available) and the developers of SafeStreets doesn't have to care about the OS on which the app will be executed.\\
    		The reason why the AE is different from the simpler App is that authorities are allowed to make additional and more complete requests to the system and so, a desktop interface and a powerful hardware is better to manage all these requests and to make longer working sessions.\\
    		\\
-   		SafeStreets Server is installed on an application Server using preferably Linux operative system for better performance. Other operative systems are also allowed. The server has to manage and forward all the requests in the system and it represent the only way for individuals to retrieve information from the SafeStreets database.\\
+   		SafeStreets Server is installed on an application Server using preferably a Linux operative system. The Docker middleware is not exploited here, so to have better performance. Moreover, for the server, the possibility of supporting multiple OS is not as relevant as for SafeStreets AE. The server has to manage and forward all the requests in the system and it represent the only way for individuals to retrieve information from the SafeStreets database.\\
    		\\
    		The Database Management System is installed on a non-specific type of server. One possible suggestion is to define it in MongoDB that provides a several number of advantage in terms of security, performance and scalability.\\
    		Other kind of DBMS are also allowed. The key aspect is that the database structure must be relational to satisfy the functionalities required by the system that need a fixed data structure to return specific kind of information or it needs to aggregate related information to make the server able to generate suggestions.
@@ -450,21 +452,10 @@
 					\label{fig:RESTful web services}
 				\end{figure}
 
-				
 				RESTful Web services allow the requesting systems to access and manipulate textual representations of Web resources by using a uniform and predefined set of \textit{stateless} operations: the client-server communication is constrained by no client context being stored on the server between requests. Each request from any client contains all the information necessary to service the request and the session state is held in the client.\\
 				
 				A resource is an item of interest, exposed to the clients. In SafeStreets context, examples of resources can be violation reports, accidents or suggestions for authorities.\\
-				Every resource is referred in requests using a \textit{URI}, a string of characters that unambiguously identifies the resource.\\
-				\\			
-				In a RESTful application, some HTTP methods are used:
-				
-				\begin{itemize}
-					\item {\textbf{GET}}: used to retrieve resource URI.
-					\item {\textbf{POST}}: used to create a new resource into the collection of resources (e.g. database). The URI of the created resource is automatically assigned.
-					\item {\textbf{PUT}}: used to update all the representations of the resources of the collection resource with the representation in the request, or create the resource if it does not exist.
-					\item {\textbf{DELETE}}: used to delete a resource.
-				\end{itemize}
-			
+				Every resource is referred in requests using a \textit{URI}, a string of characters that unambiguously identifies the resource.
 		
 	\clearpage	
 	\section{User Interface Design}
