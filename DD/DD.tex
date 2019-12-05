@@ -235,11 +235,13 @@
 		\subsubsection{SafeStreets Database components}
 		The database stores all the information used by SafeStreets ecosystem. It is composed by three sub-databases, whose role can be easily understood from their name: \textbf{Violation report DB}, \textbf{Accident DB} and \textbf{Authority DB}.
 		
+		\clearpage
 		\subsection{Deployment view}
 		In this section are defined the devices and the environments in which the three layers defined in the chapter 2.1 are concretely realized.
 		
 		\begin{figure}[H]
-			\includegraphics [scale=0.5] {diagrams/deployment_view.png}
+			\centering
+			\includegraphics [scale=0.8] {diagrams/deployment_view.png}
 			\caption[Deployment View]{Deployment view}
 			\label{fig:deployment_view}
 		\end{figure}
@@ -551,7 +553,9 @@
 
 		\subsection{Integration and testing}
 			The implementation of each component must proceed in parallel with its testing phase. As soon as all the components of a given functionality are implemented, an integration test must be performed. Therefore, the order of testing and integration is strictly related to the order of implementation.\\
-			When all the components have been implemented, they must be integrated and tested with respect to the node to which they belong.\\
+			Thanks to the MVC pattern, the view and the controller of each functionality can be implemented in parallel. In fact, as soon as the interfaces between the view and the controller have been defined, this components interact only using such interfaces.\\
+			When the view and the controller of the same functionality have been implemented, a test of the entire system that manage that functionality must be done.\\
+			When all the functionalities have been implemented, they must be integrated and tested with respect to the node to which their components belong.\\
 			In the end, a global test of SafeStreets must be performed.\\
 	
 	\clearpage
