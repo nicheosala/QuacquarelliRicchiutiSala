@@ -10,7 +10,7 @@
 \usepackage{color, soulutf8}
 \usepackage{graphicx}
 \usepackage{grffile}
-
+\usepackage{adjustbox}
 \usepackage{hyperref}
 \hypersetup{
 	colorlinks=true,
@@ -33,7 +33,7 @@
 		
 		\centering
 		\vspace*{0.7 cm}
-		\includegraphics[scale = 0.7]{images/PolimiLogo.png}\\[1 cm]
+		\includegraphics[width=\textwidth]{images/PolimiLogo.png}\\[1 cm]
 		\textsc{\large Dipartimento di Elettronica, Informazione e Bioingegneria}\\[2 cm]
 		
 		\rule{\linewidth}{0.2 mm} \\[0.5 cm]
@@ -160,14 +160,14 @@
 		In this section is defined the high-level architecture of SafeStreets system.\\ 
 		Figure \ref{fig:hinteraction_diagram} represents the high level interaction between the main parts of SafeStreets' structure.
 		\begin{figure}[H]
-			\includegraphics [scale=0.5] {diagrams/high-interaction.png}
+			\includegraphics [width=\textwidth] {diagrams/high-interaction.png}
 			\caption[High-Level Interaction]{High-Level Interaction diagram}
 			\label{fig:hinteraction_diagram}
 		\end{figure}
 		The figure describes how individuals interact with SafeStreets. Only one user is represented on the left and only one authority on the right, but this is only made to define clearly interactions. The real system is actually composed by multiple individuals.\\
 		Basically everyone can download the SafeStreets application on his smartphone and can be an \textit{user}. On the other hand the Authority Edition is distributed by SafeStreets only to certificated \textit{authorities} that wants to collaborate with it. 
 		\begin{figure}[H]
-			\includegraphics [scale=0.5] {diagrams/system_overview.png}
+			\includegraphics [width=\textwidth] {diagrams/system_overview.png}
 			\caption[High-Level Layers]{High-Level layers}
 			\label{fig:hlayers}
 		\end{figure}
@@ -187,7 +187,8 @@
 		The diagram underlines that the clients, SafeStreets app and SafeStreets AE, are not thin: they include part of the application logic.\\
 		
 		\begin{figure}[H]
-			\includegraphics [scale=0.75] {diagrams/component_diagram.png}
+			\centering
+			\includegraphics [width=\textwidth] {diagrams/component_diagram.png}
 			\caption[Component diagram]{Component diagram}
 			\label{fig:component_diagram}
 		\end{figure}
@@ -239,7 +240,7 @@
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics [scale=0.8] {diagrams/deployment_view.png}
+			\includegraphics [width=\textwidth] {diagrams/deployment_view.png}
 			\caption[Deployment View]{Deployment view}
 			\label{fig:deployment_view}
 		\end{figure}
@@ -261,7 +262,8 @@
 		Information exchanged through these interfaces is standardized with respect to the following class diagram.\\
 		
 		\begin{figure}[H]
-			\includegraphics {diagrams/class_diagram.png}
+			\centering
+			\includegraphics [width=\textwidth]{diagrams/class_diagram.png}
 			\caption[Class diagram]{Class diagram}
 			\label{fig:class_diagram}
 		\end{figure}
@@ -378,38 +380,41 @@
 			Figure \ref{fig:sd-violationReport} shows a detailed interaction between a user and SafeStreets system, through SafeStreets App, using the violation report functionality.\\
 			
 			\begin{figure}[H]
-				\includegraphics [scale=0.55] {diagrams/DD_SeqD_ViolationReport.png}
+				\centering
+				\includegraphics [width=\textwidth] {diagrams/DD_SeqD_ViolationReport.png}
 				\caption[Sequence diagram]{Sequence diagram for violation reports in SafeStreets AE}
 				\label{fig:sd-violationReport}
 			\end{figure}
 		
-			After clicking the apposite menu, the application change its frame and let the user take a photo of traffic violation. Once completed, a countdown of 10 minutes starts: this guarantees that a report could represent an actual violation, so it's not possible neither taking a photo and compile report after a long time, nor upload any photo. SafeStreets Application forces the user to take a photo of violation only through the user interface.\\
+			After clicking the apposite menu, the application change its frame and let the user take a photo of traffic violation. Once completed, a countdown of 10 minutes starts: this guarantees that a report could represent an actual violation, so it's not possible neither taking a photo and compile report after a long time, nor upload any photo. SafeStreets Application forces the user to take a photo of violation only through the user interface and in less than 10 minutes.\\
 			Now, two scenarios can occur: the OCR component of SafeStreets App (described in Figure \ref{fig:component_diagram} and in 2.2.1) recognizes the right license plate or not.\\
 			If the license plate read is correct, then the application let the user compile the violation report with remaining information and, before sending it, retrieves data as position and date. 
 			The \textbf{:violationReportRouter} forward the report coming from the application to \textbf{:DBManager}.
 			This last component stores the report (in pending status) and let the \textbf{:violationReportRouter} notify the authority which operates in the area where the violation occurred. 
 			If license plate is either not correct or not detected, then user can repeat the procedure and the report timeout is reset.\\
 			
-			Authorities evaluate reports as follows in Figure \ref{fig:sd-reportEvaluation}.
-			After clicking the apposite menu, SafeStreets AE asks \textbf{:violationReportRouter} to get from \textbf{:DBManager} eventual new reports.\\
-			If any reports are retrieved, an authority for each of them can do evaluation, based on photo and information.\\
+			Authorities evaluate reports as follows in Figure \ref{fig:sd-reportEvaluation}.\\
+			\textbf{:violationReportRouter} forwards (asynchronously) each report to the right authority. If any reports are retrieved, an authority for each of them can do evaluation, based on photo and information.\\
 			Two scenarios have to be managed: if the authority establish that a report is valid ("confirmed"), then \textbf{:violationReportRouter} queries an update of report status to \textbf{:DBManager}; otherwise, if not valid, report should be discarded, so the query asks to delete that report.
 			
 			\begin{figure}[H]
-				\includegraphics [scale=0.7] {diagrams/DD_SeqD_ReportEvaluation.png}
+				\centering
+				\includegraphics [width=\textwidth] {diagrams/DD_SeqD_ReportEvaluation.png}
 				\caption[Sequence diagram]{Sequence diagram for report evaluation in SafeStreets AE}
 				\label{fig:sd-reportEvaluation}
 			\end{figure}
 			
 			\begin{figure}[H]
-				\includegraphics [scale=0.6] {diagrams/DD_SeqD_Suggestions.png}
+				\centering
+				\includegraphics [width=\textwidth] {diagrams/DD_SeqD_Suggestions.png}
 				\caption[Sequence diagram]{Sequence diagram for interactive suggestions in SafeStreets AE}
 				\label{fig:sd-suggestions}
 			\end{figure}
 		
 			A more complex interaction between authorities and SafeStreets system is given in Figure \ref{fig:sd-suggestions}.
 			An authority can share with SafeStreets system its data about accidents occurred in its operative area, using the apposite menu. The \textbf{:AccidentCollector} component forwards the accident data from application to \textbf{:DBManager}, which will insert them onto database.\\
-			When an authority is notified about new suggestions, it clicks on the apposite menu: SafeStreets AE contacts \textbf{:SuggestionGenerator} component to get suggestions, based on analysis over accident data, stored in the database. 
+			When new suggestions are generated from \textbf{:SuggestionGenerator}, after accidents and reports analysis, that one component forwards (asynchronously) suggestions to the right authority.\\
+			Once authorities get a notify about new suggestions, they can select the appropriate menu and read them.
 		
 		\clearpage	
 		\subsection{Selected architectural styles and patterns}
@@ -432,7 +437,8 @@
 				Follows an high-level representation of SafeStreets architecture.
 				
 				\begin{figure}[H]
-					\includegraphics [scale=0.7] {diagrams/tieredArchitecture.png}
+					\centering
+					\includegraphics [width=\textwidth] {diagrams/tieredArchitecture.png}
 					\caption[Architecture]{High-level representation of SafeStreets architecture}
 					\label{fig:tieredArchitecture}
 				\end{figure}
@@ -492,112 +498,112 @@
 		\begin{itemize}
 			\requirement{1} The user report must be of one of the type of violation defined by SafeStreets.
 			\begin{itemize}
-				\item Violation Report Manager
+				\item \textbf{Violation Report Manager}
 			\end{itemize}
 			\requirement{2} The report image must show the license plate of the offender.
 			\begin{itemize}
-				\item Violation Report Manager
+				\item \textbf{Violation Report Manager}
 			\end{itemize}
 			\requirement{3} The user must insert the picture of the violation.
 			\begin{itemize}
-				\item Violation Report Manager 
+				\item \textbf{Violation Report Manager} 
 			\end{itemize}
 			\requirement{4} The user must complete the report before the expiration of the report timeout.
 			\begin{itemize}
-				\item Violation Report Manager
-				\item Timeout Manager
+				\item \textbf{Violation Report Manager}
+				\item \textbf{Timeout Manager}
 			\end{itemize}
 			\requirement{5} The OCR algorithm must detect one license plate in the report image.	
 			\begin{itemize}
-				\item Violation Report Manager
-				\item OCR
+				\item \textbf{Violation Report Manager}
+				\item \textbf{OCR}
 			\end{itemize}
 			\requirement{6} The APP must detect automatically position and date.
 			\begin{itemize}
-				\item Violation Report Manager
+				\item \textbf{Violation Report Manager}
 			\end{itemize}
 			\requirement{7} Every violation report sent to server must be filled in all its fields.
 			\begin{itemize}
-				\item Violation Report Manager
-				\item Violation Report Router
+				\item \textbf{Violation Report Manager}
+				\item \textbf{Violation Report Router}
 			\end{itemize}
 			\requirement{8} The SafeStreets client must show all and only the information required by the individual.
 			\begin{itemize}
-				\item User data-mining
-				\item Authority data-mining
-				\item Data-mining Manager
+				\item \textbf{User data-mining}
+				\item \textbf{Authority data-mining}
+				\item \textbf{Data-mining Manager}
 			\end{itemize}
 			\requirement{9} Every individual can browse the map.
 			\begin{itemize}
-				\item User data-mining
-				\item Authority data-mining
+				\item \textbf{User data-mining}
+				\item \textbf{Authority data-mining}
 			\end{itemize}
 			\requirement{10} Every individual can see statistics in map.
 			\begin{itemize}
-				\item User data-mining
-				\item Authority data-mining
+				\item \textbf{User data-mining}
+				\item \textbf{Authority data-mining}
 			\end{itemize}
 			\requirement{11} Every individual can define filters for the research.
 			\begin{itemize}
-				\item User data-mining
-				\item Authority data-mining
-				\item Data-mining Manager
+				\item \textbf{User data-mining}
+				\item \textbf{Authority data-mining}
+				\item \textbf{Data-mining Manager}
 			\end{itemize}
 			\requirement{12} Every authority can see advanced statistics in map (including sensitive information).
 			\begin{itemize}
-				\item Authority data-mining
-				\item Data-mining Manager
+				\item \textbf{Authority data-mining}
+				\item \textbf{Data-mining Manager}
 			\end{itemize}
 			\requirement{13} Every authority can define advanced filters for the research (including sensitive information).
 			\begin{itemize}
-				\item Authority data-mining
-				\item Data-mining Manager
+				\item \textbf{Authority data-mining}
+				\item \textbf{Data-mining Manager}
 			\end{itemize}
 			\requirement{14} The information about accidents must be of one of the type defined by SafeStreets.
 			\begin{itemize}
-				\item Accident Manager
+				\item \textbf{Accident Manager}
 			\end{itemize}
 			\requirement{15} Information about accidents occurred must include all the information required by SafeStreets.
 			\begin{itemize}
-				\item Accident Manager
-				\item Accident Collector
+				\item \textbf{Accident Manager}
+				\item \textbf{Accident Collector}
 			\end{itemize}
 			\requirement{16} Every accident reported by a registered authority is consistently saved into the SafeStreets database.
 			\begin{itemize}
-				\item Accident Collector
-				\item Db Manager
+				\item \textbf{Accident Collector}
+				\item \textbf{DB Manager}
 			\end{itemize}
 			\requirement{17} Every violation reported to SafeStreets is consistently saved into SafeStreets database.
 			\begin{itemize}
-				\item Violation Report Router
-				\item Db Manager
+				\item \textbf{Violation Report Router}
+				\item \textbf{DB Manager}
 			\end{itemize}
 			\requirement{18} SafeStreets must be able to generate suggestions, based on accidents and confirmed violation reports.
 			\begin{itemize}
-				\item Db Manager
-				\item Suggestion Generator
+				\item \textbf{DB Manager}
+				\item \textbf{Suggestion Generator}
 			\end{itemize}
 			\requirement{19} Every authority must receive suggestions only referred to its operative area.
 			\begin{itemize}
-				\item Suggestion Generator
-				\item Suggestion Receiver
+				\item \textbf{Suggestion Generator}
+				\item \textbf{Suggestion Receiver}
 			\end{itemize}
 			\requirement{20} An authority receives a report if and only if that report is related to a position covered by that authority (i.e. the postal code of the position of the violation report is assigned to that authority)
 			\begin{itemize}
-				\item Violation Report Router
-				\item Violation Report Evaluator
+				\item \textbf{Violation Report Router}
+				\item \textbf{Violation Report Evaluator}
 			\end{itemize}
 			\requirement{21} When a registered authority confirms a violation report, that confirmation is consistently stored into the server.
 			\begin{itemize}
-				\item Violation Report Router
-				\item Violation Report Evaluator
-				\item Db Manager 
+				\item \textbf{Violation Report Router}
+				\item \textbf{Violation Report Evaluator}
+				\item \textbf{DB Manager} 
 			\end{itemize}
 			\requirement{22} A violation report rejected by a registered authority is removed from SafeStreets database.
 			\begin{itemize}
-				\item Violation Report Router
-				\item Violation Report Evaluator
-				\item Db Manager
+				\item \textbf{Violation Report Router}
+				\item \textbf{Violation Report Evaluator}
+				\item \textbf{DB Manager}
 			\end{itemize}
 		\end{itemize}
 			
@@ -610,25 +616,29 @@
 		After that, the components are grouped by the functionality they implement. These groups are sequentially implemented with respect to the order with which their associated functionality is presented into the project assignment. Inside every group, the order of implementation depends on the physical node in which the component is: first the Server, than the App, AE in the end.\\
 		Therefore, the first components to be implemented are the ones related to violation reports. In this group, the component of the server closer to the database is "Violation report router". Then we implement the "violation report manager" on SafeStreets App, with its sub-components "OCR" and "Timeout manager". Finally, "Violation report evaluator" is implemented on SafeStreets AE.\\
 		\begin{figure}[H]
-			\includegraphics [scale=0.9] {diagrams/report_impltest.png}
+			\centering
+			\includegraphics [width=\textwidth] {diagrams/report_impltest.png}
 			\caption[Report Implementation order]{Report Implementation order}
 			\label{fig:report_order}
 		\end{figure}
 		The second functionality is  about data-mining and statistics. Therefore, in this order, we implement: "data-mining manager" in the server, "user data-mining" in the App, "authority data-mining" in SafeStreets AE.\\
 		\begin{figure}[H]
-			\includegraphics [scale=0.9] {diagrams/datam_impltest.png}
+			\centering
+			\includegraphics [width=\textwidth]{diagrams/datam_impltest.png}
 			\caption[Data Mining Implementation order]{Data Mining Implementation order}
 			\label{fig:datamining_order}
 		\end{figure}
-		For "suggestion" functionality, we have "suggestion generator"in the server and "suggestion receiver" in AE.\\
+		For "suggestion" functionality, we have "suggestion generator" in the server and "suggestion receiver" in AE.\\
 		\begin{figure}[H]
-			\includegraphics [scale=0.9] {diagrams/suggestion_impltest.png}
+			\centering
+			\includegraphics [width=\textwidth]{diagrams/suggestion_impltest.png}
 			\caption[Suggestions Implementation order]{Suggestions Implementation order}
 			\label{fig:suggestions_order}
 		\end{figure}
 		In the end, for the "accident" functionality, the "suggestion generator" component is implemented, then the "accident manager" on AE.\\
-			\begin{figure}[H]
-			\includegraphics [scale=0.9] {diagrams/accident_impltest.png}
+		\begin{figure}[H]
+			\centering
+			\includegraphics [width=\textwidth]{diagrams/accident_impltest.png}
 			\caption[Accident Implementation order]{Accident Implementation order}
 			\label{fig:accident_order}
 		\end{figure}
@@ -662,34 +672,36 @@
 		
 		\begin{table}[h]
 			\centering
-			\begin{tabular}{l c l c l c}
-				\hline\hline
-				\multicolumn{6}{c}{\textbf{Individual Work}} \\
-				\hline
-				\multicolumn{2}{c |}{\textbf{Nicolò Sala}}  &
-				\multicolumn{2}{c |}{\textbf{Sebastiano Quacquarelli}} &
-				\multicolumn{2}{c}{\textbf{Simone Ricchiuti}}\\
-				\hline
-				\textbf{Task} & \textbf{Hours}
-				& \textbf{Task} & \textbf{Hours}
-				& \textbf{Task} & \textbf{Hours} \\ [0.3ex]
-				\hline
-				%Nicolò								Sebastiano							Simone
-				Component view & 4					& User Interface Design & 3					& Introduction & 2
-				\\\hline
-				Component interfaces & 4						& Runtime view & 2				& Architectural Design  & 4
-				\\\hline
-				Test plan & 1					& Architectural style/patterns & 4				    & Scheduling plans  & 2 
-				\\\hline
-				Requirements & 2				& Requirements & 2 			& Requirements & 2 
-				\\\hline
-					&			&  & 					& &   
-				\\\hline
-				&							&  & 				&   &   
-				\\\hline
-				\textbf{Total} & 11				& \textbf{Total} & 9				& \textbf{Total} & 10
-				\\\hline
-			\end{tabular}
+			\begin{adjustbox}{width=1\textwidth}
+				\begin{tabular}{l c l c l c}
+					\hline\hline
+					\multicolumn{6}{c}{\textbf{Individual Work}} \\
+					\hline
+					\multicolumn{2}{c |}{\textbf{Nicolò Sala}}  &
+					\multicolumn{2}{c |}{\textbf{Sebastiano Quacquarelli}} &
+					\multicolumn{2}{c}{\textbf{Simone Ricchiuti}}\\
+					\hline
+					\textbf{Task} & \textbf{Hours}
+					& \textbf{Task} & \textbf{Hours}
+					& \textbf{Task} & \textbf{Hours} \\ [0.3ex]
+					\hline
+					%Nicolò								Sebastiano							Simone
+					Component view & 4					& User Interface Design & 3					& Introduction & 2
+					\\\hline
+					Component interfaces & 4						& Runtime view & 3				& Architectural Design  & 4
+					\\\hline
+					Test plan & 1					& Architectural style/patterns & 4				    & Scheduling plans  & 2 
+					\\\hline
+					Requirements & 2				& Requirements & 2 			& Requirements & 2 
+					\\\hline
+						&			&  & 					& &   
+					\\\hline
+					&							&  & 				&   &   
+					\\\hline
+					\textbf{Total} & 11				& \textbf{Total} & 12				& \textbf{Total} & 10
+					\\\hline
+				\end{tabular}
+			\end{adjustbox}
 			\caption{Time spent by each team member}
 			\label{fig:Time spent by each team member}
 		\end{table}
