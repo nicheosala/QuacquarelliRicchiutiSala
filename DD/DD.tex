@@ -378,7 +378,7 @@
 			Figure \ref{fig:sd-violationReport} shows a detailed interaction between a user and SafeStreets system, through SafeStreets App, using the violation report functionality.\\
 			
 			\begin{figure}[H]
-				\includegraphics [scale=0.7] {diagrams/DD_SeqD_ViolationReport.png}
+				\includegraphics [scale=0.55] {diagrams/DD_SeqD_ViolationReport.png}
 				\caption[Sequence diagram]{Sequence diagram for violation reports in SafeStreets AE}
 				\label{fig:sd-violationReport}
 			\end{figure}
@@ -396,13 +396,13 @@
 			Two scenarios have to be managed: if the authority establish that a report is valid ("confirmed"), then \textbf{:violationReportRouter} queries an update of report status to \textbf{:DBManager}; otherwise, if not valid, report should be discarded, so the query asks to delete that report.
 			
 			\begin{figure}[H]
-				\includegraphics [scale=0.8] {diagrams/DD_SeqD_ReportEvaluation.png}
+				\includegraphics [scale=0.7] {diagrams/DD_SeqD_ReportEvaluation.png}
 				\caption[Sequence diagram]{Sequence diagram for report evaluation in SafeStreets AE}
 				\label{fig:sd-reportEvaluation}
 			\end{figure}
 			
 			\begin{figure}[H]
-				\includegraphics [scale=0.7] {diagrams/DD_SeqD_Suggestions.png}
+				\includegraphics [scale=0.6] {diagrams/DD_SeqD_Suggestions.png}
 				\caption[Sequence diagram]{Sequence diagram for interactive suggestions in SafeStreets AE}
 				\label{fig:sd-suggestions}
 			\end{figure}
@@ -490,30 +490,114 @@
 		In this section is shown how the requirements specified in RASD are mapped
 		to the design components defined in this document.
 		\begin{itemize}
-			\requirement{1} The SafeStreets client must be able to communicate with the SafeStreets server.
-			\begin{itemize}
-				\item 
-			\end{itemize}
-			\requirement{2} The user report must be of one of the type of violation defined by SafeStreets.
+			\requirement{1} The user report must be of one of the type of violation defined by SafeStreets.
 			\begin{itemize}
 				\item Violation Report Manager
 			\end{itemize}
-			\requirement{3} The report image must show the license plate of the offender.
+			\requirement{2} The report image must show the license plate of the offender.
+			\begin{itemize}
+				\item Violation Report Manager
+			\end{itemize}
+			\requirement{3} The user must insert the picture of the violation.
 			\begin{itemize}
 				\item Violation Report Manager 
+			\end{itemize}
+			\requirement{4} The user must complete the report before the expiration of the report timeout.
+			\begin{itemize}
+				\item Violation Report Manager
+				\item Timeout Manager
+			\end{itemize}
+			\requirement{5} The OCR algorithm must detect one license plate in the report image.	
+			\begin{itemize}
+				\item Violation Report Manager
 				\item OCR
 			\end{itemize}
-			\requirement{4} The only license plate shown in the report image is the one of the offender.
+			\requirement{6} The APP must detect automatically position and date.
 			\begin{itemize}
-				\item 
+				\item Violation Report Manager
 			\end{itemize}
-			\requirement{5} Each violation report must refer to only one offender.	
+			\requirement{7} Every violation report sent to server must be filled in all its fields.
 			\begin{itemize}
-				\item 
+				\item Violation Report Manager
+				\item Violation Report Router
 			\end{itemize}
-			\requirement{6} The GPS service, the external camera and the internet connection must be active.
+			\requirement{8} The SafeStreets client must show all and only the information required by the individual.
 			\begin{itemize}
-				\item 
+				\item User data-mining
+				\item Authority data-mining
+				\item Data-mining Manager
+			\end{itemize}
+			\requirement{9} Every individual can browse the map.
+			\begin{itemize}
+				\item User data-mining
+				\item Authority data-mining
+			\end{itemize}
+			\requirement{10} Every individual can see statistics in map.
+			\begin{itemize}
+				\item User data-mining
+				\item Authority data-mining
+			\end{itemize}
+			\requirement{11} Every individual can define filters for the research.
+			\begin{itemize}
+				\item User data-mining
+				\item Authority data-mining
+				\item Data-mining Manager
+			\end{itemize}
+			\requirement{12} Every authority can see advanced statistics in map (including sensitive information).
+			\begin{itemize}
+				\item Authority data-mining
+				\item Data-mining Manager
+			\end{itemize}
+			\requirement{13} Every authority can define advanced filters for the research (including sensitive information).
+			\begin{itemize}
+				\item Authority data-mining
+				\item Data-mining Manager
+			\end{itemize}
+			\requirement{14} The information about accidents must be of one of the type defined by SafeStreets.
+			\begin{itemize}
+				\item Accident Manager
+			\end{itemize}
+			\requirement{15} Information about accidents occurred must include all the information required by SafeStreets.
+			\begin{itemize}
+				\item Accident Manager
+				\item Accident Collector
+			\end{itemize}
+			\requirement{16} Every accident reported by a registered authority is consistently saved into the SafeStreets database.
+			\begin{itemize}
+				\item Accident Collector
+				\item Db Manager
+			\end{itemize}
+			\requirement{17} Every violation reported to SafeStreets is consistently saved into SafeStreets database.
+			\begin{itemize}
+				\item Violation Report Router
+				\item Db Manager
+			\end{itemize}
+			\requirement{18} SafeStreets must be able to generate suggestions, based on accidents and confirmed violation reports.
+			\begin{itemize}
+				\item Db Manager
+				\item Suggestion Generator
+			\end{itemize}
+			\requirement{19} Every authority must receive suggestions only referred to its operative area.
+			\begin{itemize}
+				\item Suggestion Generator
+				\item Suggestion Receiver
+			\end{itemize}
+			\requirement{20} An authority receives a report if and only if that report is related to a position covered by that authority (i.e. the postal code of the position of the violation report is assigned to that authority)
+			\begin{itemize}
+				\item Violation Report Router
+				\item Violation Report Evaluator
+			\end{itemize}
+			\requirement{21} When a registered authority confirms a violation report, that confirmation is consistently stored into the server.
+			\begin{itemize}
+				\item Violation Report Router
+				\item Violation Report Evaluator
+				\item Db Manager 
+			\end{itemize}
+			\requirement{22} A violation report rejected by a registered authority is removed from SafeStreets database.
+			\begin{itemize}
+				\item Violation Report Router
+				\item Violation Report Evaluator
+				\item Db Manager
 			\end{itemize}
 		\end{itemize}
 			
@@ -588,22 +672,22 @@
 				\hline
 				\textbf{Task} & \textbf{Hours}
 				& \textbf{Task} & \textbf{Hours}
-				& \textbf{Task} & \textbf{Hours} \\ [0.5ex]
+				& \textbf{Task} & \textbf{Hours} \\ [0.3ex]
 				\hline
 				%Nicolò								Sebastiano							Simone
-				Component view & 4					& User Interface Design & 3					& Introduction & 4
+				Component view & 4					& User Interface Design & 3					& Introduction & 2
 				\\\hline
-				Component interfaces & 4						& Runtime view & 2				& Product functions  & 4
+				Component interfaces & 4						& Runtime view & 2				& Architectural Design  & 4
 				\\\hline
-				Test plan & 1					& Architectural style/patterns & 4				    & User characteristics  & 0.5 
+				Test plan & 1					& Architectural style/patterns & 4				    & Scheduling plans  & 2 
 				\\\hline
-				Requirements & 2				& Requirements & 2 			& Functional req & 2 
+				Requirements & 2				& Requirements & 2 			& Requirements & 2 
 				\\\hline
-					&			&  & 					& UC description & 3  
+					&			&  & 					& &   
 				\\\hline
-				&							&  & 				& Activity Diagrams  & 2  
+				&							&  & 				&   &   
 				\\\hline
-				\textbf{Total} & 11				& \textbf{Total} & 9				& \textbf{Total} & 15.5
+				\textbf{Total} & 11				& \textbf{Total} & 9				& \textbf{Total} & 10
 				\\\hline
 			\end{tabular}
 			\caption{Time spent by each team member}
