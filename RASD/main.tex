@@ -618,7 +618,9 @@
 			In this way, users can not keep for a long time a report before they send it, so a timeout must be considered.\\
 			From step (3.1), the application actually retrieves information about time and position and send the report to SafeStreets system. Then, report will be published and forwarded to the registered authority which operates in the specified position.\\
 			 
-			 The next two sequence diagrams explain detailed steps about authorities' function, provided by SafeStreets AE.\\\\
+			 The next two sequence diagrams explain detailed steps about authorities' function, provided by SafeStreets AE.\\
+			 
+			 \clearpage
 			 \figurename{ \ref{fig:sequencediagram_evaluation}} represents that service for authorities, able to manage and evaluate reports sent by users.\\
 			 The authority checks if there are new report to evaluate, so, through the application AE, contact SafeStreets system to retrieve these information.\\
 			 If there's at least one report to evaluate, SafeStreets AE will show it and permit authorities to establish if the report is correct or not.\\
@@ -631,6 +633,7 @@
 				\label{fig:sequencediagram_evaluation}
 			\end{figure}
 		
+			\clearpage
 			Finally, an authority can eventually insert in SafeStreets system information about accidents occurred in its operative area.\\
 			Gradually, SafeStreets system collect these data and cross them with report violations: once it has analyzed enough data, SafeStreets system will generate for the authority a set of suggestions, aimed to secure the area. \\\\
 			\figurename{ \ref{fig:sequencediagram_suggestions}} describes the just mentioned functionality.
