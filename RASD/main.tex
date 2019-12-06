@@ -614,13 +614,11 @@
 			\end{figure}
 			
 			Steps from (1) to (3) have been explained in \figurename{ \ref{fig:activitydiagram_report}}: here, an additional information is given representing the time constraint \textit{"b-a"}.\\
-			This interval works as a timeout and guarantees that a report could be sent almost at the same time in which user sees a vehicle in a possible violation condition.\\
-			In this way, users can not keep for a long time a report before they send it.\\
-			From step (3.1), SafeStreets application retrieve from the picture
-			 metadata such as date and position in which picture has been taken by user.\\
-			 Then, the application actually send both report and metadata to SafeStreets system, in order to publish the report and forward it to the registered authority which operates in the specified position.\\
+			This interval guarantees that a report could be sent about at the same time in which user sees a vehicle in a possible violation condition.\\
+			In this way, users can not keep for a long time a report before they send it, so a timeout must be considered.\\
+			From step (3.1), the application actually retrieves information about time and position and send the report to SafeStreets system. Then, report will be published and forwarded to the registered authority which operates in the specified position.\\
 			 
-			 The next two sequence diagrams explain detailed steps about authorities' function, provided by SafeStreets AE.\\
+			 The next two sequence diagrams explain detailed steps about authorities' function, provided by SafeStreets AE.\\\\
 			 \figurename{ \ref{fig:sequencediagram_evaluation}} represents that service for authorities, able to manage and evaluate reports sent by users.\\
 			 The authority checks if there are new report to evaluate, so, through the application AE, contact SafeStreets system to retrieve these information.\\
 			 If there's at least one report to evaluate, SafeStreets AE will show it and permit authorities to establish if the report is correct or not.\\
@@ -634,12 +632,12 @@
 			\end{figure}
 		
 			Finally, an authority can eventually insert in SafeStreets system information about accidents occurred in its operative area.\\
-			Gradually, SafeStreets system collect these data and cross them with report violations: once it has analyzed enough data, SafeStreets system will generate for the authority a set of suggestions, aimed to secure the area. \\
+			Gradually, SafeStreets system collect these data and cross them with report violations: once it has analyzed enough data, SafeStreets system will generate for the authority a set of suggestions, aimed to secure the area. \\\\
 			\figurename{ \ref{fig:sequencediagram_suggestions}} describes the just mentioned functionality.
 			
 			\begin{figure}[H]
 				\centering
-				\includegraphics[width=1.1\textwidth]{diagrams/sequence_suggestions.png}
+				\includegraphics[width=1\textwidth]{diagrams/sequence_suggestions.png}
 				\caption[SafeStreets sequence diagram]{SafeStreets sequence diagram for showing suggestions}
 				\label{fig:sequencediagram_suggestions}
 			\end{figure}
@@ -816,9 +814,9 @@
 			\\\hline
 			Design constraints & 1				& Assumptions & 2					& UC description & 3  
 			\\\hline
-			Alloy & 9							& Sequence diagrams & 2				& Activity Diagrams  & 2  
+			Alloy & 9							& Sequence diagrams & 3				& Activity Diagrams  & 2  
 			\\\hline
-			\textbf{Total} & 17					& \textbf{Total} & 18				& \textbf{Total} & 15.5
+			\textbf{Total} & 17					& \textbf{Total} & 19				& \textbf{Total} & 15.5
 			\\\hline
 		\end{tabular}
 		\caption{Time spent by each team member}
