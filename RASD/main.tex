@@ -223,7 +223,7 @@
 			\end{figure}
 			
 			Figure \ref{fig:statechart_SuggestionsForAuthority} shows how SafeStreets operates with an authority.\\
-			Authorities could eventually have some information about accidents in their operative zone and can decide to share them with SafeStreets.\\
+			Authorities could have some information about accidents in their operative zone and can decide to share them with SafeStreets.\\
 			SafeStreets collects these data and try to cross them with reports about traffic violations: if for an area there are frequent violations or accidents, SafeStreets suggests possible interventions.
 			
 			\clearpage
@@ -287,10 +287,10 @@
 				\assumption{5} The position detected by the app coincides with the actual position detected by the geolocalizer.
 				\assumption{6} The algorithm used by SafeStreets for reading a license plate from an image reads the correct number plate, if it is present in the image.
 				\assumption{7} Each position on earth can be associated with a unique postal code.
-				\assumption{8}The SafeStreets client must be able to communicate with the SafeStreets system.
+				\assumption{8} The SafeStreets client must be able to communicate with the SafeStreets system.
 				\assumption{9} The only license plate shown in the report image is the one of the offender.
 				\assumption{10} Each violation report must refer to only one offender.
-				\assumption{11} In an authority confirms a violation report, than the authority generates a traffic tickets from it. So, from the point of view of SafeStreets, every confirmed violation report equals to a traffic ticket.
+				\assumption{11} If an authority confirms a violation report, than the authority generates a traffic tickets from it. So, from the point of view of SafeStreets, every confirmed violation report equals to a traffic ticket.
 				\assumption{12} The SafeStreets software installed in the offices of the authorities registered with the service can only be used bu the authorities themselves: it is not possible for an unauthorized user to gain access to such software.
 				\assumption{13} The device on which the SafeStreets Authority Edition is installed is always switched on.
 			\end{itemize}
@@ -767,13 +767,13 @@
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=1\textwidth]{images/alloyWorlds/world2.png}
-			\caption[World 2]{This world shows the relation between the SafeStreets server and SafeStreets AE's in violation report evaluation.}
+			\caption[World 2]{This world shows the relation between the SafeStreets server and SafeStreets AE in violation report evaluation.}
 			\label{fig:alloy_world2}
 		\end{figure}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=1\textwidth]{images/alloyWorlds/world3.png}
-			\caption[World 3]{This world shows the relation between the SafeStreets server and SafeStreets AE's in reporting accidents.}
+			\caption[World 3]{This world shows the relation between the SafeStreets server and SafeStreets AE in reporting accidents.}
 			\label{fig:alloy_world3}
 		\end{figure}
 		
