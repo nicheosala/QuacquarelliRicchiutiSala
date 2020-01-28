@@ -132,7 +132,7 @@ sig Accident {
 	time: one Time,
 	position: one Position,
 	type: one TypeOfAccident,
-	licensePlate: one LicensePlate
+	licensePlates: some LicensePlate
 }
 
 // The key of an Accident is (date, time, position, type).
@@ -269,30 +269,29 @@ assert ConsistentAccidentReport {
 		sss'.accidents = sss.accidents + a	
 }
 
-
-// Checks on assertions.
-//check NoIncompleteViolationReports for 5
-//check NoTimedOutViolationReports for 5
-//check ConsistentRejection for 5
-//check ConsistentConfirmation for 5
-//check ConsistentAccidentReport for 5
-
 // Generation of worlds.
 pred showWorld1 {}
 run showWorld1 {} for 2 but 0 Authority, 0 SafeStreetsAE, 0 SafeStreetsServer, exactly 2 SafeStreetsApp, exactly 2 ViolationReportRequest, 0 Accident
 
-//pred showWorld2 {}
-//run showWorld2 for 3 but 0 SafeStreetsApp, 0 User, 0 Accident, 0 ViolationReportRequest, exactly 2 SafeStreetsAE, exactly 1 SafeStreetsServer, exactly 2 ViolationReport
+pred showWorld2 {}
+run showWorld2 for 3 but 0 Accident, exactly 1 SafeStreetsApp, exactly 1 SafeStreetsAE, exactly 1 SafeStreetsServer, exactly 1 ViolationReport
 
-//pred showWorld3 {}
-//run showWorld3 for 3 but  0 SafeStreetsApp, 0 User, 0 ViolationReport, 0 ViolationReportRequest, exactly 2 SafeStreetsAE, exactly 2 Accident, exactly 1 SafeStreetsServer
+pred showWorld3 {}
+run showWorld3 for 3 but  0 SafeStreetsApp, 0 User, 0 ViolationReport, 0 ViolationReportRequest, exactly 2 SafeStreetsAE, exactly 2 Accident, exactly 1 SafeStreetsServer
 
+// Checks on assertions.
+check NoIncompleteViolationReports for 5
+check NoTimedOutViolationReports for 5
+check ConsistentRejection for 5
+check ConsistentConfirmation for 5
+check ConsistentAccidentReport for 5
 
 //CORRECTIONS
-// One violation report cannot be sent by two distinc SafeStreets Apps.
+// One violation report cannot be sent by two distinct SafeStreets Apps.
 fact OneReportIsSentByOneApp {
 	all vr: ViolationReport |
 		one ssa: SafeStreetsApp |
 			vr in ssa.violationReportsSent
 }
+
 
