@@ -41,7 +41,7 @@
 		\rule{\linewidth}{0.2 mm} \\[1.5 cm]
 		
 		\textsc{\Large SafeStreets}\\[0.5 cm]
-		\textsc{\large - v1.0 -}\\[1 cm]
+		\textsc{\large - v2.0 -}\\[1 cm]
 		
 		\begin{minipage}{\textwidth}
 			\begin{flushleft} \large
@@ -128,7 +128,8 @@
 					\hline
 					\textbf{Version} & \textbf{Last update} & \textbf{Comments} \\ 
 					\hline
-					1.0 &  \nth{9} December, 2019  & \\
+					1.0 &  \nth{9} December, 2019  & \\ \hline
+					2.0 &  \nth{30} January, 2020  & Name of two interface methods corrected\\
 					\hline
 				\end{tabular}
 				\caption{Revision history}
@@ -277,7 +278,7 @@
 			\item \textbf{Anonymous data}\\
 				Opportunely combining calls to the following two methods, SafeStreets App can retrieve all the information then used to do data-mining or to show statistics. Notice that SafeStreets App will receive information that doesn't include images or license plates, so it is not possible, being useless, to specify these parameters in the method calls.
 				\begin{itemize}
-					\item{getCompleteViolationReports}\\\\
+					\item{getAnonymousViolationReports}\\\\
 					\begin{tabular}{l | l}
 						\textbf{Input} & \textbf{Output}\\
 						\hline
@@ -287,7 +288,7 @@
 						types: Set(TypeOfViolation) &\\
 						onlyConfirmed: Boolean &\\
 					\end{tabular}\\
-					\item{getCompleteAccidents}\\\\
+					\item{getAnonymousAccidents}\\\\
 					\begin{tabular}{l | l}
 						\textbf{Input} & \textbf{Output}\\
 						\hline
